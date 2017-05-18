@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             
             self.navigationController?.navigationBar.isHidden = true
             
-            //JSONConverter.fetchJSONResponse("current_user")
+            
         }
     }
     

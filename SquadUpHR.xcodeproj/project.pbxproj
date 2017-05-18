@@ -25,6 +25,7 @@
 		1AB279211ECAB08C00C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1AB279231ECAB73700C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1AB279251ECAF0C100C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB550AC1ECDB5D500CCE732 /* Skill.swift */; };
 		1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDE91ECC52230060AE80 /* EmployeeTableViewCell.xib */; };
 		1AB9FDED1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEB1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift */; };
 		1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEC1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib */; };
@@ -66,6 +67,7 @@
 		1AB279151ECAACDD00C6F02B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AB279181ECAACDD00C6F02B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AB2791A1ECAACDD00C6F02B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AB550AC1ECDB5D500CCE732 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		1AB9FDE91ECC52230060AE80 /* EmployeeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeTableViewCell.xib; sourceTree = "<group>"; };
 		1AB9FDEB1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCollectionViewCell.swift; sourceTree = "<group>"; };
 		1AB9FDEC1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				1A81F7161ECAF6C30009C4C5 /* SkillCategory.swift */,
+				1AB550AC1ECDB5D500CCE732 /* Skill.swift */,
 				7ADDC47C1ECB1B9700796170 /* Experience.swift */,
 				7ADDC47E1ECB1BA000796170 /* Project.swift */,
 				7ADDC4801ECC244500796170 /* Employee.swift */,
@@ -295,6 +298,7 @@
 				7ADDC4781ECB167100796170 /* ProjectTableViewCell.swift in Sources */,
 				1AB9FDED1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift in Sources */,
 				7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */,
+				1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */,
 				1A8D02701ECD3EF400FE6912 /* ProjectViewCell.swift in Sources */,
 				1A81F71A1ECAF6C30009C4C5 /* SkillCategory.swift in Sources */,
 				1AA657B71ECB40FE00A46378 /* SkillTableViewCell.swift in Sources */,

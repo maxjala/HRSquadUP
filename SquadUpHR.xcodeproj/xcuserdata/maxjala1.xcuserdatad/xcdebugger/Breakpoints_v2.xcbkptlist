@@ -26,108 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516788646.650819"
+            timestampString = "516795683.423498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "fetchJSONResponse(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.31106"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "1376">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.(fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;).(closure #1)"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.313085"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516788677.232481"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "fetchJSONResponse(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.(fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;).(closure #1)"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.31819"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "533">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.(fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;).(closure #1)"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.320381"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "722">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516789348.322292"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "fetchJSONResponse(_:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "getJSONResponse(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,60 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516789350.200262"
+            timestampString = "516795874.453121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "fetchJSONResponse(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.(fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;).(closure #1)"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.329229"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "1683">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.(fetchJSONResponse (Swift.String) -&gt; Swift.Optional&lt;Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;&gt;).(closure #1)"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.33107"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "1938">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516788768.785483"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "fetchJSONResponse(_:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "fetchCurrentUser(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516789077.887366"
+            filePath = "SquadUpHR/ProfileViewController.swift"
+            timestampString = "516799453.731717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "fetchJSONResponse(_:)"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "createCurrentUserDetails(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,125 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516793713.229159"
+            filePath = "SquadUpHR/ProfileViewController.swift"
+            timestampString = "516799453.731717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "createObjects(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516789338.148584"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "fetchJSONResponse(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516789343.572233"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "fetchJSONResponse(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516793713.229159"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "createObjects(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.createObjects (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; Swift.Array&lt;Any&gt;"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.348361"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "3047">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static SquadUpHR.JSONConverter.createObjects (Swift.Array&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; Swift.Array&lt;Any&gt;"
-                  moduleName = "SquadUpHR"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maxjala1/Desktop/iOS%20BOOTCAMP/HRSquadUPApp/SquadUpHR/JSONConverter.swift"
-                  timestampString = "516793714.349749"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "3391">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516793744.953309"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "createObjects(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516793746.047479"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "createObjects(_:)"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "createCurrentUserDetails(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
