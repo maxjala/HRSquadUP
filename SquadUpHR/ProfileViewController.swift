@@ -10,6 +10,10 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var jobTitleLabel: UILabel!
+    
     @IBOutlet weak var profileImageView: UIImageView! {
         didSet{
             profileImageView.layer.cornerRadius = profileImageView.frame.width/2
@@ -60,6 +64,9 @@ class ProfileViewController: UIViewController {
     var skillCategory = SkillCategory.fetchCategories()
     var activeArray : [Any] = []
     
+    var currentUser : Employee?
+    var skillArray : [Skill] = []
+    
     let cellScaling: CGFloat = 0.6
     
     override func viewDidLoad() {
@@ -72,8 +79,62 @@ class ProfileViewController: UIViewController {
         collectionView.reloadData()
         
         
-        self.navigationController?.navigationBar.isHidden = true
+       self.navigationController?.navigationBar.isHidden = true
+        
+        //getCurrentUserDetails()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getCurrentUserDetails()
+    }
+    
+    func getCurrentUserDetails() {
+        JSONConverter.fetchCurrentUser { (user, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+            }
+            
+            //let jsonResponse = currentUser
+            self.createCurrentUserDetails(user!)
+            self.nameLabel.text = self.currentUser?.fullName
+            self.jobTitleLabel.text = self.currentUser?.jobTitle
+            
+            
+        }
+    }
+    
+    func createCurrentUserDetails(_ userJSON: [Any]) {
+        for each in userJSON {
+            if let userInfo = each as? [String: Any] {
+                guard let id = userInfo["id"] as? Int else {return}
+                guard let jobTitle = userInfo["job_title"] as? String else {return}
+                guard let department = userInfo["department"] as? String else {return}
+                guard let firstName = userInfo["first_name"] as? String else {return}
+                guard let lastName = userInfo["last_name"] as? String else {return}
+                guard let email = userInfo["email"] as? String else {return}
+                guard let privateToken = userInfo["private_token"] as? String else {return}
+                
+                //Need to account for Profile Picture when STORAGE is ready
+                
+                currentUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
+                
+            }
+            
+            if let userSkills = each as? [[String: Any]] {
+                
+                for skill in userSkills {
+                    guard let aSkill = skill["skill_name"] as? String,
+                    let aCategory = skill["category"] as? String else {return}
+                    
+                    let newSkill = Skill(aSkill: aSkill, aSkillCategory: aCategory)
+                    skillArray.append(newSkill)
+                }
+            }
+            
+            
+        }
+    }
+        
     
     func setCollectionViewProperties() {
         let screenSize = UIScreen.main.bounds.size
