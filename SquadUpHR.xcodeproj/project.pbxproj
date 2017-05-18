@@ -35,6 +35,7 @@
 		7A1803401ECD81A6008A7F50 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A18033E1ECD81A6008A7F50 /* ChatTableViewCell.xib */; };
 		7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1803411ECD83AF008A7F50 /* Login.storyboard */; };
 		7A1803441ECD8725008A7F50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1803431ECD8725008A7F50 /* LoginViewController.swift */; };
+		7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B4DF71ECD99B300678E19 /* Chat.swift */; };
 		7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */; };
 		7ADDC4741ECB165200796170 /* ExperienceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC4721ECB165200796170 /* ExperienceTableViewCell.swift */; };
 		7ADDC4751ECB165200796170 /* ExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADDC4731ECB165200796170 /* ExperienceTableViewCell.xib */; };
@@ -75,6 +76,7 @@
 		7A18033E1ECD81A6008A7F50 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		7A1803411ECD83AF008A7F50 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A1803431ECD8725008A7F50 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7A1B4DF71ECD99B300678E19 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7ADDC4721ECB165200796170 /* ExperienceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceTableViewCell.swift; sourceTree = "<group>"; };
 		7ADDC4731ECB165200796170 /* ExperienceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperienceTableViewCell.xib; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				7ADDC47C1ECB1B9700796170 /* Experience.swift */,
 				7ADDC47E1ECB1BA000796170 /* Project.swift */,
 				7ADDC4801ECC244500796170 /* Employee.swift */,
+				7A1B4DF71ECD99B300678E19 /* Chat.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				7ADDC4831ECC293300796170 /* TeamCollectionViewCell.swift in Sources */,
 				1A8D02671ECD3AF100FE6912 /* BrowseProjectsVC.swift in Sources */,
 				1A81F71B1ECAF6C30009C4C5 /* SkillCategoryViewCell.swift in Sources */,
+				7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */,
 				1A042F381ECC27C600BC4435 /* JSONConverter.swift in Sources */,
 				1AA657BB1ECBE86E00A46378 /* EmployeeTableViewCell.swift in Sources */,
 				1AB279251ECAF0C100C6F02B /* (null) in Sources */,

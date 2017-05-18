@@ -32,6 +32,10 @@ class ChatViewController: UIViewController {
         }
     }
     
+    var chats: [Chat] = []
+    var newChats: [Any] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,9 +55,58 @@ class ChatViewController: UIViewController {
             return
         }
     }
+    
+    func fetchChat(){
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        let url = URL(string: "")
+        
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                        
+                        guard let validJSON = jsonResponse as? [[String: Any]] else {return}
+                        //MARK: NEED TO CHECK
+                        self.newChats = validJSON // MARK: MUST CHECK
+                        DispatchQueue.main.async {
+                            self.chatTableView.reloadData()
+                        }
+                    }catch let jsonError as NSError{
+                    
+                    }
+                }
+            }
+        }
+        dataTask.resume()
+    }
 
     
     func sendText(){
+        
+    }
+    
+    func addToText(id: Any, textinfo: NSDictionary){
+        
+        if let userName = textinfo["userName"] as? String,
+        let body = textinfo["body"] as? String,
+        let imageURL = textinfo["imageURL"] as? String,
+        let timeCreated = textinfo["timestamp"] as? String,
+        let userId = textinfo["id"] as? Int{
+            
+            let newText = Chat(anId: userId, aUserName: userName, aBody: body, anImageURL: imageURL, aTimestamp: timeCreated)
+            self.chats.append(newText)
+        }
         
     }
     
