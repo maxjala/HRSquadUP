@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -219,6 +219,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ruy-tT-R6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2028" y="999.85007496251887"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="iqv-P4-elJ">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" id="feB-tB-fJa" customClass="ChatViewController" customModule="SquadUpHR" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ysb-vV-vGp"/>
+                        <viewControllerLayoutGuide type="bottom" id="z2I-NF-B6V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z0k-8b-F22">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zje-7C-aub">
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFp-6q-mHH">
+                                <rect key="frame" x="339" y="617" width="36" height="50"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type Here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Uek-cc-uR2">
+                                <rect key="frame" x="0.0" y="617" width="339" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zje-7C-aub" firstAttribute="leading" secondItem="Z0k-8b-F22" secondAttribute="leading" id="0pM-Lt-fmv"/>
+                            <constraint firstAttribute="trailing" secondItem="eFp-6q-mHH" secondAttribute="trailing" id="2ek-EP-IWi"/>
+                            <constraint firstItem="Uek-cc-uR2" firstAttribute="leading" secondItem="Z0k-8b-F22" secondAttribute="leading" id="6KW-db-Cfp"/>
+                            <constraint firstItem="z2I-NF-B6V" firstAttribute="top" secondItem="Uek-cc-uR2" secondAttribute="bottom" id="9nl-Lm-idp"/>
+                            <constraint firstItem="eFp-6q-mHH" firstAttribute="leading" secondItem="Uek-cc-uR2" secondAttribute="trailing" id="HXr-aU-z6Y"/>
+                            <constraint firstItem="Zje-7C-aub" firstAttribute="top" secondItem="ysb-vV-vGp" secondAttribute="bottom" id="QCY-QU-JWy"/>
+                            <constraint firstItem="Uek-cc-uR2" firstAttribute="top" secondItem="Zje-7C-aub" secondAttribute="bottom" id="Rkt-hW-6qO"/>
+                            <constraint firstItem="eFp-6q-mHH" firstAttribute="leading" secondItem="Uek-cc-uR2" secondAttribute="trailing" id="T7h-Tq-Vo0"/>
+                            <constraint firstItem="z2I-NF-B6V" firstAttribute="top" secondItem="eFp-6q-mHH" secondAttribute="bottom" id="ZDB-jd-foe"/>
+                            <constraint firstItem="z2I-NF-B6V" firstAttribute="top" secondItem="Zje-7C-aub" secondAttribute="bottom" constant="50" id="dwU-eQ-eBZ"/>
+                            <constraint firstItem="eFp-6q-mHH" firstAttribute="top" secondItem="Zje-7C-aub" secondAttribute="bottom" id="iep-gD-x9A"/>
+                            <constraint firstAttribute="trailing" secondItem="Zje-7C-aub" secondAttribute="trailing" id="k3E-kJ-4BM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chatTableView" destination="Zje-7C-aub" id="5qQ-Sw-ySF"/>
+                        <outlet property="sendButton" destination="eFp-6q-mHH" id="D4R-EZ-pvp"/>
+                        <outlet property="textView" destination="Uek-cc-uR2" id="fOh-ca-NYu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZtZ-vu-q8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823.20000000000005" y="1757.2713643178413"/>
         </scene>
         <!--Project View Controller-->
         <scene sceneID="Byu-cN-ZM0">
