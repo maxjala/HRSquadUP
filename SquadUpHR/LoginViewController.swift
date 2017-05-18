@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     func login(){
         //MARK TO CHANGE
         
-            let username = "j.hyels@nextacademy.com"
+            let username = "j.huels@nextacademy.com"
             let password = "password"
         //192.168.1.114:3000/api/v1/sessions
         let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check
@@ -98,7 +98,8 @@ class LoginViewController: UIViewController {
   
     func displayAttandance(){
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "")
+        let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        self.present(vc, animated: true, completion: nil)
         
     
     }
