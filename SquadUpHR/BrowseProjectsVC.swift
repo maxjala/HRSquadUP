@@ -14,16 +14,30 @@ class BrowseProjectsVC: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.allowsSelection = false
-            tableView.separatorStyle = .none
+            //tableView.allowsSelection = false
+            tableView.separatorStyle = .singleLine
+            tableView.separatorColor = UIColor.white
+            //tableView.spacin
+            tableView.tableFooterView = UIView()
+            tableView.layer.cornerRadius = 10
+            tableView.layer.masksToBounds = true
             
             tableView.register(ProjectViewCell.cellNib, forCellReuseIdentifier: ProjectViewCell.cellIdentifier)
+            
+            //tableView.estimatedRowHeight = 253
+            //tableView.rowHeight = UITableViewAutomaticDimension
+        }
+    }
+    @IBOutlet weak var accentView: UIView! {
+        didSet {
+            accentView.layer.shadowRadius = 5
+            accentView.layer.shadowOpacity = 0.2
+            accentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         }
     }
     
-    var t_count: Int = 0
-    var lastCell : ProjectViewCell = ProjectViewCell()
-    var button_tag : Int = -1
+    var selectedIndex : IndexPath?
+    var isExpanded = false
 
     
     
@@ -48,7 +62,15 @@ class BrowseProjectsVC: UIViewController {
         let proj9 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
         let proj10 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
         
-        projects = [proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9, proj10]
+        let proj11 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
+        let proj12 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
+        let proj13 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj14 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Web Project", aDesc: "Dont Create HR App")
+        let proj15 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Who Cares Project", aDesc: "Hello HR App")
+        let proj16 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
+        let proj17 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
+        
+        projects = [proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9, proj10, proj11, proj12, proj13, proj14, proj15, proj16, proj17]
         
         tableView.reloadData()
         
@@ -69,69 +91,35 @@ extension BrowseProjectsVC : UITableViewDataSource {
         
         let project = projects[indexPath.row]
         
-
-        if !cell.cellExist {
-            cell.titleButton.setTitle(project.projectTitle, for: .normal)
+            cell.projectNameLabel.text = project.projectTitle
             cell.descriptionLabel.text = project.projectDesc
-            cell.titleButton.tag = t_count
-            cell.titleButton.addTarget(self, action: #selector(cellOpened(sender:)), for: .touchUpInside)
-            t_count += 1
-            cell.cellExist = true
-        }
-        
-        
-        
-        UIView.animate(withDuration: 0) {
-            cell.contentView.layoutIfNeeded()
-        }
         
         
         return cell
     }
     
-    func cellOpened(sender:UIButton) {
-        self.tableView.beginUpdates()
-        
-        let previousCellTag = button_tag
-        
-        if lastCell.cellExist {
-            self.lastCell.animate(duration: 0.2, c: {
-                self.view.layoutIfNeeded()
-            })
-            
-            if sender.tag == button_tag {
-                button_tag = -1
-                lastCell = ProjectViewCell()
-            }
-        }
-        
-        if sender.tag != previousCellTag {
-            button_tag = sender.tag
-            
-            lastCell = tableView.cellForRow(at: IndexPath(row: button_tag, section: 0)) as! ProjectViewCell
-            self.lastCell.animate(duration: 0.2, c: {
-                self.view.layoutIfNeeded()
-            })
-            
-        }
-        self.tableView.endUpdates()
-    }
 
 }
 
 extension BrowseProjectsVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == button_tag {
-            return 253
-        } else {
-            return 60
+        if isExpanded && self.selectedIndex == indexPath {
+            return 182
         }
+        return 30
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedIndex = indexPath
+        didExpandCell()
+    }
+    
+    func didExpandCell() {
+        isExpanded = !isExpanded
+        tableView.reloadRows(at: [selectedIndex!], with: .fade)
+        tableView.scrollToRow(at: selectedIndex!, at: .bottom, animated: true)
     }
     
 }

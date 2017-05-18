@@ -14,6 +14,7 @@ class SkillCategory {
     var title = ""
     var featuredImage: UIImage
     var color: UIColor
+    var skills: [Skill] = []
     
     init(title: String, featuredImage: UIImage, color: UIColor)
     {

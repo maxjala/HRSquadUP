@@ -23,7 +23,7 @@ class SpecificCategoryVC: UIViewController {
     @IBOutlet weak var accentView: UIView! {
         didSet {
             accentView.layer.shadowRadius = 10
-            accentView.layer.shadowOpacity = 0.3
+            accentView.layer.shadowOpacity = 0.2
             accentView.layer.shadowOffset = CGSize(width: 5, height: 10)
             
             accentView.clipsToBounds = false

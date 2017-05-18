@@ -12,12 +12,12 @@ class ProjectViewCell: UITableViewCell {
     
     @IBOutlet weak var openView: UIView!
     
-    @IBOutlet weak var titleButton: UIButton!
+    @IBOutlet weak var projectNameLabel: UILabel!
     
     @IBOutlet weak var detailView: UIView! {
         didSet{
-            detailView.isHidden = true
-            detailView.alpha = 0
+            //detailView.isHidden = true
+            //detailView.alpha = 0
         }
     }
     
