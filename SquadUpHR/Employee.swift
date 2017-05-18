@@ -16,11 +16,12 @@ class Employee{
     var companyID: Int = 0
     var accessLevel: Int = 0
     var email: String = ""
-    var employeeID : String = ""
+    var employeeID : Int = 0
     var fullName: String = ""
+    var privateToken : String = ""
     
     
-    init(anID: String, aJobTitle: String, aDepartment: String, aFirstName: String, aLastName: String, anEmail: String) {
+    init(anID: Int, aJobTitle: String, aDepartment: String, aFirstName: String, aLastName: String, anEmail: String, aPrivateToken: String) {
     
         employeeID = anID
         jobTitle = aJobTitle
@@ -28,8 +29,9 @@ class Employee{
         firstName = aFirstName
         lastName = aLastName
         email = anEmail
+        privateToken = aPrivateToken
         
-        fullName = firstName + lastName
+        fullName = firstName + " " + lastName
         
     }
     

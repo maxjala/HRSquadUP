@@ -14,10 +14,10 @@ class JSONConverter {
         //call the json to fetch all Projects
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return nil}
         
-        let url = URL(string: "")
+        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
         //var createdArray : [Any] = []
         
-        var urlRequest = URLRequest(url: url!)
+        var urlRequest = URLRequest(url: completedURL!)
         urlRequest.httpMethod = "GET"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
         
@@ -37,6 +37,8 @@ class JSONConverter {
                         guard let validJSON = jsonResponse as? [[String : Any]] else {return}
                         
                         DispatchQueue.main.async {
+                            
+                            
                             return validJSON
                             //self.tableView.reloadData()
                         }
@@ -49,6 +51,46 @@ class JSONConverter {
         }
         dataTask.resume()
         return nil
+    }
+    
+    static func getJSONResponse(_ url: String, completion: @escaping (_ completed:[[String:Any]]?, Error?)->Swift.Void) {
+        //call the json to fetch all Projects
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        
+        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
+        //var createdArray : [Any] = []
+        
+        var urlRequest = URLRequest(url: completedURL!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { (data,response,error) in
+            
+            if let validError = error {
+                print(validError.localizedDescription)
+                completion(nil, validError)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                        
+                        guard let validJSON = jsonResponse as? [[String : Any]] else {return}
+                        
+                        completion(validJSON, nil)
+    
+    
+                    }catch let jsonError as NSError {
+                        completion(nil, jsonError)
+                    }
+                }
+            }
+            
+        }
+        dataTask.resume()
     }
     
     static func createObjects(_ jsonResponse: [[String : Any]]) -> [Any] {
@@ -72,14 +114,15 @@ class JSONConverter {
             }
             
             //Create Employees
-            if let employeeID = each["private_token"] as? String,
-                let firstName = each["firstName"] as? String,
-                let lastName = each["lastName"] as? String,
-                let jobTitle = each ["jobTitle"] as? String,
-                let department = each["department"] as? String,
-                let email = each["email"] as? String {
+            if let employeeID = each["id"] as? Int,
+                let firstName = each["first_name"] as? String,
+                let lastName = each["last_name"] as? String,
+                let jobTitle = each ["job_title"] as? String,
+                let email = each["email"] as? String,
+                let privateToken = each ["private_token"] as? String,
+                let department = each["department"] as? String {
                 
-                let employee = Employee(anID: employeeID, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email)
+                let employee = Employee(anID: employeeID, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
                 //projects.append(project)
                 returnedArray.append(employee)
                 //return projects

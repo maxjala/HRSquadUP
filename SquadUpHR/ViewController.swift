@@ -46,6 +46,8 @@ class ViewController: UIViewController {
             collectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
             
             self.navigationController?.navigationBar.isHidden = true
+            
+            //JSONConverter.fetchJSONResponse("current_user")
         }
     }
     

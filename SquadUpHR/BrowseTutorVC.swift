@@ -40,7 +40,29 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
 
         // Do any additional setup after loading the view.
         
-        mockEmployees()
+        //mockEmployees()
+        getAllCompanyUsers()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getAllCompanyUsers()
+    }
+    
+    func getAllCompanyUsers() {
+        //guard let JSONResponse = JSONConverter.fetchJSONResponse("users") else {return}
+        //employees = JSONConverter.createObjects(JSONResponse) as! [Employee]
+        //employees = JSONConverter.createObjects(JSONConverter.fetchJSONResponse("users")!) as! [Employee]
+        
+        JSONConverter.getJSONResponse("users") { (workers, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+                return
+            }
+            
+            self.employees = JSONConverter.createObjects(workers!) as! [Employee]
+            self.tableView.reloadData()
+        }
+        
     }
     
     func mockEmployees() {
