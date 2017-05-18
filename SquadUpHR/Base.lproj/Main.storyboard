@@ -574,7 +574,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="H0A-nY-8Zh">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ocQ-oG-SPc" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ocQ-oG-SPc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="CNg-on-GOC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
