@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController {
         
         setCollectionViewProperties()
         
-        mockProjects()
+        //mockProjects()
         activeArray = skillCategory
         collectionView.reloadData()
         
@@ -86,6 +86,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getCurrentUserDetails()
+        collectionView.reloadData()
     }
     
     func getCurrentUserDetails() {
@@ -120,20 +121,35 @@ class ProfileViewController: UIViewController {
                 
             }
             
-            if let userSkills = each as? [[String: Any]] {
+            if let objects = each as? [[String: Any]] {
                 
-                for skill in userSkills {
-                    guard let aSkill = skill["skill_name"] as? String,
-                    let aCategory = skill["category"] as? String else {return}
+                for object in objects {
+                    if let aSkill = object["skill_name"] as? String,
+                        let aCategory = object["category"] as? String {
+                        
+                        let newSkill = Skill(aSkill: aSkill, aSkillCategory: aCategory)
+                        skillArray.append(newSkill)
+                        
+                    }
                     
-                    let newSkill = Skill(aSkill: aSkill, aSkillCategory: aCategory)
-                    skillArray.append(newSkill)
+                    if let desc = object["description"] as? String,
+                        let title = object["title"] as? String,
+                        let id = object["id"] as? Int {
+                        
+                        let newProj = Project(anID: id, aUserID: 0, aStatus: 0, aTitle: title, aDesc: desc)
+                        
+                        projects.append(newProj)
+                    }
+                    
                 }
             }
             
             
+            
+            
         }
     }
+    
         
     
     func setCollectionViewProperties() {
