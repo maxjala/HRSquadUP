@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     
         
-        var skillCategory = SkillCategory.fetchCategories()
+        var skillCategory = SkillCategory.fetchAllCategories()
         let cellScaling: CGFloat = 0.6
         
         override func viewDidLoad() {

@@ -23,9 +23,7 @@ class SkillCategory {
         self.color = color
     }
     
-    // MARK: - Private
-    // dummy data
-    static func fetchCategories() -> [SkillCategory] {
+    static func fetchAllCategories() -> [SkillCategory] {
         return [
             SkillCategory(title: "Management", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 240/255.0, green: 133/255.0, blue: 91/255.0, alpha: 0.8)),
             SkillCategory(title: "Accountancy", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 105/255.0, green: 80/255.0, blue: 227/255.0, alpha: 0.8)),
@@ -34,10 +32,29 @@ class SkillCategory {
             
             SkillCategory(title: "Education", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 150/255.0, green: 102/255.0, blue: 102/255.0, alpha: 0.8)),
             SkillCategory(title: "Others", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 63/255.0, green: 51/255.0, blue: 80/255.0, alpha: 0.8))
-            //SkillCategory(title: "Business and Marketing Geeks", featuredImage: UIImage(named: "f7")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
-            //SkillCategory(title: "3D Printing, Virtual Reality and AI", featuredImage: UIImage(named: "f8")!, color: UIColor(red: 240/255.0, green: 133/255.0, blue: 91/255.0, alpha: 0.8)),
             
             
         ]
     }
+    
+    static func assignSkills(_ skills: [Skill], skillCategories: [SkillCategory]) -> [SkillCategory] {
+        var returnedSkillCats : [SkillCategory] = []
+        
+        for skillcat in skillCategories {
+            for skill in skills {
+                if skill.skillCategory == skillcat.title {
+                    skillcat.skills.append(skill)
+                }
+            }
+            
+            if skillcat.skills.count > 0 {
+                returnedSkillCats.append(skillcat)
+            }
+        }
+        
+        return returnedSkillCats
+        
+    }
+    
+    
 }

@@ -60,7 +60,8 @@ class ProfileViewController: UIViewController {
     
     
     var projects : [Project] = []
-    var skillCategory = SkillCategory.fetchCategories()
+    var genericCategoies = SkillCategory.fetchAllCategories()
+    var userCategories : [SkillCategory] = []
     var activeArray : [Any] = []
     
     var currentUser : Employee?
@@ -74,7 +75,7 @@ class ProfileViewController: UIViewController {
         setCollectionViewProperties()
         
         //mockProjects()
-        activeArray = skillCategory
+        activeArray = userCategories
         collectionView.reloadData()
         
         
@@ -85,6 +86,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getCurrentUserDetails()
+        
+        mockSkills()
         collectionView.reloadData()
     }
     
@@ -95,13 +98,27 @@ class ProfileViewController: UIViewController {
             }
             
             //let jsonResponse = currentUser
-            self.createCurrentUserDetails(user!)
-            self.nameLabel.text = self.currentUser?.fullName
-            self.jobTitleLabel.text = self.currentUser?.jobTitle
+            if let validUser = user {
+                self.createCurrentUserDetails(validUser)
+                self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
+                
+                self.nameLabel.text = self.currentUser?.fullName
+                self.jobTitleLabel.text = self.currentUser?.jobTitle
+            }
             
             
         }
     }
+    
+    func mockSkills() {
+        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Management"))
+        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Design"))
+        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Accountancy"))
+        
+        self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
+        //collectionView.reloadData()
+    }
+    
     
     func createCurrentUserDetails(_ userJSON: [Any]) {
         for each in userJSON {
@@ -176,7 +193,7 @@ class ProfileViewController: UIViewController {
     }
     
     func skillButtonTapped() {
-        activeArray = skillCategory
+        activeArray = userCategories
         collectionView.reloadData()
     }
     
@@ -219,7 +236,9 @@ extension ProfileViewController : UICollectionViewDataSource {
         cell.projectNameLabel.text = currentProject.projectTitle
         //cell.descriptionLabel.text = currentProject.projectDesc
         //cell.statusLabel.text = currentProject.status
-        cell.backgroundColor = skillCategory[indexPath.row].color
+        
+        //this will be a problem soon
+        cell.backgroundColor = genericCategoies[indexPath.row].color
         cell.alpha = 0.6
         return cell
     }
@@ -239,7 +258,10 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let skillCat = activeArray as? [SkillCategory] {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SpecificCategoryVC") as? SpecificCategoryVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     

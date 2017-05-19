@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum DisplayType {
+    case companySkills
+    case userSkills
+}
+
 class SpecificCategoryVC: UIViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
@@ -32,6 +37,10 @@ class SpecificCategoryVC: UIViewController {
     
     var category : SkillCategory?
     var skills: [String] = []
+    
+    var newSkills: [Skill] = []
+    
+    var displayType : DisplayType = .companySkills
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +52,30 @@ class SpecificCategoryVC: UIViewController {
         skills = ["Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development", "Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development"]
     }
     
+    func configureDisplayType (_ type : DisplayType) {
+        switch type {
+        case .companySkills :
+            
+            configureCompany()
+        case .userSkills:
+            
+            configureUser()
+            break
+            
+        }
+    }
+    
+    func configureCompany() {
+        skills = ["Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development", "Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development"]
+        
+    }
+    
+    func configureUser() {
+        guard let skils = category?.skills else {return}
+        newSkills = skils
+        
+    }
+    
 }
 
 extension SpecificCategoryVC : UITableViewDataSource {
@@ -52,9 +85,11 @@ extension SpecificCategoryVC : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell") as? SkillTableViewCell else {return UITableViewCell()}
-        cell.skillLabel.text = skills[indexPath.row]
-        cell.skillLabel.textColor = category?.color
-        cell.skillLabel.alpha = 0.8
+        //cell.skillLabel.text = skills[indexPath.row]
+        //cell.skillLabel.textColor = category?.color
+        //cell.skillLabel.alpha = 0.8
+        
+        cell.skillLabel.text = newSkills[indexPath.row].skillName
         
         return cell
         
