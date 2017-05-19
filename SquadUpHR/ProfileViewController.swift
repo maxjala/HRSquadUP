@@ -69,13 +69,23 @@ class ProfileViewController: UIViewController {
     
     let cellScaling: CGFloat = 0.6
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        getCurrentUserDetails()
+        
+        //activeArray = userCategories
+        
+        //mockSkills()
+        //collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCollectionViewProperties()
-        
+        //getCurrentUserDetails()
         //mockProjects()
-        collectionView.reloadData()
+        //collectionView.reloadData()
         
         
        self.navigationController?.navigationBar.isHidden = true
@@ -83,16 +93,6 @@ class ProfileViewController: UIViewController {
         //getCurrentUserDetails()
         //navigationController?.isUserInteractionEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        getCurrentUserDetails()
-        
-        //activeArray = userCategories
-        
-        mockSkills()
-        collectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,9 +109,13 @@ class ProfileViewController: UIViewController {
             if let validUser = user {
                 self.createCurrentUserDetails(validUser)
                 self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
+                self.activeArray = self.userCategories
                 
-                self.nameLabel.text = self.currentUser?.fullName
-                self.jobTitleLabel.text = self.currentUser?.jobTitle
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    self.nameLabel.text = self.currentUser?.fullName
+                    self.jobTitleLabel.text = self.currentUser?.jobTitle
+                }
             }
             
             
@@ -132,6 +136,8 @@ class ProfileViewController: UIViewController {
     
     
     func createCurrentUserDetails(_ userJSON: [Any]) {
+        self.skillArray.removeAll()
+        self.projects.removeAll()
         for each in userJSON {
             if let userInfo = each as? [String: Any] {
                 guard let id = userInfo["id"] as? Int else {return}
@@ -161,9 +167,10 @@ class ProfileViewController: UIViewController {
                     
                     if let desc = object["description"] as? String,
                         let title = object["title"] as? String,
-                        let id = object["id"] as? Int {
+                        let id = object["id"] as? Int,
+                        let status = object["status"] as? String {
                         
-                        let newProj = Project(anID: id, aUserID: 0, aStatus: 0, aTitle: title, aDesc: desc)
+                        let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
                         
                         projects.append(newProj)
                     }
@@ -193,11 +200,11 @@ class ProfileViewController: UIViewController {
     }
     
     func mockProjects() {
-        let proj1 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj2 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj3 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj4 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj5 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj1 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj2 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj3 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj4 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj5 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
         
         projects = [proj1, proj2, proj3, proj4, proj5]
         

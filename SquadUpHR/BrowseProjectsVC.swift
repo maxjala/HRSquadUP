@@ -51,26 +51,16 @@ class BrowseProjectsVC: UIViewController {
     }
 
     func mockProjects() {
-        let proj1 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj2 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Web Project", aDesc: "Dont Create HR App")
-        let proj3 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Who Cares Project", aDesc: "Hello HR App")
-        let proj4 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
-        let proj5 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
-        let proj6 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj7 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Web Project", aDesc: "Dont Create HR App")
-        let proj8 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Who Cares Project", aDesc: "Hello HR App")
-        let proj9 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
-        let proj10 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
+        let proj1 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj2 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Web Project", aDesc: "Dont Create HR App")
+        let proj3 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Who Cares Project", aDesc: "Hello HR App")
+        let proj4 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Data Project", aDesc: "Create HR App")
+        let proj5 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Cmon Project", aDesc: "Create HR App")
+        let proj6 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
+        let proj7 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Web Project", aDesc: "Dont Create HR App")
+        let proj8 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Who Cares Project", aDesc: "Hello HR App")
         
-        let proj11 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
-        let proj12 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
-        let proj13 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj14 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Web Project", aDesc: "Dont Create HR App")
-        let proj15 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Who Cares Project", aDesc: "Hello HR App")
-        let proj16 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Data Project", aDesc: "Create HR App")
-        let proj17 = Project(anID: 123, aUserID: 123, aStatus: 2, aTitle: "Cmon Project", aDesc: "Create HR App")
-        
-        projects = [proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8, proj9, proj10, proj11, proj12, proj13, proj14, proj15, proj16, proj17]
+        projects = [proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8]
         
         tableView.reloadData()
         
