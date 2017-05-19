@@ -49,7 +49,10 @@ class SpecificCategoryVC: UIViewController {
         accentView.backgroundColor = category?.color
         
         //Mock Skills
-        skills = ["Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development", "Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development"]
+        //skills = ["Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development", "Adobe Photoshop", "Adobe Illustrator", "Web Design", "Painting", "Public Speaking", "Excel Spreadsheets", "Balance Sheets", "Web Development", "iOS Development"]
+        
+        configureDisplayType(displayType)
+        tableView.reloadData()
     }
     
     func configureDisplayType (_ type : DisplayType) {
@@ -72,6 +75,7 @@ class SpecificCategoryVC: UIViewController {
     
     func configureUser() {
         guard let skils = category?.skills else {return}
+        newSkills = []
         newSkills = skils
         
     }
@@ -80,7 +84,7 @@ class SpecificCategoryVC: UIViewController {
 
 extension SpecificCategoryVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skills.count
+        return newSkills.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
