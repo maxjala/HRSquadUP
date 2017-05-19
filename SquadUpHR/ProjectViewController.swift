@@ -9,6 +9,9 @@
 import UIKit
 
 class ProjectViewController: UIViewController {
+    
+    var project : Project?
+    var teamMates : [Employee] = []
 
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
@@ -16,6 +19,11 @@ class ProjectViewController: UIViewController {
             collectionView.delegate = self
         }
     }
+    
+
+    @IBOutlet weak var projectNameLabel: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var mockEmployee = ["name" : "nick",
                         "title": "programmer"]
@@ -31,6 +39,12 @@ class ProjectViewController: UIViewController {
     var teamSelection : [[String:String]] = []
     let cellScaling: CGFloat = 0.6
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureProjectProfile()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +55,25 @@ class ProjectViewController: UIViewController {
         customDesign()
         customColor()
         // Do any additional setup after loading the view.
+        
+        configureProjectProfile()
+    }
+    
+    func configureProjectProfile() {
+        guard let proj = project else {return}
+        
+        JSONConverter.getJSONResponse("projects/\(proj.projectId)") { (projectMembers, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            
+            DispatchQueue.main.async {
+                self.teamMates = JSONConverter.createObjects(projectMembers!) as! [Employee]
+                self.projectNameLabel.text = proj.projectTitle
+                self.projectNameLabel.text = proj.projectDesc
+                self.collectionView.reloadData()
+            }
+        }
     }
 
 
@@ -80,25 +113,26 @@ extension ProjectViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return teamSelection.count
+        return teamMates.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
         
-        let employee = teamSelection[indexPath.row]
+        let employee = teamMates[indexPath.row]
         
         //cell.backgroundColor = colorArray[Int(arc4random_uniform(UInt32(colorArray.count)))]
         cell.backgroundColor = colorArray[indexPath.row]
-        cell.nameLabel.text = employee["name"]
-        cell.roleLabel.text = employee["title"]
+        cell.nameLabel.text = employee.fullName
+        //cell.roleLabel.text =
         
         return cell
         
     }
 }
+
 extension ProjectViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let specificEmployee = teamSelection[indexPath.item]
+        let specificEmployee = teamMates[indexPath.item]
         
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "") else {return}
         

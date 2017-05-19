@@ -70,6 +70,7 @@ class ProfileViewController: UIViewController {
     let cellScaling: CGFloat = 0.6
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         getCurrentUserDetails()
         
@@ -96,6 +97,8 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
@@ -284,6 +287,11 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
             navigationController?.pushViewController(vc!, animated: true)
 
         }
+        
+        guard let proj = activeArray as? [Project] else {return}
+        let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
+        projVC?.project = proj[indexPath.row]
+        navigationController?.pushViewController(projVC!, animated: true)
     }
     
     

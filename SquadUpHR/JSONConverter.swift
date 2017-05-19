@@ -53,6 +53,8 @@ class JSONConverter {
         return nil
     }
     
+    
+    //Applicable for "_ url: String" :  "projects", "users/skills", "projects/1" (1 is project id... this call shows project members only)
     static func getJSONResponse(_ url: String, completion: @escaping (_ completed:[[String:Any]]?, Error?)->Swift.Void) {
         //call the json to fetch all Projects
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
