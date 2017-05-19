@@ -34,8 +34,12 @@ class LoginViewController: UIViewController {
     func login(){
         //MARK TO CHANGE
         
-            let username = "m.kuphal@nextacademy.com"
-            let password = "password"
+        //m.kuphal@nextacademy.com password is password
+        //m.feil@nextacademy.com" password
+        
+        guard
+            let username = usernameTextField.text,
+            let password = passwordTextField.text else {return}
         //192.168.1.114:3000/api/v1/sessions
         let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check
         var urlRequest = URLRequest(url: url!)
