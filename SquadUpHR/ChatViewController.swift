@@ -155,6 +155,8 @@ class ChatViewController: JSQMessagesViewController {
     
     func counter(){
         seconds += 1
+        messages.removeAll()
+        fetchChat()
     }
     
     
