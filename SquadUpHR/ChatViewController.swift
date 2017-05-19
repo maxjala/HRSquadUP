@@ -36,7 +36,9 @@ class ChatViewController: JSQMessagesViewController {
     
     var chats: [Chat] = []
     var newChats: [Any] = []
-   var messages = [JSQMessage]()
+    var messages = [JSQMessage]()
+    var timer = Timer()
+    var seconds = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,8 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = currentUser.name
         
     
-        fetchChat()
+        //fetchChat()
+        fetchConstant()
         
         tabBarController?.tabBar.isHidden = true
     }
@@ -74,66 +77,66 @@ class ChatViewController: JSQMessagesViewController {
                         //MARK: NEED TO CHECK
                         self.newChats = validJSON // MARK: MUST CHECK
                         DispatchQueue.main.async {
-                           // self.chatTableView.reloadData()
+                            // self.chatTableView.reloadData()
                             self.makeMessages(validJSON)
                             self.collectionView.reloadData()
                         }
                     }catch let jsonError as NSError{
-                    
+                        
                     }
                 }
             }
         }
         dataTask.resume()
     }
-
+    
     func makeMessages(_ messageJSON: [[String: Any]]) {
         for each in messageJSON {
             if let id = each["id"] as? Int,
                 let projectID = each["project_id"] as? Int,
-            let userID = each["user_id"] as? Int,
+                let userID = each["user_id"] as? Int,
                 let message = each["message"] as? String,
-            let timestamp = each["created_at"] as? String {
+                let timestamp = each["created_at"] as? String {
                 
                 let aMessage = JSQMessage(senderId: "\(userID)", displayName: "\(userID)", text: message)
                 
                 messages.append(aMessage!)
-            
+                
+            }
         }
-    }
     }
     
     func sendText(_ messageDict: [String: Any]) {
         
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         if let jsonData = try? JSONSerialization.data(withJSONObject: messageDict, options: []) {
-      
-                let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=1")
-                var urlRequest = URLRequest(url: url!)
-                urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                urlRequest.httpMethod = "POST"
-                urlRequest.httpBody = jsonData
-                let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                    
-                    if let validError = error as NSError? {
-                        print(validError.localizedDescription)
-                        return
-                    }
-                    
-                }
             
-                dataTask.resume()
+            let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=1")
+            var urlRequest = URLRequest(url: url!)
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpMethod = "POST"
+            urlRequest.httpBody = jsonData
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                
+                if let validError = error as NSError? {
+                    print(validError.localizedDescription)
+                    return
+                }
+                
             }
             
+            dataTask.resume()
+        }
+        
     }
     
     func addToText(id: Any, textinfo: NSDictionary){
         
         if let userName = textinfo["userName"] as? String,
-        let body = textinfo["body"] as? String,
-        let imageURL = textinfo["imageURL"] as? String,
-        let timeCreated = textinfo["timestamp"] as? String,
-        let userId = textinfo["id"] as? Int{
+            let body = textinfo["body"] as? String,
+            let imageURL = textinfo["imageURL"] as? String,
+            let timeCreated = textinfo["timestamp"] as? String,
+            let userId = textinfo["id"] as? Int{
             
             let newText = Chat(anId: userId, aUserName: userName, aBody: body, anImageURL: imageURL, aTimestamp: timeCreated)
             self.chats.append(newText)
@@ -141,9 +144,21 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
-
-
+    func fetchConstant(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
+        
+        if seconds % 5 == 0 {
+            fetchChat()
+        }
+        
     }
+    
+    func counter(){
+        seconds += 1
+    }
+    
+    
+}
 
 
 extension ChatViewController{
@@ -190,6 +205,6 @@ extension ChatViewController{
         return messages[indexPath.row]
     }
 }
-    
+
 
 
