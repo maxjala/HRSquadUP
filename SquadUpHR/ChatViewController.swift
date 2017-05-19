@@ -7,53 +7,55 @@
 //
 
 import UIKit
+import JSQMessagesViewController
+//MARK: Mock Data
+struct User {
+    let id: String
+    let name: String
+}
 
-class ChatViewController: UIViewController {
+class ChatViewController: JSQMessagesViewController {
     
-    @IBOutlet weak var chatTableView: UITableView!{
-        didSet{
-            chatTableView.dataSource = self
-            chatTableView.delegate = self
-            chatTableView.register(ChatTableViewCell.cellNib, forCellReuseIdentifier: ChatTableViewCell.cellIdentifier)
-        }
-    }
-
-    @IBOutlet weak var textView: UITextView! {
-        didSet{
-            let tapGestureRecongizer = UITapGestureRecognizer(target: self, action: #selector(removeText))
-            textView.isUserInteractionEnabled = true
-            textView.addGestureRecognizer(tapGestureRecongizer)
-        }
+    let user1 = User(id: "1", name: "Nick")
+    let user2 = User(id: "2", name: "Max")
+    
+    var currentUser: User{
+        return user1
     }
     
-    @IBOutlet weak var sendButton: UIButton! {
-        didSet {
-            sendButton.addTarget(self, action: #selector(sendText), for: .touchUpInside)
+    
+    override var hidesBottomBarWhenPushed: Bool {
+        get {
+            return navigationController?.topViewController == self
         }
+        set {
+            super.hidesBottomBarWhenPushed = newValue
+        }
+        
     }
     
     var chats: [Chat] = []
     var newChats: [Any] = []
-    
+   var messages = [JSQMessage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.senderId = currentUser.id
+        self.senderDisplayName = currentUser.name
+        
+        self.messages = getMessages()
     }
     
-    func removeText(){
-        if textView.text == "Type Here" {
-            textView.text = ""
-            textView.isUserInteractionEnabled = true
-        }else {
-            return
-        }
+    func getMessages() -> [JSQMessage] {
+        var messages = [JSQMessage]()
+        
+        let message1 = JSQMessage(senderId: "1", displayName: "Nick", text: "How are Ya")
+        let message2 = JSQMessage(senderId: "2", displayName: "Max", text: "Hello")
+        
+        messages.append(message1!)
+        messages.append(message2!)
+        
+        return messages
     }
     
     func fetchChat(){
@@ -80,7 +82,7 @@ class ChatViewController: UIViewController {
                         //MARK: NEED TO CHECK
                         self.newChats = validJSON // MARK: MUST CHECK
                         DispatchQueue.main.async {
-                            self.chatTableView.reloadData()
+                           // self.chatTableView.reloadData()
                         }
                     }catch let jsonError as NSError{
                     
@@ -110,36 +112,51 @@ class ChatViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-    
-    
+
+
 }
-extension ChatViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+
+extension ChatViewController{
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
+        messages.append(message!)
+        finishSendingMessage()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.cellIdentifier, for: indexPath) as? ChatTableViewCell else {return UITableViewCell()}
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.row]
+        let messageUserName = message.senderDisplayName
         
-        
-        return cell
+        return NSAttributedString(string: messageUserName!)
     }
     
-    func tableViewScrollToBottom(){
-        let numberOfRows = self.chatTableView.numberOfRows(inSection: 0)
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 15
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let bubbleFactory = JSQMessagesBubbleImageFactory()
         
-        if numberOfRows > 0 {
-            let indexPath = IndexPath(row: numberOfRows - 1, section: 0)
-            self.chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        let message = messages[indexPath.row]
+        
+        if currentUser.id == message.senderId {
+            return bubbleFactory?.outgoingMessagesBubbleImage(with: .gray)
+        } else {
+            return bubbleFactory?.incomingMessagesBubbleImage(with: .blue)
         }
     }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        return messages[indexPath.row]
+    }
 }
+    
 
-extension ChatViewController: UITableViewDelegate{
 
-}
