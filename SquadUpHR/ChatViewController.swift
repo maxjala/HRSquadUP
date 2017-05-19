@@ -60,7 +60,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func fetchChat(){
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
-        let url = URL(string: "")
+        let url = URL(string: "192.168.1.114:3000/api/v1/project_chats\(validToken)")
         
         var urlRequest = URLRequest(url: url!)
         urlRequest.httpMethod = "GET"
@@ -95,6 +95,38 @@ class ChatViewController: JSQMessagesViewController {
 
     
     func sendText(){
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        let url = URL(string: "192.168.1.114:3000/api/v1/project_chats\(validToken)")
+        
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                        
+                        guard let validJSON = jsonResponse as? [[String: Any]] else {return}
+                        //MARK: NEED TO CHECK
+                        self.newChats = validJSON // MARK: MUST CHECK
+                        DispatchQueue.main.async {
+                            // self.chatTableView.reloadData()
+                        }
+                    }catch let jsonError as NSError{
+                        
+                    }
+                }
+            }
+        }
+        dataTask.resume()
         
     }
     
