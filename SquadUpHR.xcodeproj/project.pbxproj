@@ -22,9 +22,9 @@
 		1AB279141ECAACDD00C6F02B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB279121ECAACDD00C6F02B /* Main.storyboard */; };
 		1AB279161ECAACDD00C6F02B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB279151ECAACDD00C6F02B /* Assets.xcassets */; };
 		1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AB279171ECAACDD00C6F02B /* LaunchScreen.storyboard */; };
-		1AB279211ECAB08C00C6F02B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		1AB279231ECAB73700C6F02B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		1AB279251ECAF0C100C6F02B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1AB279211ECAB08C00C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		1AB279231ECAB73700C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		1AB279251ECAF0C100C6F02B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB550AC1ECDB5D500CCE732 /* Skill.swift */; };
 		1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDE91ECC52230060AE80 /* EmployeeTableViewCell.xib */; };
 		1AB9FDED1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEB1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift */; };
@@ -363,7 +363,7 @@
 				7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */,
 				1A042F381ECC27C600BC4435 /* JSONConverter.swift in Sources */,
 				1AA657BB1ECBE86E00A46378 /* EmployeeTableViewCell.swift in Sources */,
-				1AB279251ECAF0C100C6F02B /* BuildFile in Sources */,
+				1AB279251ECAF0C100C6F02B /* (null) in Sources */,
 				7A18033F1ECD81A6008A7F50 /* ChatTableViewCell.swift in Sources */,
 				1A81F71F1ECAF72B0009C4C5 /* ViewController.swift in Sources */,
 				1AA657C01ECBEBCE00A46378 /* BrowseTutorVC.swift in Sources */,
@@ -378,8 +378,8 @@
 				1A81F71A1ECAF6C30009C4C5 /* SkillCategory.swift in Sources */,
 				1AA657B71ECB40FE00A46378 /* SkillTableViewCell.swift in Sources */,
 				7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */,
-				1AB279211ECAB08C00C6F02B /* BuildFile in Sources */,
-				1AB279231ECAB73700C6F02B /* BuildFile in Sources */,
+				1AB279211ECAB08C00C6F02B /* (null) in Sources */,
+				1AB279231ECAB73700C6F02B /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

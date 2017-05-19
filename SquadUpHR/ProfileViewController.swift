@@ -75,20 +75,28 @@ class ProfileViewController: UIViewController {
         setCollectionViewProperties()
         
         //mockProjects()
-        activeArray = userCategories
         collectionView.reloadData()
         
         
        self.navigationController?.navigationBar.isHidden = true
         
         //getCurrentUserDetails()
+        //navigationController?.isUserInteractionEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         getCurrentUserDetails()
+        
+        //activeArray = userCategories
         
         mockSkills()
         collectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func getCurrentUserDetails() {
@@ -111,12 +119,15 @@ class ProfileViewController: UIViewController {
     }
     
     func mockSkills() {
-        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Management"))
-        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Design"))
-        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Accountancy"))
+        skillArray.removeAll()
         
-        self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
-        //collectionView.reloadData()
+        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Management"))
+        skillArray.append(Skill.init(aSkill: "cmon", aSkillCategory: "Design"))
+        skillArray.append(Skill.init(aSkill: "why", aSkillCategory: "Accountancy"))
+        
+        
+        userCategories = SkillCategory.assignSkills(skillArray, skillCategories: genericCategoies)
+        activeArray = userCategories
     }
     
     
@@ -260,7 +271,11 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let skillCat = activeArray as? [SkillCategory] {
             let vc = storyboard?.instantiateViewController(withIdentifier: "SpecificCategoryVC") as? SpecificCategoryVC
+            vc?.category = skillCat[indexPath.row]
+            vc?.displayType = .userSkills
+            
             navigationController?.pushViewController(vc!, animated: true)
+
         }
     }
     

@@ -12,9 +12,11 @@ import UIKit
 class SkillCategory {
     // MARK: - Public API
     var title = ""
-    var featuredImage: UIImage
-    var color: UIColor
+    var featuredImage: UIImage = UIImage()
+    var color: UIColor = UIColor()
     var skills: [Skill] = []
+    
+    init() {}
     
     init(title: String, featuredImage: UIImage, color: UIColor)
     {
@@ -40,15 +42,32 @@ class SkillCategory {
     static func assignSkills(_ skills: [Skill], skillCategories: [SkillCategory]) -> [SkillCategory] {
         var returnedSkillCats : [SkillCategory] = []
         
+        
+        
         for skillcat in skillCategories {
+            
+            var matchedSkill = [Skill]()
+            
             for skill in skills {
                 if skill.skillCategory == skillcat.title {
-                    skillcat.skills.append(skill)
+                    
+                    matchedSkill.append(skill)
+                    //skillcat.skills.append(skill)
                 }
             }
             
-            if skillcat.skills.count > 0 {
-                returnedSkillCats.append(skillcat)
+            
+            
+           // if skillcat.skills.count > 0 {
+            if matchedSkill.count > 0 {
+                var skillCategory = SkillCategory()
+                skillCategory.color = skillcat.color
+                skillCategory.featuredImage = skillcat.featuredImage
+                skillCategory.skills = matchedSkill
+                skillCategory.title = skillcat.title
+
+                
+                returnedSkillCats.append(skillCategory)
             }
         }
         
