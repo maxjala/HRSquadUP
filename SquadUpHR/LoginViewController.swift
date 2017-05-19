@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     func login(){
         //MARK TO CHANGE
         
-            let username = "l.cartwright@nextacademy.com"
+            let username = "m.kuphal@nextacademy.com"
             let password = "password"
         //192.168.1.114:3000/api/v1/sessions
         let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check

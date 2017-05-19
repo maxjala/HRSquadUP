@@ -142,7 +142,7 @@ class JSONConverter {
             //Create Projects
             if let projectID = each["projectId"] as? Int,
                 let userID = each["userId"] as? Int,
-                let status = each["status"] as? Int,
+                let status = each["status"] as? String,
                 let projectTitle = each ["projectTitle"] as? String,
                 let projectDesc = each["projectDesc"] as? String{
                 
