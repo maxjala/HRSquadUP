@@ -147,16 +147,13 @@ class ChatViewController: JSQMessagesViewController {
     func fetchConstant(){
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
         
-        if seconds % 5 == 0 {
-            fetchChat()
-        }
-        
     }
     
     func counter(){
         seconds += 1
         messages.removeAll()
         fetchChat()
+        //collectionView.scrollToItem(at: [messages.count-1], at: .bottom, animated: true)
     }
     
     
