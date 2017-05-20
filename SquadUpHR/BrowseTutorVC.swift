@@ -8,6 +8,8 @@
 
 import UIKit
 import MessageUI
+import FirebaseDatabase
+
 
 class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
     
@@ -31,12 +33,17 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    var ref: FIRDatabaseReference!
+    
     
     var employees : [Employee] = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = FIRDatabase.database().reference()
+
 
         // Do any additional setup after loading the view.
         

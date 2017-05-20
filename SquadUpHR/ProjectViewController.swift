@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ProjectViewController: UIViewController {
     
@@ -24,6 +25,9 @@ class ProjectViewController: UIViewController {
     @IBOutlet weak var projectNameLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var ref: FIRDatabaseReference!
+
     
     var mockEmployee = ["name" : "nick",
                         "title": "programmer"]
@@ -55,6 +59,9 @@ class ProjectViewController: UIViewController {
         customDesign()
         customColor()
         // Do any additional setup after loading the view.
+        
+        ref = FIRDatabase.database().reference()
+
         
         configureProjectProfile()
     }

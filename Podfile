@@ -7,4 +7,8 @@ target 'SquadUpHR' do
 
   # Pods for SquadUpHR
   pod 'JSQMessagesViewController'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  
 end

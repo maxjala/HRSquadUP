@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>1017422460210-s2set0jhvjsbibj9ulbbrob7vj6tpjnk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1017422460210-s2set0jhvjsbibj9ulbbrob7vj6tpjnk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBPyYBYuDBk72-JCA9L2CkB2FYIb-3kZUs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1017422460210</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nextacademy.SquadUpHR</string>
+	<key>PROJECT_ID</key>
+	<string>hrsquadupapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hrsquadupapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1017422460210:ios:6934a4637d911d65</string>
+	<key>DATABASE_URL</key>
+	<string>https://hrsquadupapp.firebaseio.com</string>
+</dict>
+</plist>
