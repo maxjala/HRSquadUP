@@ -177,12 +177,7 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
                     }
                 }
                 
-                
-                
             }
-            
-            
-            
         }
     }
 }
