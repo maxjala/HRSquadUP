@@ -42,13 +42,72 @@ class BrowseProjectsVC: UIViewController {
     
     
     var projects : [Project] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureProjectsView()
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mockProjects()
+        //mockProjects()
     }
+    
+    func configureProjectsView() {
+        JSONConverter.fetchCurrentUser { (user, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+            }
+            
+            //let jsonResponse = currentUser
+            if let validUser = user {
+                self.generateUserProjects(validUser)
+                //self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
+                //self.activeArray = self.userCategories
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    //self.nameLabel.text = self.currentUser?.fullName
+                    //self.jobTitleLabel.text = self.currentUser?.jobTitle
+                }
+            }
+            
+            
+        }
+    }
+    
+    func generateUserProjects(_ userJSON: [Any]) {
+        projects.removeAll()
+        self.projects.removeAll()
+        for each in userJSON {
+            
+            if let objects = each as? [[String: Any]] {
+                
+                for object in objects {
+                    
+                    if let desc = object["description"] as? String,
+                        let title = object["title"] as? String,
+                        let id = object["id"] as? Int,
+                        let status = object["status"] as? String {
+                        
+                        let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
+                        
+                        projects.append(newProj)
+                    }
+                    
+                }
+            }
+            
+            
+            
+            
+        }
+    }
+
 
     func mockProjects() {
         let proj1 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
@@ -81,8 +140,9 @@ extension BrowseProjectsVC : UITableViewDataSource {
         
         let project = projects[indexPath.row]
         
-            cell.projectNameLabel.text = project.projectTitle
-            cell.descriptionLabel.text = project.projectDesc
+        cell.projectNameLabel.text = project.projectTitle
+        cell.descriptionLabel.text = project.projectDesc
+    
         
         
         return cell

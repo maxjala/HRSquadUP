@@ -141,7 +141,9 @@ extension ProjectViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let specificEmployee = teamMates[indexPath.item]
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "") else {return}
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {return}
+        vc.profileType = .otherProfile
+        vc.selectedProfile = teamMates[indexPath.row]
         
         navigationController?.pushViewController(vc, animated: true)
     }
