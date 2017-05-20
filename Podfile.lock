@@ -27,12 +27,14 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - Starscream (2.0.4)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
   - JSQMessagesViewController
+  - Starscream
 
 SPEC CHECKSUMS:
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -45,7 +47,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Starscream: df5974ee928b157c8eda8af8de7c620276b7dfcc
 
-PODFILE CHECKSUM: 4f551fc52937cf437cc1e047d96b4f83121a6185
+PODFILE CHECKSUM: 3341e5e8dd38c505dc83d0b698f6d5f56855c510
 
 COCOAPODS: 1.2.0

@@ -9,6 +9,7 @@
 import UIKit
 import JSQMessagesViewController
 import FirebaseDatabase
+import Starscream
 
 
 //MARK: Mock Data
@@ -44,19 +45,39 @@ class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     var timer = Timer()
     var seconds = 0
+    var socket = WebSocket(url: URL(string: "ws://192.168.1.114:3000/cable")!, protocols: ["ApiProjectChatsChannel"])
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //socket = WebSocket(url: URL(string: "ws://localhost:8080/")!)
+        //socket.delegate = self as? WebSocketDelegate
+        //socket.connect()
+        
+        fetchChat()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.senderId = currentUser.id
         self.senderDisplayName = currentUser.name
         
+        socket.delegate = self as! WebSocketDelegate
+        socket.connect()
+        
     
         //fetchChat()
-        fetchConstant()
+        //fetchConstant()
         ref = FIRDatabase.database().reference()
 
         
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    deinit {
+        socket.disconnect(forceTimeout: 0)
+        socket.delegate = nil
     }
     
     
@@ -209,6 +230,68 @@ extension ChatViewController{
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.row]
+    }
+
+}
+
+extension ChatViewController : WebSocketDelegate {
+    /*
+    public func websocketDidConnect(socket: Starscream.WebSocket) {
+        
+    }
+    
+    public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
+        
+    }
+    
+    public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
+        
+        guard let data = text.data(using: .utf16),
+            let jsonData = try? JSONSerialization.jsonObject(with: data),
+            let jsonDict = jsonData as? [String: Any],
+            let messageType = jsonDict["type"] as? String else {
+                return
+        }
+        
+        if messageType != "ping" {
+            
+        }
+        // 2
+        if messageType == "messages",
+            let messageData = jsonDict["data"] as? [String: Any],
+            let messageAuthor = messageData["author"] as? String,
+            let messageText = messageData["text"] as? String {
+            
+            let message = JSQMessage(senderId: messageAuthor, displayName: messageAuthor, text: messageText)
+            messages.append(message!)
+            collectionView.reloadData()
+        }
+        
+    }
+    
+    public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
+        
+    }
+    */
+    
+    func websocketDidConnect(socket: WebSocket) {
+        print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+        if let e = error {
+            print("websocket is disconnected: \(e.localizedDescription)")
+        } else {
+            print("websocket disconnected")
+        }
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+        print("Received text: \(text)")
+    }
+    
+    func websocketDidReceiveData(socket: WebSocket, data: Data) {
+        print("Received data: \(data.count)")
     }
 }
 

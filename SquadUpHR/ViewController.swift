@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Starscream
 
 class ViewController: UIViewController {
 
@@ -28,11 +29,16 @@ class ViewController: UIViewController {
     }
     
         
-        var skillCategory = SkillCategory.fetchAllCategories()
-        let cellScaling: CGFloat = 0.6
+    var skillCategory = SkillCategory.fetchAllCategories()
+    let cellScaling: CGFloat = 0.6
+    let socket = WebSocket(url: URL(string: "ws://localhost:8080/")!)
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            //socket = WebSocket(url: URL(string: "ws://localhost:8080/")!)
+            socket.delegate = self as? WebSocketDelegate
+            socket.connect()
             
             let screenSize = UIScreen.main.bounds.size
             let cellWidth = floor(screenSize.width * cellScaling)

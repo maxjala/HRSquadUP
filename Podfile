@@ -10,5 +10,7 @@ target 'SquadUpHR' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Starscream'
+  
   
 end

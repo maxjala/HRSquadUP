@@ -40,11 +40,11 @@ class LoginViewController: UIViewController {
         //guard
             //let username = usernameTextField.text,
             //let password = passwordTextField.text else {return}
-            let username = "d.kerluke@nextacademy.com"
+            let username = "m.kuphal@nextacademy.com"
             let password = "password"
         //192.168.1.114:3000/api/v1/sessions
-        //let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check
-        let url = URL(string: "http://192.168.1.155:3000/api/v1/sessions")// need to check
+        let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check
+        //let url = URL(string: "http://192.168.1.155:3000/api/v1/sessions")// need to check
         var urlRequest = URLRequest(url: url!)
         
         urlRequest.httpMethod = "POST"
