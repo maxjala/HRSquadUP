@@ -158,6 +158,9 @@ extension SpecificCategoryVC : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "BrowseTutorVC") as? BrowseTutorVC else {return}
         
+        vc.skill = newSkills[indexPath.row]
+        vc.viewType = .specificSkill
+        
        navigationController?.pushViewController(vc, animated: true)
     }
 }
