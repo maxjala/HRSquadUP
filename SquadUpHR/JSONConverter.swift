@@ -10,48 +10,7 @@ import Foundation
 
 class JSONConverter {
     
-    static func fetchJSONResponse(_ url: String) -> [[String: Any]]? {
-        //call the json to fetch all Projects
-        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return nil}
-        
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
-        //var createdArray : [Any] = []
-        
-        var urlRequest = URLRequest(url: completedURL!)
-        urlRequest.httpMethod = "GET"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
-        
-        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let dataTask = urlSession.dataTask(with: urlRequest) { (data,response,error) in
-            
-            if let validError = error {
-                print(validError.localizedDescription)
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    do {
-                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                        
-                        guard let validJSON = jsonResponse as? [[String : Any]] else {return}
-                        
-                        DispatchQueue.main.async {
-                            
-                            
-                            return validJSON
-                            //self.tableView.reloadData()
-                        }
-                    }catch let jsonError as NSError {
-                        
-                    }
-                }
-            }
-            
-        }
-        dataTask.resume()
-        return nil
-    }
+
     
     
     //Applicable for "_ url: String" :  "projects", "users/skills", "projects/1" (1 is project id... this call shows project members only)
@@ -100,6 +59,46 @@ class JSONConverter {
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
         let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/current_user?private_token=\(validToken)")
+        //var createdArray : [Any] = []
+        
+        var urlRequest = URLRequest(url: completedURL!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { (data,response,error) in
+            
+            if let validError = error {
+                print(validError.localizedDescription)
+                completion(nil, validError)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                        
+                        guard let validJSON = jsonResponse as? [Any] else {return}
+                        
+                        completion(validJSON, nil)
+                        
+                        
+                    }catch let jsonError as NSError {
+                        completion(nil, jsonError)
+                    }
+                }
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
+    static func fetchSelectedUser(_ selectedID: Int, completion: @escaping (_ completed:[Any]?, Error?)->Swift.Void) {
+        //call the json to fetch all Projects
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        
+        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/user/\(selectedID)?private_token=\(validToken)")
         //var createdArray : [Any] = []
         
         var urlRequest = URLRequest(url: completedURL!)

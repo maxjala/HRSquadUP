@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SquadUpHR/JSONConverter.swift"
-            timestampString = "516893522.147953"
+            timestampString = "516944404.166713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "getJSONResponse(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>

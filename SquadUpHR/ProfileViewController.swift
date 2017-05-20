@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ProfileType {
+    case myProfile
+    case otherProfile
+}
+
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -58,6 +63,8 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    var profileType : ProfileType = .myProfile
+    var selectedProfile : Employee?
     
     var projects : [Project] = []
     var genericCategoies = SkillCategory.fetchAllCategories()
@@ -72,12 +79,9 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getCurrentUserDetails()
+        //getCurrentUserDetails()
         
-        //activeArray = userCategories
-        
-        //mockSkills()
-        //collectionView.reloadData()
+        configuringProfileType(profileType)
     }
     
     override func viewDidLoad() {
@@ -102,7 +106,19 @@ class ProfileViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
-    func getCurrentUserDetails() {
+    func configuringProfileType (_ type : ProfileType) {
+        switch type {
+        case .myProfile :
+            
+            configureMyProfile()
+        case .otherProfile:
+            
+            configureOtherProfile()
+        }
+    }
+    
+    
+    func configureMyProfile() {
         JSONConverter.fetchCurrentUser { (user, error) in
             if let validError = error {
                 print(validError.localizedDescription)
@@ -110,7 +126,7 @@ class ProfileViewController: UIViewController {
             
             //let jsonResponse = currentUser
             if let validUser = user {
-                self.createCurrentUserDetails(validUser)
+                self.createUserDetails(validUser)
                 self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
                 self.activeArray = self.userCategories
                 
@@ -125,20 +141,30 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func mockSkills() {
-        skillArray.removeAll()
-        
-        skillArray.append(Skill.init(aSkill: "hello", aSkillCategory: "Management"))
-        skillArray.append(Skill.init(aSkill: "cmon", aSkillCategory: "Design"))
-        skillArray.append(Skill.init(aSkill: "why", aSkillCategory: "Accountancy"))
-        
-        
-        userCategories = SkillCategory.assignSkills(skillArray, skillCategories: genericCategoies)
-        activeArray = userCategories
+    func configureOtherProfile() {
+        JSONConverter.fetchSelectedUser((selectedProfile?.employeeID)!) { (user, error) in
+            if let validError = error {
+                print(validError.localizedDescription)
+            }
+            
+            //let jsonResponse = currentUser
+            if let validUser = user {
+                self.createUserDetails(validUser)
+                self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
+                self.activeArray = self.userCategories
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                    self.nameLabel.text = self.currentUser?.fullName
+                    self.jobTitleLabel.text = self.currentUser?.jobTitle
+                }
+            }
+            
+        }
     }
     
     
-    func createCurrentUserDetails(_ userJSON: [Any]) {
+    func createUserDetails(_ userJSON: [Any]) {
         self.skillArray.removeAll()
         self.projects.removeAll()
         for each in userJSON {
@@ -289,9 +315,12 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
         }
         
         guard let proj = activeArray as? [Project] else {return}
-        let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
-        projVC?.project = proj[indexPath.row]
-        navigationController?.pushViewController(projVC!, animated: true)
+        
+        if selectedProfile == nil {
+            let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
+            projVC?.project = proj[indexPath.row]
+            navigationController?.pushViewController(projVC!, animated: true)
+        }
     }
     
     
