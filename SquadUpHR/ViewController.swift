@@ -89,6 +89,7 @@ class ViewController: UIViewController {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "SpecificCategoryVC") as? SpecificCategoryVC else {return}
             
             vc.category = specificCategory
+            vc.displayType = .companySkills
             
             navigationController?.pushViewController(vc, animated: true)
         }
