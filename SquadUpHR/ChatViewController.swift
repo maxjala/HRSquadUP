@@ -8,6 +8,8 @@
 
 import UIKit
 import JSQMessagesViewController
+import FirebaseDatabase
+
 
 //MARK: Mock Data
 struct User {
@@ -34,6 +36,9 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
+    var ref: FIRDatabaseReference!
+
+    
     var chats: [Chat] = []
     var newChats: [Any] = []
     var messages = [JSQMessage]()
@@ -48,6 +53,8 @@ class ChatViewController: JSQMessagesViewController {
     
         //fetchChat()
         fetchConstant()
+        ref = FIRDatabase.database().reference()
+
         
         tabBarController?.tabBar.isHidden = true
     }

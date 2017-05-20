@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
 
 enum ProfileType {
     case myProfile
@@ -76,6 +78,9 @@ class ProfileViewController: UIViewController {
     
     let cellScaling: CGFloat = 0.6
     
+    var ref: FIRDatabaseReference!
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -89,8 +94,9 @@ class ProfileViewController: UIViewController {
         
         setCollectionViewProperties()
         //getCurrentUserDetails()
-        //mockProjects()
-        //collectionView.reloadData()
+        
+        ref = FIRDatabase.database().reference()
+
         
         
        self.navigationController?.navigationBar.isHidden = true
