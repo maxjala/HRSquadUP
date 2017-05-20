@@ -133,6 +133,14 @@ extension BrowseTutorVC : UITableViewDataSource {
 
 extension BrowseTutorVC : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {return}
+        
+        controller.profileType = .otherProfile
+        controller.selectedProfile = employees[indexPath.row]
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+        
         
     }
 }
