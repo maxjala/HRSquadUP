@@ -74,8 +74,9 @@ class ProjectViewController: UIViewController {
                 print(err.localizedDescription)
             }
             
+            self.teamMates = JSONConverter.createObjects(projectMembers!) as! [Employee]
+            
             DispatchQueue.main.async {
-                self.teamMates = JSONConverter.createObjects(projectMembers!) as! [Employee]
                 self.projectNameLabel.text = proj.projectTitle
                 self.projectNameLabel.text = proj.projectDesc
                 self.collectionView.reloadData()
@@ -112,6 +113,18 @@ class ProjectViewController: UIViewController {
         
         colorArray = [color1,color2,color3,color4,color5,color6,color7,color8,color9]
     }
+    
+    @IBAction func chatButtonTapped(_ sender: Any) {
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController else {return}
+        
+        vc.project = project
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
+    
 }
 
 extension ProjectViewController: UICollectionViewDataSource{
@@ -143,7 +156,7 @@ extension ProjectViewController: UICollectionViewDelegate{
         
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else {return}
         vc.profileType = .otherProfile
-        vc.selectedProfile = teamMates[indexPath.row]
+        vc.selectedProfile = specificEmployee
         
         navigationController?.pushViewController(vc, animated: true)
     }

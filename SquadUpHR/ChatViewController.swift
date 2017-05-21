@@ -39,6 +39,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var ref: FIRDatabaseReference!
 
+    var project : Project?
     
     var chats: [Chat] = []
     var newChats: [Any] = []
@@ -63,7 +64,7 @@ class ChatViewController: JSQMessagesViewController {
         self.senderId = currentUser.id
         self.senderDisplayName = currentUser.name
         
-        socket.delegate = self as! WebSocketDelegate
+        socket.delegate = self as WebSocketDelegate
         socket.connect()
         
     
@@ -83,7 +84,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func fetchChat(){
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
-        let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=1")
+        let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(String(describing: project?.projectId))")
         
         var urlRequest = URLRequest(url: url!)
         urlRequest.httpMethod = "GET"

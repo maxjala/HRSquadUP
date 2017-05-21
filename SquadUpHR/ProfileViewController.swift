@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import MessageUI
 
 enum ProfileType {
     case myProfile
@@ -39,6 +40,14 @@ class ProfileViewController: UIViewController {
             projectsButton.addTarget(self, action: #selector(projectButtonTapped), for: .touchUpInside)
         }
     }
+    
+    @IBOutlet weak var emailButton: UIButton! {
+        didSet{
+            emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
+        }
+    }
+    
+    
     @IBOutlet weak var addSkillButton: UIButton!{
         didSet{
             //addSkillButton.addTarget(self, action: #selector(addSkills), for: .touchUpInside)
@@ -117,9 +126,11 @@ class ProfileViewController: UIViewController {
         case .myProfile :
             
             configureMyProfile()
+            emailButton.isEnabled = false
         case .otherProfile:
             
             configureOtherProfile()
+            emailButton.isEnabled = true
         }
     }
     
@@ -140,6 +151,7 @@ class ProfileViewController: UIViewController {
                     self.collectionView.reloadData()
                     self.nameLabel.text = self.currentUser?.fullName
                     self.jobTitleLabel.text = self.currentUser?.jobTitle
+                    self.emailButton.setTitle(self.currentUser?.email, for: .normal)
                 }
             }
             
@@ -217,6 +229,10 @@ class ProfileViewController: UIViewController {
             
             
         }
+    }
+    
+    func emailButtonTapped() {
+        sendEmail((currentUser?.email)!)
     }
     
         
@@ -329,10 +345,28 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
         }
     }
     
+}
+
+extension ProfileViewController : MFMailComposeViewControllerDelegate {
+    func sendEmail(_ recipientEmail: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([recipientEmail])
+            //mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+    }
     
-    
-    
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
 }
 
 

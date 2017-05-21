@@ -45,17 +45,15 @@ class SpecificCategoryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //fetchSkills()
+        categoryLabel.text = category?.title
+        accentView.backgroundColor = category?.color
+        
         configureDisplayType(displayType)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        categoryLabel.text = category?.title
-        accentView.backgroundColor = category?.color
-        
-        //configureDisplayType(displayType)
-        tableView.reloadData()
     }
     
     func configureDisplayType (_ type : DisplayType) {
@@ -71,50 +69,34 @@ class SpecificCategoryVC: UIViewController {
         }
     }
     
-    func configureCompany() {
-        fetchSkills()
+    func configureUser() {
+        guard let skils = category?.skills else {return}
+        newSkills = []
+        newSkills = skils
         
     }
     
-    func fetchSkills(){
-        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+    func configureCompany() {
+        fetchCompanySkills()
         
-        let url = URL(string: "http://192.168.1.114:3000/api/v1/users/skills?private_token=\(validToken)")
-        //let url = URL(string: "http://192.168.1.155:3000/api/v1/users/skills?private_token=\(validToken)")
-        
-        var urlRequest = URLRequest(url: url!)
-        urlRequest.httpMethod = "GET"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            if let validError = error {
-                print(validError.localizedDescription)
+    }
+    
+    func fetchCompanySkills() {
+        JSONConverter.getJSONResponse("users/skills") { (skills, error) in
+            if let err = error {
+                print(err.localizedDescription)
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    do{
-                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                        
-                        guard let validJSON = jsonResponse as? [[String : Any]] else {return}
-                        self.getJSON(validJSON)
-                        
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }catch let jsonError as NSError {
-                    
-                    }
-                }
+            self.createCategorySkills(skills!)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
+            
         }
-        
-        dataTask.resume()
     }
     
-    func getJSON(_ json: [[String : Any]]) {
+    func createCategorySkills(_ json: [[String : Any]]) {
         newSkills = []
         for each in json {
             if let skill = each["skill_name"] as? String,
@@ -126,13 +108,6 @@ class SpecificCategoryVC: UIViewController {
             }
             
         }
-    }
-    
-    func configureUser() {
-        guard let skils = category?.skills else {return}
-        newSkills = []
-        newSkills = skils
-        
     }
     
 }

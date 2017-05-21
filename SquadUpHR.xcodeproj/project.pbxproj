@@ -152,9 +152,9 @@
 				1A81F71E1ECAF72B0009C4C5 /* ViewController.swift */,
 				1A81F7201ECB0C6E0009C4C5 /* SpecificCategoryVC.swift */,
 				1AA657BF1ECBEBCE00A46378 /* BrowseTutorVC.swift */,
+				1A8D02661ECD3AF100FE6912 /* BrowseProjectsVC.swift */,
 				7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */,
 				7ADDC4841ECC2A8500796170 /* ProjectViewController.swift */,
-				1A8D02661ECD3AF100FE6912 /* BrowseProjectsVC.swift */,
 				7A18033B1ECD818D008A7F50 /* ChatViewController.swift */,
 			);
 			name = Controllers;

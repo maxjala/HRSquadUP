@@ -60,7 +60,7 @@ class SkillCategory {
             
            // if skillcat.skills.count > 0 {
             if matchedSkill.count > 0 {
-                var skillCategory = SkillCategory()
+                let skillCategory = SkillCategory()
                 skillCategory.color = skillcat.color
                 skillCategory.featuredImage = skillcat.featuredImage
                 skillCategory.skills = matchedSkill

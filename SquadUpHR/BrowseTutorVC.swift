@@ -17,7 +17,7 @@ enum ViewType {
 }
 
 
-class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
+class BrowseTutorVC: UIViewController {
     
     @IBOutlet weak var connectLabel: UILabel!
     
@@ -65,11 +65,17 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
         configureViewType(viewType)
     }
     
+    func configureViewType(_ view: ViewType){
+        switch view {
+        case .allUsers:
+            getAllCompanyUsers()
+        case .specificSkill:
+            getEmployeesWithRelevantSkill()
+            break
+        }
+    }
+    
     func getAllCompanyUsers() {
-        //guard let JSONResponse = JSONConverter.fetchJSONResponse("users") else {return}
-        //employees = JSONConverter.createObjects(JSONResponse) as! [Employee]
-        //employees = JSONConverter.createObjects(JSONConverter.fetchJSONResponse("users")!) as! [Employee]
-        
         JSONConverter.getJSONResponse("users") { (workers, error) in
             if let validError = error {
                 print(validError.localizedDescription)
@@ -82,70 +88,17 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    func mockEmployees() {
-        //let emp1 = Employee(anID: "123", aJobTitle: "iOS Developer", aDepartment: "IT", aFirstName: "Max", aLastName: "Jala", anEmail: "maxjala@gmail.com")
-        //let emp2 = Employee(anID: "123", aJobTitle: "iOS Developer", aDepartment: "IT", aFirstName: "Max", aLastName: "Jala", anEmail: "maxjala@gmail.com")
-        //let emp3 = Employee(anID: "123", aJobTitle: "iOS Developer", aDepartment: "IT", aFirstName: "Max", aLastName: "Jala", anEmail: "maxjala@gmail.com")
-        
-        let emp1 = ["private_token": "12313", "firstName": "Max", "lastName": "Jala", "jobTitle": "iOS Developer", "department": "IT", "email": "maxjala@gmail.com"]
-        let emp2 = ["private_token": "12313", "firstName": "Max", "lastName": "Jala", "jobTitle": "iOS Developer", "department": "IT", "email": "maxjala@gmail.com"]
-        let emp3 = ["private_token": "12313", "firstName": "Max", "lastName": "Jala", "jobTitle": "iOS Developer", "department": "IT", "email": "maxjala@gmail.com"]
-        
-        let mockArray : [[String:Any]] = [emp1,emp2,emp3]
-        
-        employees = JSONConverter.createObjects(mockArray) as! [Employee]
-        
-    }
-    
-    @IBAction func emailButtonTapped(_ sender: Any) {
-        sendEmail()
-    }
-    
-    
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
-            mail.setToRecipients(["maxjala@gmail.com"])
-            mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
-            
-            present(mail, animated: true)
-        } else {
-            // show failure alert
-        }
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        
-        
-        controller.dismiss(animated: true, completion: nil)    }
-    
-    func configureViewType(_ view: ViewType){
-        switch view {
-        case .allUsers:
-            getAllCompanyUsers()
-        case .specificSkill:
-            //createFilteredEmployeeList()
-            something()
-            break
-        }
-    }
-    
-    func something(){
+    func getEmployeesWithRelevantSkill(){
         JSONConverter.fetchAllUsers { (users, error) in
             if let validError = error {
                 print(validError.localizedDescription)
             }
             
-            //let jsonResponse = currentUser
             if let validUsers = users {
                 self.createFilteredEmployeeList(validUsers)
-                //self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
-                //self.activeArray = self.userCategories
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    //self.nameLabel.text = self.currentUser?.fullName
                     
                 }
             }
@@ -180,7 +133,18 @@ class BrowseTutorVC: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
     }
+    
+    @IBAction func emailButtonTapped(_ sender: Any) {
+        sendEmail()
+    }
+    
+    
+    
+    
 }
+
+
+
 extension BrowseTutorVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -214,6 +178,28 @@ extension BrowseTutorVC : UITableViewDelegate {
         navigationController?.pushViewController(controller, animated: true)
         
         
+        
+    }
+}
+
+extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["maxjala@gmail.com"])
+            mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            // show failure alert
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        
+        controller.dismiss(animated: true, completion: nil)
         
     }
 }
