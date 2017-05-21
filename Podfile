@@ -11,6 +11,7 @@ target 'SquadUpHR' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Starscream'
+  pod 'ActionCableClient'
   
   
 end

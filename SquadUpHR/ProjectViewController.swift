@@ -13,6 +13,7 @@ class ProjectViewController: UIViewController {
     
     var project : Project?
     var teamMates : [Employee] = []
+    var currentUser : Employee?
 
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
@@ -27,15 +28,6 @@ class ProjectViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var ref: FIRDatabaseReference!
-
-    
-    var mockEmployee = ["name" : "nick",
-                        "title": "programmer"]
-    var mockEmployee2 = ["name" : "max",
-                         "title" : "Boss"]
-    var mockEmployee3 = ["name" : "mahmoud",
-                         "title" : "bomber"]
-    
    
    
     var colorArray : [UIColor] = []
@@ -52,9 +44,6 @@ class ProjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        teamSelection.append(mockEmployee)
-        teamSelection.append(mockEmployee2)
-        teamSelection.append(mockEmployee3)
         
         customDesign()
         customColor()
@@ -119,6 +108,8 @@ class ProjectViewController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController else {return}
         
         vc.project = project
+        vc.projectMembers = teamMates
+        vc.currentUser = currentUser
         
         navigationController?.pushViewController(vc, animated: true)
         

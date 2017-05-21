@@ -9,7 +9,8 @@
 import UIKit
 import JSQMessagesViewController
 import FirebaseDatabase
-import Starscream
+//import Starscream
+import ActionCableClient
 
 
 //MARK: Mock Data
@@ -20,12 +21,6 @@ struct User {
 
 class ChatViewController: JSQMessagesViewController {
     
-    let user1 = User(id: "1", name: "Nick")
-    let user2 = User(id: "2", name: "Max")
-    
-    var currentUser: User{
-        return user1
-    }
     
     override var hidesBottomBarWhenPushed: Bool {
         get {
@@ -40,51 +35,43 @@ class ChatViewController: JSQMessagesViewController {
     var ref: FIRDatabaseReference!
 
     var project : Project?
+    var currentUser : Employee?
+    var projectMembers : [Employee]?
     
     var chats: [Chat] = []
     var newChats: [Any] = []
     var messages = [JSQMessage]()
     var timer = Timer()
     var seconds = 0
-    var socket = WebSocket(url: URL(string: "ws://192.168.1.114:3000/cable")!, protocols: ["ApiProjectChatsChannel"])
+    
+    var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //socket = WebSocket(url: URL(string: "ws://localhost:8080/")!)
-        //socket.delegate = self as? WebSocketDelegate
-        //socket.connect()
+        handleActionCable()
         
         fetchChat()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.senderId = currentUser.id
-        self.senderDisplayName = currentUser.name
+        guard let id = currentUser?.employeeID else {return}
+        self.senderId = "\(id)"
+        self.senderDisplayName = currentUser?.firstName
         
-        socket.delegate = self as WebSocketDelegate
-        socket.connect()
-        
-    
-        //fetchChat()
-        //fetchConstant()
         ref = FIRDatabase.database().reference()
 
         
         tabBarController?.tabBar.isHidden = true
     }
     
-    deinit {
-        socket.disconnect(forceTimeout: 0)
-        socket.delegate = nil
-    }
-    
-    
     func fetchChat(){
-        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
-        let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(String(describing: project?.projectId))")
+        
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN"),
+        let projectID = project?.projectId else {return}
+        let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
         
         var urlRequest = URLRequest(url: url!)
         urlRequest.httpMethod = "GET"
@@ -109,6 +96,10 @@ class ChatViewController: JSQMessagesViewController {
                             // self.chatTableView.reloadData()
                             self.makeMessages(validJSON)
                             self.collectionView.reloadData()
+                            //collectionView.scrollToItem(at: , at: <#T##UICollectionViewScrollPosition#>, animated: <#T##Bool#>)
+                            let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
+                            self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
+
                         }
                     }catch let jsonError as NSError{
                         
@@ -120,6 +111,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func makeMessages(_ messageJSON: [[String: Any]]) {
+        messages = []
         for each in messageJSON {
             if let id = each["id"] as? Int,
                 let projectID = each["project_id"] as? Int,
@@ -127,10 +119,11 @@ class ChatViewController: JSQMessagesViewController {
                 let message = each["message"] as? String,
                 let timestamp = each["created_at"] as? String {
                 
-                let aMessage = JSQMessage(senderId: "\(userID)", displayName: "\(userID)", text: message)
-                
-                messages.append(aMessage!)
-                
+                for person in self.projectMembers! {
+                    if person.employeeID == userID {
+                        self.messages.append(JSQMessage(senderId: "\(userID)", displayName: person.firstName, text: message))
+                    }
+                }
             }
         }
     }
@@ -173,18 +166,6 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
-    func fetchConstant(){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
-        
-    }
-    
-    func counter(){
-        seconds += 1
-        messages.removeAll()
-        fetchChat()
-        //collectionView.scrollToItem(at: [messages.count-1], at: .bottom, animated: true)
-    }
-    
     
 }
 
@@ -192,7 +173,7 @@ class ChatViewController: JSQMessagesViewController {
 extension ChatViewController{
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
-        messages.append(message!)
+        //messages.append(message!)
         let sentDict = ["sender_id" : message?.senderId, "message_id" : "\(Date.timeIntervalSinceReferenceDate)", "message" : message?.text]
         
         sendText(sentDict)
@@ -219,12 +200,15 @@ extension ChatViewController{
         
         let message = messages[indexPath.row]
         
-        if currentUser.id == message.senderId {
+        guard let id = currentUser?.employeeID else {return nil}
+        
+        if "\(id)" == message.senderId {
             return bubbleFactory?.outgoingMessagesBubbleImage(with: .gray)
         } else {
             return bubbleFactory?.incomingMessagesBubbleImage(with: .blue)
         }
     }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
@@ -235,66 +219,59 @@ extension ChatViewController{
 
 }
 
-extension ChatViewController : WebSocketDelegate {
-    /*
-    public func websocketDidConnect(socket: Starscream.WebSocket) {
+extension ChatViewController {
+    func handleActionCable() {
+        client.connect()
         
-    }
-    
-    public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
+        let room_identifier = ["project_id" : project?.projectId]
+        let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
         
-    }
-    
-    public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
-        
-        guard let data = text.data(using: .utf16),
-            let jsonData = try? JSONSerialization.jsonObject(with: data),
-            let jsonDict = jsonData as? [String: Any],
-            let messageType = jsonDict["type"] as? String else {
-                return
+        client.onConnected = {
+            print("Connected!")
         }
         
-        if messageType != "ping" {
+        client.onDisconnected = {(error: Error?) in
+            print("Disconnected!")
+        }
+        
+        roomChannel.onReceive = { (JSON : Any?, error : Error?) in
+            print("Received", JSON, error)
+            //self.fetchChat()
+            guard let formattedJSON = JSON as? [String:Any],
+                let messageJSON = formattedJSON["chat_message_object"] as? [String:Any],
+                let message = messageJSON["message"] as? String,
+                let senderID = messageJSON["user_id"] as? Int
+                else {return}
             
-        }
-        // 2
-        if messageType == "messages",
-            let messageData = jsonDict["data"] as? [String: Any],
-            let messageAuthor = messageData["author"] as? String,
-            let messageText = messageData["text"] as? String {
-            
-            let message = JSQMessage(senderId: messageAuthor, displayName: messageAuthor, text: messageText)
-            messages.append(message!)
-            collectionView.reloadData()
+            for person in self.projectMembers! {
+                if person.employeeID == senderID {
+                    self.messages.append(JSQMessage(senderId: "\(senderID)", displayName: person.firstName, text: message))
+                }
+            }
+            let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
+            self.collectionView.reloadData()
+            self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
         }
         
-    }
-    
-    public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
+        // A channel has successfully been subscribed to.
+        roomChannel.onSubscribed = {
+            print("Yay!")
+        }
         
-    }
-    */
-    
-    func websocketDidConnect(socket: WebSocket) {
-        print("websocket is connected")
-    }
-    
-    func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
-        if let e = error {
-            print("websocket is disconnected: \(e.localizedDescription)")
-        } else {
-            print("websocket disconnected")
+        // A channel was unsubscribed, either manually or from a client disconnect.
+        roomChannel.onUnsubscribed = {
+            print("Unsubscribed")
+        }
+        
+        // The attempt at subscribing to a channel was rejected by the server.
+        roomChannel.onRejected = {
+            print("Rejected")
         }
     }
     
-    func websocketDidReceiveMessage(socket: WebSocket, text: String) {
-        print("Received text: \(text)")
-    }
-    
-    func websocketDidReceiveData(socket: WebSocket, data: Data) {
-        print("Received data: \(data.count)")
-    }
 }
+
+
 
 
 

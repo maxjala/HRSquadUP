@@ -103,6 +103,7 @@ class ProfileViewController: UIViewController {
         
         setCollectionViewProperties()
         //getCurrentUserDetails()
+        configuringProfileType(profileType)
         
         ref = FIRDatabase.database().reference()
 
@@ -175,6 +176,7 @@ class ProfileViewController: UIViewController {
                     self.collectionView.reloadData()
                     self.nameLabel.text = self.currentUser?.fullName
                     self.jobTitleLabel.text = self.currentUser?.jobTitle
+                    self.emailButton.setTitle(self.currentUser?.email, for: .normal)
                 }
             }
             
@@ -341,6 +343,7 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
         if selectedProfile == nil {
             let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
             projVC?.project = proj[indexPath.row]
+            projVC?.currentUser = currentUser
             navigationController?.pushViewController(projVC!, animated: true)
         }
     }

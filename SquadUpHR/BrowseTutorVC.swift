@@ -82,8 +82,10 @@ class BrowseTutorVC: UIViewController {
                 return
             }
             
-            self.employees = JSONConverter.createObjects(workers!) as! [Employee]
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.employees = JSONConverter.createObjects(workers!) as! [Employee]
+                self.tableView.reloadData()
+            }
         }
         
     }
@@ -108,7 +110,7 @@ class BrowseTutorVC: UIViewController {
     }
     
     func createFilteredEmployeeList(_ userJSON: [Any]) {
-        var aUser : Employee?
+        //var aUser : Employee?
         employees.removeAll()
         
         for each in userJSON {
@@ -124,9 +126,9 @@ class BrowseTutorVC: UIViewController {
                 
                 for aSkill in skillsArray {
                     if aSkill["skill_name"] as? String == skill?.skillName {
-                        aUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
+                        let aUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
                         
-                        employees.append(aUser!)
+                        employees.append(aUser)
                     }
                 }
                 
