@@ -96,9 +96,11 @@ class ChatViewController: JSQMessagesViewController {
                             // self.chatTableView.reloadData()
                             self.makeMessages(validJSON)
                             self.collectionView.reloadData()
-                            //collectionView.scrollToItem(at: , at: <#T##UICollectionViewScrollPosition#>, animated: <#T##Bool#>)
-                            let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
-                            self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
+
+                            if self.messages.count > 0 {
+                                let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
+                                self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
+                            }
 
                         }
                     }catch let jsonError as NSError{
@@ -203,9 +205,9 @@ extension ChatViewController{
         guard let id = currentUser?.employeeID else {return nil}
         
         if "\(id)" == message.senderId {
-            return bubbleFactory?.outgoingMessagesBubbleImage(with: .gray)
+            return bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor(red: 240/255.0, green: 133/255.0, blue: 91/255.0, alpha: 0.8))
         } else {
-            return bubbleFactory?.incomingMessagesBubbleImage(with: .blue)
+            return bubbleFactory?.incomingMessagesBubbleImage(with: .gray)
         }
     }
     
