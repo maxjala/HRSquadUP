@@ -46,63 +46,41 @@ class ChatViewController: JSQMessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        handleActionCable()
-        
-        fetchChat()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         guard let id = currentUser?.employeeID else {return}
         self.senderId = "\(id)"
         self.senderDisplayName = currentUser?.firstName
         
+        setUpActionCableConnection()
+        
+        fetchAndCreateChatHistory()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tabBarController?.tabBar.isHidden = true
     }
     
-    func fetchChat(){
+    func fetchAndCreateChatHistory() {
+        guard let projectID = project?.projectId else {return}
         
-        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN"),
-        let projectID = project?.projectId else {return}
-        let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
-        
-        var urlRequest = URLRequest(url: url!)
-        urlRequest.httpMethod = "GET"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
-        
-        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            if let validError = error {
-                print(validError.localizedDescription)
+        JSONConverter.fetchChatHistory(projectID) { (chatHistory, error) in
+            if let err = error {
+                print(err.localizedDescription)
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    do {
-                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-                        
-                        guard let validJSON = jsonResponse as? [[String: Any]] else {return}
-                        //MARK: NEED TO CHECK
-                        self.newChats = validJSON // MARK: MUST CHECK
-                        DispatchQueue.main.async {
-                            // self.chatTableView.reloadData()
-                            self.makeMessages(validJSON)
-                            self.collectionView.reloadData()
-
-                            if self.messages.count > 0 {
-                                let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
-                                self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
-                            }
-
-                        }
-                    }catch let jsonError as NSError{
-                        
-                    }
+            self.makeMessages(chatHistory!)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                
+                if self.messages.count > 0 {
+                    let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
+                    self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
                 }
+                
             }
         }
-        dataTask.resume()
     }
     
     func makeMessages(_ messageJSON: [[String: Any]]) {
@@ -147,25 +125,10 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
-    func addToText(id: Any, textinfo: NSDictionary){
-        
-        if let userName = textinfo["userName"] as? String,
-            let body = textinfo["body"] as? String,
-            let imageURL = textinfo["imageURL"] as? String,
-            let timeCreated = textinfo["timestamp"] as? String,
-            let userId = textinfo["id"] as? Int{
-            
-            let newText = Chat(anId: userId, aUserName: userName, aBody: body, anImageURL: imageURL, aTimestamp: timeCreated)
-            self.chats.append(newText)
-        }
-        
-    }
-    
-    
 }
 
 
-extension ChatViewController{
+extension ChatViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
         //messages.append(message!)
@@ -215,7 +178,7 @@ extension ChatViewController{
 }
 
 extension ChatViewController {
-    func handleActionCable() {
+    func setUpActionCableConnection() {
         client.connect()
         
         let room_identifier = ["project_id" : project?.projectId]

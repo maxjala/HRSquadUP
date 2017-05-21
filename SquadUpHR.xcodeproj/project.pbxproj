@@ -33,16 +33,10 @@
 		1AB9FDF11ECC91D70060AE80 /* ProjectRoleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEF1ECC91D70060AE80 /* ProjectRoleViewCell.swift */; };
 		1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDF01ECC91D70060AE80 /* ProjectRoleViewCell.xib */; };
 		7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18033B1ECD818D008A7F50 /* ChatViewController.swift */; };
-		7A18033F1ECD81A6008A7F50 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18033D1ECD81A6008A7F50 /* ChatTableViewCell.swift */; };
-		7A1803401ECD81A6008A7F50 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A18033E1ECD81A6008A7F50 /* ChatTableViewCell.xib */; };
 		7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1803411ECD83AF008A7F50 /* Login.storyboard */; };
 		7A1803441ECD8725008A7F50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1803431ECD8725008A7F50 /* LoginViewController.swift */; };
 		7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B4DF71ECD99B300678E19 /* Chat.swift */; };
 		7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */; };
-		7ADDC4741ECB165200796170 /* ExperienceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC4721ECB165200796170 /* ExperienceTableViewCell.swift */; };
-		7ADDC4751ECB165200796170 /* ExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADDC4731ECB165200796170 /* ExperienceTableViewCell.xib */; };
-		7ADDC4781ECB167100796170 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC4761ECB167100796170 /* ProjectTableViewCell.swift */; };
-		7ADDC4791ECB167100796170 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADDC4771ECB167100796170 /* ProjectTableViewCell.xib */; };
 		7ADDC47D1ECB1B9700796170 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47C1ECB1B9700796170 /* Experience.swift */; };
 		7ADDC47F1ECB1BA000796170 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47E1ECB1BA000796170 /* Project.swift */; };
 		7ADDC4811ECC244500796170 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC4801ECC244500796170 /* Employee.swift */; };
@@ -78,16 +72,10 @@
 		1AB9FDEF1ECC91D70060AE80 /* ProjectRoleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectRoleViewCell.swift; sourceTree = "<group>"; };
 		1AB9FDF01ECC91D70060AE80 /* ProjectRoleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectRoleViewCell.xib; sourceTree = "<group>"; };
 		7A18033B1ECD818D008A7F50 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		7A18033D1ECD81A6008A7F50 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
-		7A18033E1ECD81A6008A7F50 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		7A1803411ECD83AF008A7F50 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A1803431ECD8725008A7F50 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7A1B4DF71ECD99B300678E19 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		7ADDC4721ECB165200796170 /* ExperienceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceTableViewCell.swift; sourceTree = "<group>"; };
-		7ADDC4731ECB165200796170 /* ExperienceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExperienceTableViewCell.xib; sourceTree = "<group>"; };
-		7ADDC4761ECB167100796170 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
-		7ADDC4771ECB167100796170 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		7ADDC47C1ECB1B9700796170 /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		7ADDC47E1ECB1BA000796170 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		7ADDC4801ECC244500796170 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
@@ -173,13 +161,7 @@
 				1AA657B51ECB40FE00A46378 /* SkillTableViewCell.swift */,
 				1AA657B91ECBE86E00A46378 /* EmployeeTableViewCell.swift */,
 				1AB9FDE91ECC52230060AE80 /* EmployeeTableViewCell.xib */,
-				7ADDC4721ECB165200796170 /* ExperienceTableViewCell.swift */,
-				7ADDC4731ECB165200796170 /* ExperienceTableViewCell.xib */,
-				7ADDC4761ECB167100796170 /* ProjectTableViewCell.swift */,
-				7ADDC4771ECB167100796170 /* ProjectTableViewCell.xib */,
 				7ADDC4821ECC293300796170 /* TeamCollectionViewCell.swift */,
-				7A18033D1ECD81A6008A7F50 /* ChatTableViewCell.swift */,
-				7A18033E1ECD81A6008A7F50 /* ChatTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -286,14 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */,
-				7ADDC4791ECB167100796170 /* ProjectTableViewCell.xib in Resources */,
 				1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */,
 				1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */,
-				7ADDC4751ECB165200796170 /* ExperienceTableViewCell.xib in Resources */,
 				1A3597101ED005C40059C8E8 /* GoogleService-Info.plist in Resources */,
 				1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */,
 				1A8D02711ECD3EF400FE6912 /* ProjectViewCell.xib in Resources */,
-				7A1803401ECD81A6008A7F50 /* ChatTableViewCell.xib in Resources */,
 				1AB279161ECAACDD00C6F02B /* Assets.xcassets in Resources */,
 				1AB279141ECAACDD00C6F02B /* Main.storyboard in Resources */,
 				7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */,
@@ -368,13 +347,10 @@
 				1A042F381ECC27C600BC4435 /* JSONConverter.swift in Sources */,
 				1AA657BB1ECBE86E00A46378 /* EmployeeTableViewCell.swift in Sources */,
 				1AB279251ECAF0C100C6F02B /* (null) in Sources */,
-				7A18033F1ECD81A6008A7F50 /* ChatTableViewCell.swift in Sources */,
 				1A81F71F1ECAF72B0009C4C5 /* ViewController.swift in Sources */,
 				1AA657C01ECBEBCE00A46378 /* BrowseTutorVC.swift in Sources */,
 				1AB9FDF11ECC91D70060AE80 /* ProjectRoleViewCell.swift in Sources */,
 				7ADDC47F1ECB1BA000796170 /* Project.swift in Sources */,
-				7ADDC4741ECB165200796170 /* ExperienceTableViewCell.swift in Sources */,
-				7ADDC4781ECB167100796170 /* ProjectTableViewCell.swift in Sources */,
 				1AB9FDED1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift in Sources */,
 				7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */,
 				1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */,

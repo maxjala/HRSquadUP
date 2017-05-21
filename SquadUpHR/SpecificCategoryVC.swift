@@ -36,10 +36,7 @@ class SpecificCategoryVC: UIViewController {
     }
     
     var category : SkillCategory?
-    var skills: [String] = []
-    
-    var newSkills: [Skill] = []
-    
+    var skills: [Skill] = []
     var displayType : DisplayType = .companySkills
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,8 +68,8 @@ class SpecificCategoryVC: UIViewController {
     
     func configureUser() {
         guard let skils = category?.skills else {return}
-        newSkills = []
-        newSkills = skils
+        skills = []
+        skills = skils
         
     }
     
@@ -97,13 +94,13 @@ class SpecificCategoryVC: UIViewController {
     }
     
     func createCategorySkills(_ json: [[String : Any]]) {
-        newSkills = []
+        skills = []
         for each in json {
             if let skill = each["skill_name"] as? String,
                 let cat = each["category"] as? String {
                 if cat == category?.title {
                     let newSkill = Skill(aSkill: skill, aSkillCategory: cat)
-                    newSkills.append(newSkill)
+                    skills.append(newSkill)
                 }
             }
             
@@ -114,7 +111,7 @@ class SpecificCategoryVC: UIViewController {
 
 extension SpecificCategoryVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newSkills.count
+        return skills.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,7 +120,7 @@ extension SpecificCategoryVC : UITableViewDataSource {
         //cell.skillLabel.textColor = category?.color
         //cell.skillLabel.alpha = 0.8
         
-        cell.skillLabel.text = newSkills[indexPath.row].skillName
+        cell.skillLabel.text = skills[indexPath.row].skillName
         
         return cell
         
@@ -134,7 +131,7 @@ extension SpecificCategoryVC : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "BrowseTutorVC") as? BrowseTutorVC else {return}
         
-        vc.skill = newSkills[indexPath.row]
+        vc.skill = skills[indexPath.row]
         vc.viewType = .specificSkill
         
        navigationController?.pushViewController(vc, animated: true)

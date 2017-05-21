@@ -43,19 +43,13 @@ class BrowseTutorVC: UIViewController {
     var viewType: ViewType = .allUsers
     
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        //mockEmployees()
-        //getAllCompanyUsers()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureViewType(viewType)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     func configureViewType(_ view: ViewType){
@@ -97,13 +91,10 @@ class BrowseTutorVC: UIViewController {
                     
                 }
             }
-            
-            
         }
     }
     
     func createFilteredEmployeeList(_ userJSON: [Any]) {
-        //var aUser : Employee?
         employees.removeAll()
         
         for each in userJSON {

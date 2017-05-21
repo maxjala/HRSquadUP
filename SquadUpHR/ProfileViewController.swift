@@ -89,9 +89,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //getCurrentUserDetails()
-        
+
         configuringProfileType(profileType)
     }
     
@@ -99,15 +97,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setCollectionViewProperties()
-        //getCurrentUserDetails()
-        configuringProfileType(profileType)
-
         
-        
-       self.navigationController?.navigationBar.isHidden = true
-        
-        //getCurrentUserDetails()
-        //navigationController?.isUserInteractionEnabled = true
+        self.navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
@@ -227,13 +218,7 @@ class ProfileViewController: UIViewController {
             
         }
     }
-    
-    func emailButtonTapped() {
-        sendEmail((currentUser?.email)!)
-    }
-    
-        
-    
+
     func setCollectionViewProperties() {
         let screenSize = UIScreen.main.bounds.size
         let cellWidth = floor(screenSize.width * cellScaling)
@@ -247,17 +232,6 @@ class ProfileViewController: UIViewController {
         collectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
     }
     
-    func mockProjects() {
-        let proj1 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj2 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj3 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj4 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj5 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        
-        projects = [proj1, proj2, proj3, proj4, proj5]
-        
-    }
-    
     func skillButtonTapped() {
         activeArray = userCategories
         collectionView.reloadData()
@@ -266,6 +240,10 @@ class ProfileViewController: UIViewController {
     func projectButtonTapped() {
         activeArray = projects
         collectionView.reloadData()
+    }
+    
+    func emailButtonTapped() {
+        sendEmail((currentUser?.email)!)
     }
     
     

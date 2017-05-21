@@ -14,18 +14,13 @@ class BrowseProjectsVC: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            //tableView.allowsSelection = false
             tableView.separatorStyle = .singleLine
             tableView.separatorColor = UIColor.white
-            //tableView.spacin
             tableView.tableFooterView = UIView()
             tableView.layer.cornerRadius = 10
             tableView.layer.masksToBounds = true
             
             tableView.register(ProjectViewCell.cellNib, forCellReuseIdentifier: ProjectViewCell.cellIdentifier)
-            
-            //tableView.estimatedRowHeight = 253
-            //tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
     @IBOutlet weak var accentView: UIView! {
@@ -39,8 +34,6 @@ class BrowseProjectsVC: UIViewController {
     var selectedIndex : IndexPath?
     var isExpanded = false
 
-    
-    
     var projects : [Project] = []
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,9 +45,6 @@ class BrowseProjectsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //mockProjects()
     }
     
     func configureProjectsView() {
@@ -66,13 +56,9 @@ class BrowseProjectsVC: UIViewController {
             //let jsonResponse = currentUser
             if let validUser = user {
                 self.generateUserProjects(validUser)
-                //self.userCategories = SkillCategory.assignSkills(self.skillArray, skillCategories: self.genericCategoies)
-                //self.activeArray = self.userCategories
-                
+
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    //self.nameLabel.text = self.currentUser?.fullName
-                    //self.jobTitleLabel.text = self.currentUser?.jobTitle
                 }
             }
             
@@ -82,7 +68,7 @@ class BrowseProjectsVC: UIViewController {
     
     func generateUserProjects(_ userJSON: [Any]) {
         projects.removeAll()
-        self.projects.removeAll()
+
         for each in userJSON {
             
             if let objects = each as? [[String: Any]] {
@@ -106,23 +92,6 @@ class BrowseProjectsVC: UIViewController {
             
             
         }
-    }
-
-
-    func mockProjects() {
-        let proj1 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj2 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Web Project", aDesc: "Dont Create HR App")
-        let proj3 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Who Cares Project", aDesc: "Hello HR App")
-        let proj4 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Data Project", aDesc: "Create HR App")
-        let proj5 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Cmon Project", aDesc: "Create HR App")
-        let proj6 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "iOS Project", aDesc: "Create HR App")
-        let proj7 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Web Project", aDesc: "Dont Create HR App")
-        let proj8 = Project(anID: 123, aUserID: 123, aStatus: "", aTitle: "Who Cares Project", aDesc: "Hello HR App")
-        
-        projects = [proj1, proj2, proj3, proj4, proj5, proj6, proj7, proj8]
-        
-        tableView.reloadData()
-        
     }
 
 }

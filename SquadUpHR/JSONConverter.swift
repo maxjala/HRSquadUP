@@ -219,6 +219,48 @@ class JSONConverter {
         
     }
     
+    static func fetchChatHistory(_ projectID: Int, completion: @escaping (_ completed:[[String:Any]]?, Error?)->Swift.Void) {
+        //call the json to fetch all Projects
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        
+        //let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
+        //let completedURL = URL(string: "http://192.168.1.155:3000/api/v1/\(url)?private_token=\(validToken)")
+        //var createdArray : [Any] = []
+        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
+        
+        var urlRequest = URLRequest(url: completedURL!)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-type")
+        
+        let urlSession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let dataTask = urlSession.dataTask(with: urlRequest) { (data,response,error) in
+            
+            if let validError = error {
+                print(validError.localizedDescription)
+                completion(nil, validError)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                        
+                        guard let validJSON = jsonResponse as? [[String : Any]] else {return}
+                        
+                        completion(validJSON, nil)
+                        
+                        
+                    }catch let jsonError as NSError {
+                        completion(nil, jsonError)
+                    }
+                }
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
     
 
 }
