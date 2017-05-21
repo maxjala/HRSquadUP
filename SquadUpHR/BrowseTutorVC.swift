@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageUI
-import FirebaseDatabase
 
 enum ViewType {
     case specificSkill
@@ -38,10 +37,7 @@ class BrowseTutorVC: UIViewController {
             accentView.clipsToBounds = false
         }
     }
-    
-    var ref: FIRDatabaseReference!
-    
-    
+
     var employees : [Employee] = []
     var skill: Skill?
     var viewType: ViewType = .allUsers
@@ -50,10 +46,7 @@ class BrowseTutorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = FIRDatabase.database().reference()
-        
-        
+
         // Do any additional setup after loading the view.
         
         //mockEmployees()

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseStorage
 import MessageUI
 
 enum ProfileType {
@@ -87,7 +85,6 @@ class ProfileViewController: UIViewController {
     
     let cellScaling: CGFloat = 0.6
     
-    var ref: FIRDatabaseReference!
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,8 +101,6 @@ class ProfileViewController: UIViewController {
         setCollectionViewProperties()
         //getCurrentUserDetails()
         configuringProfileType(profileType)
-        
-        ref = FIRDatabase.database().reference()
 
         
         

@@ -8,8 +8,6 @@
 
 import UIKit
 import JSQMessagesViewController
-import FirebaseDatabase
-//import Starscream
 import ActionCableClient
 
 
@@ -32,8 +30,6 @@ class ChatViewController: JSQMessagesViewController {
         
     }
     
-    var ref: FIRDatabaseReference!
-
     var project : Project?
     var currentUser : Employee?
     var projectMembers : [Employee]?
@@ -60,9 +56,6 @@ class ChatViewController: JSQMessagesViewController {
         guard let id = currentUser?.employeeID else {return}
         self.senderId = "\(id)"
         self.senderDisplayName = currentUser?.firstName
-        
-        ref = FIRDatabase.database().reference()
-
         
         tabBarController?.tabBar.isHidden = true
     }
