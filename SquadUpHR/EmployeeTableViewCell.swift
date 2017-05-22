@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 protocol SendEmailDelegate {
-    func sendEmailTapped()
+    func sendEmailTapped(_ employee: Employee)
 }
 
 class EmployeeTableViewCell: UITableViewCell {
@@ -25,6 +25,7 @@ class EmployeeTableViewCell: UITableViewCell {
     static let cellNib = UINib(nibName: EmployeeTableViewCell.cellIdentifier, bundle: Bundle.main)
     
     var delegate : SendEmailDelegate?
+    var employee : Employee?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,7 +44,9 @@ class EmployeeTableViewCell: UITableViewCell {
     }
     
     func sendbutton(){
-        delegate?.sendEmailTapped()
+        if let _employee = employee {
+            delegate?.sendEmailTapped(_employee)
+        }
     }
     
     
