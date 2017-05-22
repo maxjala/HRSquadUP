@@ -22,6 +22,9 @@ class InviteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var rejectButton: UIButton!
     
+    static let cellIdentifier = "InviteTableViewCell"
+    static let cellNib = UINib(nibName: InviteTableViewCell.cellIdentifier, bundle: Bundle.main)
+    
     
     
     

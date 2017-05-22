@@ -17,16 +17,40 @@ class NotifiactionViewController: UIViewController {
     
     @IBOutlet weak var mentorInvitesButton: UIButton!
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            //tableView.register(ChatPreviewViewCell.cellNib, forCellReuseIdentifier: ChatPreviewViewCell.cellIdentifier)
+            tableView.register(InviteTableViewCell.cellNib, forCellReuseIdentifier: InviteTableViewCell.cellIdentifier)
+        }
+    }
 
     var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
     
     var employees : [Employee] = []
     var projects : [Project] = []
     var currentUser : Employee?
+    var chats : [Chat] = []
+    
+    var mentorList : [Mentorship] = []
+    var menteeList : [Mentorship] = []
+    var activeArray : [Mentorship] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getAllCompanyUsers()
+        fetchCurrentUser()
+        fetchMentorships()
+        
+        DispatchQueue.main.async {
+            self.activeArray = self.mentorList
+            self.tableView.reloadData()
+        }
+        
+        //print(chats.count)
+        
         
     }
 
@@ -43,10 +67,10 @@ class NotifiactionViewController: UIViewController {
                 return
             }
             
-            DispatchQueue.main.async {
-                self.employees = JSONConverter.createObjects(workers!) as! [Employee]
-                self.tableView.reloadData()
+            if let validWorkers = workers {
+                self.employees = JSONConverter.createObjects(validWorkers) as! [Employee]
             }
+
         }
         
     }
@@ -61,9 +85,7 @@ class NotifiactionViewController: UIViewController {
             if let validUser = user {
                 self.createUserDetails(validUser)
 
-                DispatchQueue.main.async {
-
-                }
+ 
             }
             
             
@@ -99,23 +121,69 @@ class NotifiactionViewController: UIViewController {
                         let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
                         
                         projects.append(newProj)
-                    }
-                    
+                    } 
                 }
             }
             
         }
     }
+    
+    func fetchMentorships() {
+        JSONConverter.getJSONResponse("mentorships/mentees") { (mentees, error) in
+            if let err = error {
+                print(error?.localizedDescription)
+            }
+            
+            if let validMentees = mentees {
+                self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
+
+            }
+        }
+        
+        JSONConverter.getJSONResponse("mentorships/mentors") { (mentors, error) in
+            if let err = error {
+                print(error?.localizedDescription)
+            }
+            
+            if let validMentors = mentors {
+                self.mentorList = self.createMentorMenteeList(validMentors, type: "mentor_id")
+            }
+        }
+    }
+    
+    func createMentorMenteeList(_ mentors: [[String:Any]], type: String) -> [Mentorship] {
+        var menteeMentorList : [Mentorship] = []
+        
+        for each in mentors {
+            if let firstName = each["first_name"] as? String,
+                let lastName = each["last_name"] as? String,
+                let mentorID = each[type] as? Int,
+                let status = each["request_approval"] as? String {
+                
+                let mentorship = Mentorship(aUserID: mentorID, aMenteeFirst: firstName, aMenteeLast: lastName, aStatus: status, aSubject: "")
+                
+                menteeMentorList.append(mentorship)
+                
+            }
+        }
+        
+        return menteeMentorList
+    }
+
 
 
     func mentorInvitesSegmentTapped() {
         //activeArray = userCategories
         //collectionView.reloadData()
+        activeArray = mentorList
+        tableView.reloadData()
     }
     
-    func projectInvitesSegmentTapped() {
+    func menteeInvitesSegmentTapped() {
         //activeArray = projects
         //collectionView.reloadData()
+        activeArray = menteeList
+        tableView.reloadData()
     }
     
     func projectChatsSegmentTapped() {
@@ -123,8 +191,38 @@ class NotifiactionViewController: UIViewController {
         //collectionView.reloadData()
     }
     
+}
+
+extension NotifiactionViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chats.count
+    }
     
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPreviewViewCell") as? ChatPreviewViewCell else {return UITableViewCell()}
+        //cell.skillLabel.text = skills[indexPath.row]
+        //cell.skillLabel.textColor = category?.color
+        //cell.skillLabel.alpha = 0.8
+        let lastMessage = chats[indexPath.row].userName + ": " + chats[indexPath.row].body
+        
+        cell.lastMessageLabel.text = lastMessage
+        //cell.projectNameLabel.text =
+        
+        
+        return cell
+        
+    }
+}
+
+extension NotifiactionViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "BrowseTutorVC") as? BrowseTutorVC else {return}
+        
+        //vc.skill = skills[indexPath.row]
+        //vc.viewType = .specificSkill
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension NotifiactionViewController {
@@ -142,6 +240,7 @@ extension NotifiactionViewController {
             print("Disconnected!")
         }
         
+    
         roomChannel.onReceive = { (JSON : Any?, error : Error?) in
             print("Received", JSON, error)
             //self.fetchChat()

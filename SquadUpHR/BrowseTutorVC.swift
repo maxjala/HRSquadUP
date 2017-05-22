@@ -155,6 +155,7 @@ extension BrowseTutorVC : UITableViewDataSource {
         let employee = filtered[indexPath.row]
         
         cell.delegate = self
+        cell.employee = employee
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
         cell.departmentLabel.text = employee.department

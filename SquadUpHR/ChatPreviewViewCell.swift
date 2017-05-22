@@ -17,6 +17,9 @@ class ChatPreviewViewCell: UITableViewCell {
     @IBOutlet weak var projectNameLabel: UILabel!
     
     @IBOutlet weak var lastMessageLabel: UILabel!
+    
+    static let cellIdentifier = "ChatPreviewViewCell"
+    static let cellNib = UINib(nibName: ChatPreviewViewCell.cellIdentifier, bundle: Bundle.main)
 
     override func awakeFromNib() {
         super.awakeFromNib()

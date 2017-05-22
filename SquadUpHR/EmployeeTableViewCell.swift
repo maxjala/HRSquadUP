@@ -44,32 +44,13 @@ class EmployeeTableViewCell: UITableViewCell {
     }
     
     func sendbutton(){
-        if let _employee = employee {
-            delegate?.sendEmailTapped(_employee)
+        if delegate != nil {
+            if let _employee = employee {
+                delegate?.sendEmailTapped(_employee)
+            }
         }
     }
-    
+
     
 }
 
-//extension EmployeeTableViewCell: MFMailComposeViewControllerDelegate {
-//    func sendEmail() {
-//        if MFMailComposeViewController.canSendMail() {
-//            let mail = MFMailComposeViewController()
-//            mail.mailComposeDelegate = self
-//            mail.setToRecipients(["maxjala@gmail.com"])
-//            mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
-//        
-//            present(mail, animated: true)
-//        } else {
-//            // show failure alert
-//        }
-//    }
-//    
-//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-//        
-//        
-//        controller.dismiss(animated: true, completion: nil)
-//        
-//    }
-//}
