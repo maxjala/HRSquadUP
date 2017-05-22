@@ -46,9 +46,7 @@ class ChatViewController: JSQMessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let id = currentUser?.employeeID else {return}
-        self.senderId = "\(id)"
-        self.senderDisplayName = currentUser?.firstName
+
         
         setUpActionCableConnection()
         
@@ -57,6 +55,9 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let id = currentUser?.employeeID else {return}
+        self.senderId = "\(id)"
+        self.senderDisplayName = currentUser?.firstName
         
         tabBarController?.tabBar.isHidden = true
     }
@@ -177,12 +178,13 @@ extension ChatViewController {
 
 }
 
-extension ChatViewController {
+/*
+extension NotifiactionViewController {
     func setUpActionCableConnection() {
         client.connect()
         
-        let room_identifier = ["project_id" : project?.projectId]
-        let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
+        //let room_identifier = ["project_id" : project?.projectId]
+        //let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
         
         client.onConnected = {
             print("Connected!")
@@ -191,6 +193,7 @@ extension ChatViewController {
         client.onDisconnected = {(error: Error?) in
             print("Disconnected!")
         }
+        
         
         roomChannel.onReceive = { (JSON : Any?, error : Error?) in
             print("Received", JSON, error)
@@ -228,6 +231,7 @@ extension ChatViewController {
     }
     
 }
+ */
 
 
 

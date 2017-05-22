@@ -32,6 +32,11 @@
 		1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEC1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib */; };
 		1AB9FDF11ECC91D70060AE80 /* ProjectRoleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB9FDEF1ECC91D70060AE80 /* ProjectRoleViewCell.swift */; };
 		1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB9FDF01ECC91D70060AE80 /* ProjectRoleViewCell.xib */; };
+		1AE3DC8C1ED29C0C0084B4EF /* NotifiactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3DC8B1ED29C0C0084B4EF /* NotifiactionViewController.swift */; };
+		1AE3DC8F1ED29CB30084B4EF /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3DC8D1ED29CB30084B4EF /* InviteTableViewCell.swift */; };
+		1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */; };
+		1AE3DC931ED2A3290084B4EF /* ChatPreviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */; };
+		1AE3DC941ED2A3290084B4EF /* ChatPreviewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */; };
 		7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18033B1ECD818D008A7F50 /* ChatViewController.swift */; };
 		7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1803411ECD83AF008A7F50 /* Login.storyboard */; };
 		7A1803441ECD8725008A7F50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1803431ECD8725008A7F50 /* LoginViewController.swift */; };
@@ -71,6 +76,11 @@
 		1AB9FDEC1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillCollectionViewCell.xib; sourceTree = "<group>"; };
 		1AB9FDEF1ECC91D70060AE80 /* ProjectRoleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectRoleViewCell.swift; sourceTree = "<group>"; };
 		1AB9FDF01ECC91D70060AE80 /* ProjectRoleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectRoleViewCell.xib; sourceTree = "<group>"; };
+		1AE3DC8B1ED29C0C0084B4EF /* NotifiactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifiactionViewController.swift; sourceTree = "<group>"; };
+		1AE3DC8D1ED29CB30084B4EF /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTableViewCell.swift; sourceTree = "<group>"; };
+		1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteTableViewCell.xib; sourceTree = "<group>"; };
+		1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatPreviewViewCell.swift; sourceTree = "<group>"; };
+		1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatPreviewViewCell.xib; sourceTree = "<group>"; };
 		7A18033B1ECD818D008A7F50 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		7A1803411ECD83AF008A7F50 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A1803431ECD8725008A7F50 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +154,7 @@
 				7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */,
 				7ADDC4841ECC2A8500796170 /* ProjectViewController.swift */,
 				7A18033B1ECD818D008A7F50 /* ChatViewController.swift */,
+				1AE3DC8B1ED29C0C0084B4EF /* NotifiactionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -162,6 +173,10 @@
 				1AA657B91ECBE86E00A46378 /* EmployeeTableViewCell.swift */,
 				1AB9FDE91ECC52230060AE80 /* EmployeeTableViewCell.xib */,
 				7ADDC4821ECC293300796170 /* TeamCollectionViewCell.swift */,
+				1AE3DC8D1ED29CB30084B4EF /* InviteTableViewCell.swift */,
+				1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */,
+				1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */,
+				1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -267,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE3DC941ED2A3290084B4EF /* ChatPreviewViewCell.xib in Resources */,
+				1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */,
 				1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */,
 				1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */,
 				1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */,
@@ -341,6 +358,8 @@
 				1AB2790F1ECAACDD00C6F02B /* AppDelegate.swift in Sources */,
 				7ADDC47D1ECB1B9700796170 /* Experience.swift in Sources */,
 				7ADDC4831ECC293300796170 /* TeamCollectionViewCell.swift in Sources */,
+				1AE3DC8C1ED29C0C0084B4EF /* NotifiactionViewController.swift in Sources */,
+				1AE3DC931ED2A3290084B4EF /* ChatPreviewViewCell.swift in Sources */,
 				1A8D02671ECD3AF100FE6912 /* BrowseProjectsVC.swift in Sources */,
 				1A81F71B1ECAF6C30009C4C5 /* SkillCategoryViewCell.swift in Sources */,
 				7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */,
@@ -359,6 +378,7 @@
 				1AA657B71ECB40FE00A46378 /* SkillTableViewCell.swift in Sources */,
 				7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */,
 				1AB279211ECAB08C00C6F02B /* (null) in Sources */,
+				1AE3DC8F1ED29CB30084B4EF /* InviteTableViewCell.swift in Sources */,
 				1AB279231ECAB73700C6F02B /* (null) in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

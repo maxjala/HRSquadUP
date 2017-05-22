@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="ChatPreviewViewCell" customModule="SquadUpHR" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lNk-al-bF9">
+                        <rect key="frame" x="0.0" y="10" width="320" height="69.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members: Marcel, Marco, Jane, and Nick" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keC-Iv-mUd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="23"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" red="0.61508588590000002" green="0.8086258046" blue="0.69575325889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mingling event for social media influencers" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="rjU-Ug-i1C">
+                                <rect key="frame" x="0.0" y="23" width="320" height="23.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcel: Lets meet up at 3 today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJk-MI-mWS">
+                                <rect key="frame" x="0.0" y="46.5" width="320" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IdF-Va-i6Z">
+                        <rect key="frame" x="8" y="0.0" width="19" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="0.61501736110000005" blue="0.52013888890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lNk-al-bF9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Bca-RX-D67"/>
+                    <constraint firstItem="lNk-al-bF9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ybb-5c-EfT"/>
+                    <constraint firstAttribute="bottom" secondItem="lNk-al-bF9" secondAttribute="bottom" id="Ye4-iW-OHe"/>
+                    <constraint firstAttribute="trailing" secondItem="lNk-al-bF9" secondAttribute="trailing" id="ZTJ-cz-ieQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lastMessageLabel" destination="YJk-MI-mWS" id="n5j-tE-UXg"/>
+                <outlet property="membersLabel" destination="keC-Iv-mUd" id="sZw-rZ-Dnf"/>
+                <outlet property="notificationView" destination="IdF-Va-i6Z" id="KQT-Ew-nGI"/>
+                <outlet property="projectNameLabel" destination="rjU-Ug-i1C" id="yxC-Oe-qwD"/>
+            </connections>
+            <point key="canvasLocation" x="18" y="103"/>
+        </tableViewCell>
+    </objects>
+</document>
