@@ -221,11 +221,11 @@ extension BrowseTutorVC: UISearchBarDelegate{
 }
 
 extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
-    func sendEmail() {
+    func sendEmail(_ employee: Employee) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["maxjala@gmail.com"])
+            mail.setToRecipients([employee.email])
             mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
             
             present(mail, animated: true)
@@ -244,7 +244,7 @@ extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
 
 }
 extension BrowseTutorVC: SendEmailDelegate {
-    func sendEmailTapped() {
-        sendEmail()
+    func sendEmailTapped(_ employee: Employee) {
+        sendEmail(employee)
     }
 }
