@@ -30,7 +30,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="vVn-FK-OBT"/>
                         </constraints>
-                        <state key="normal" title="Send Email"/>
+                        <state key="normal" title="Send Email">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managers" translatesAutoresizingMaskIntoConstraints="NO" id="1Dz-LF-kxp">
                         <rect key="frame" x="8" y="8.5" width="50" height="50"/>

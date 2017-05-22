@@ -16,6 +16,8 @@ enum ViewType {
 }
 
 
+
+
 class BrowseTutorVC: UIViewController {
     
     @IBOutlet weak var connectLabel: UILabel!
@@ -129,12 +131,7 @@ class BrowseTutorVC: UIViewController {
             }
         }
     }
-    
-    @IBAction func emailButtonTapped(_ sender: Any) {
-        sendEmail()
-    }
-    
-    
+
     
     
 }
@@ -157,6 +154,7 @@ extension BrowseTutorVC : UITableViewDataSource {
         
         let employee = filtered[indexPath.row]
         
+        cell.delegate = self
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
         cell.departmentLabel.text = employee.department
@@ -240,7 +238,13 @@ extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
         
         
         controller.dismiss(animated: true, completion: nil)
-        
+    
+    }
+    
+
+}
+extension BrowseTutorVC: SendEmailDelegate {
+    func sendEmailTapped() {
+        sendEmail()
     }
 }
-
