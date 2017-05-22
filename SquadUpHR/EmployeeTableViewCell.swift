@@ -14,6 +14,8 @@ class EmployeeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var jobTitleLabel: UILabel!
     
+    @IBOutlet weak var departmentLabel: UILabel!
+    
     static let cellIdentifier = "EmployeeTableViewCell"
     static let cellNib = UINib(nibName: EmployeeTableViewCell.cellIdentifier, bundle: Bundle.main)
 
@@ -29,4 +31,5 @@ class EmployeeTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var sendEmailButton: UIButton!
+    
 }

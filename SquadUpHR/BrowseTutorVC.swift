@@ -20,6 +20,12 @@ class BrowseTutorVC: UIViewController {
     
     @IBOutlet weak var connectLabel: UILabel!
     
+    @IBOutlet weak var searchBar: UISearchBar!{
+        didSet{
+            searchBar.delegate = self
+        }
+    }
+
     @IBOutlet weak var tableView: UITableView! {
         didSet{
             tableView.delegate = self
@@ -41,6 +47,8 @@ class BrowseTutorVC: UIViewController {
     var employees : [Employee] = []
     var skill: Skill?
     var viewType: ViewType = .allUsers
+    var searchActive: Bool = false
+    var filtered: [Employee] = []
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +59,7 @@ class BrowseTutorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
     func configureViewType(_ view: ViewType){
         switch view {
@@ -71,6 +80,7 @@ class BrowseTutorVC: UIViewController {
             
             DispatchQueue.main.async {
                 self.employees = JSONConverter.createObjects(workers!) as! [Employee]
+                self.filtered = self.employees
                 self.tableView.reloadData()
             }
         }
@@ -85,7 +95,7 @@ class BrowseTutorVC: UIViewController {
             
             if let validUsers = users {
                 self.createFilteredEmployeeList(validUsers)
-                
+                self.filtered = self.employees
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     
@@ -134,7 +144,7 @@ class BrowseTutorVC: UIViewController {
 extension BrowseTutorVC : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return employees.count
+        return filtered.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -145,10 +155,11 @@ extension BrowseTutorVC : UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.cellIdentifier) as? EmployeeTableViewCell else {return UITableViewCell()}
         
-        let employee = employees[indexPath.row]
+        let employee = filtered[indexPath.row]
         
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
+        cell.departmentLabel.text = employee.department
         
         return cell
     }
@@ -166,6 +177,49 @@ extension BrowseTutorVC : UITableViewDelegate {
         
         
     }
+}
+
+extension BrowseTutorVC: UISearchBarDelegate{
+    // MARK: Search Bar Functions
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count == 0 {
+            filtered = employees;
+            self.tableView.reloadData()
+            return
+        }
+        
+        filtered = employees.filter({ (employee) -> Bool in
+            let nameString: NSString = employee.fullName as NSString
+            let departString: NSString = employee.department as NSString
+            let jobString: NSString = employee.jobTitle as NSString
+            let range = nameString.range(of: searchText, options: .caseInsensitive)
+            let departRange = departString.range(of: searchText, options: .caseInsensitive)
+            let jobRange = jobString.range(of: searchText, options: .caseInsensitive)
+            
+            return range.location != NSNotFound || jobRange.location != NSNotFound || departRange.location != NSNotFound
+          
+        })
+        
+        self.tableView.reloadData()
+    }
+
+    
 }
 
 extension BrowseTutorVC : MFMailComposeViewControllerDelegate {

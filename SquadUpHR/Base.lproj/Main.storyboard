@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -536,44 +536,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xZ1-mp-2FL">
-                                <rect key="frame" x="0.0" y="139" width="375" height="453"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="453" id="9YK-gR-blV"/>
                                 </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAh-Sg-blz">
-                                <rect key="frame" x="164" y="600" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="emailButtonTapped:" destination="svr-oF-iBX" eventType="touchUpInside" id="ysc-G7-zZg"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsO-Mp-AkQ">
                                 <rect key="frame" x="0.0" y="104" width="375" height="14"/>
                                 <color key="backgroundColor" red="0.71193764709999996" green="0.73743566989999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ce4-3l-NAN">
+                                <rect key="frame" x="0.0" y="119" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fih-kS-5nF" firstAttribute="top" secondItem="Xnr-wF-eUZ" secondAttribute="bottom" constant="16" id="3go-3I-xVR"/>
-                            <constraint firstItem="HAh-Sg-blz" firstAttribute="top" secondItem="xZ1-mp-2FL" secondAttribute="bottom" constant="8" symbolic="YES" id="8dA-Dr-Mr2"/>
-                            <constraint firstItem="gsO-Mp-AkQ" firstAttribute="centerX" secondItem="HAh-Sg-blz" secondAttribute="centerX" id="HBu-fY-it1"/>
                             <constraint firstItem="gsO-Mp-AkQ" firstAttribute="trailing" secondItem="xZ1-mp-2FL" secondAttribute="trailing" id="KEj-4x-mOy"/>
+                            <constraint firstItem="ggE-d3-58d" firstAttribute="top" secondItem="ce4-3l-NAN" secondAttribute="bottom" constant="455" id="LQl-A0-0Tp"/>
                             <constraint firstItem="gsO-Mp-AkQ" firstAttribute="top" secondItem="fih-kS-5nF" secondAttribute="bottom" constant="8" id="MsD-vj-U0S"/>
                             <constraint firstItem="fih-kS-5nF" firstAttribute="leading" secondItem="ICp-0M-4Jr" secondAttribute="leadingMargin" id="PyJ-v7-9YQ"/>
-                            <constraint firstItem="xZ1-mp-2FL" firstAttribute="top" secondItem="gsO-Mp-AkQ" secondAttribute="bottom" constant="21" id="TBU-3h-PPT"/>
+                            <constraint firstItem="xZ1-mp-2FL" firstAttribute="top" secondItem="gsO-Mp-AkQ" secondAttribute="bottom" constant="46" id="TBU-3h-PPT"/>
                             <constraint firstItem="gsO-Mp-AkQ" firstAttribute="leading" secondItem="xZ1-mp-2FL" secondAttribute="leading" id="Yxm-5i-gbS"/>
+                            <constraint firstItem="ce4-3l-NAN" firstAttribute="leading" secondItem="ICp-0M-4Jr" secondAttribute="leading" id="dhd-vR-u7b"/>
                             <constraint firstItem="xZ1-mp-2FL" firstAttribute="leading" secondItem="ICp-0M-4Jr" secondAttribute="leading" id="hwU-Hc-med"/>
                             <constraint firstItem="fih-kS-5nF" firstAttribute="trailing" secondItem="ICp-0M-4Jr" secondAttribute="trailingMargin" id="iy3-Gw-nvv"/>
                             <constraint firstAttribute="trailing" secondItem="xZ1-mp-2FL" secondAttribute="trailing" id="k1P-3W-2P5"/>
-                            <constraint firstItem="ggE-d3-58d" firstAttribute="top" secondItem="xZ1-mp-2FL" secondAttribute="bottom" constant="26" id="tM3-89-gJD"/>
+                            <constraint firstItem="ce4-3l-NAN" firstAttribute="top" secondItem="gsO-Mp-AkQ" secondAttribute="bottom" constant="1" id="lue-8F-bvL"/>
+                            <constraint firstItem="ggE-d3-58d" firstAttribute="top" secondItem="xZ1-mp-2FL" secondAttribute="bottom" constant="1" id="tM3-89-gJD"/>
+                            <constraint firstAttribute="trailing" secondItem="ce4-3l-NAN" secondAttribute="trailing" id="tgD-py-Da3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ww4-3a-gbT"/>
                     <connections>
                         <outlet property="accentView" destination="gsO-Mp-AkQ" id="Kku-00-lFJ"/>
                         <outlet property="connectLabel" destination="fih-kS-5nF" id="sbd-uE-4Fr"/>
+                        <outlet property="searchBar" destination="ce4-3l-NAN" id="sC7-DG-WIY"/>
                         <outlet property="tableView" destination="xZ1-mp-2FL" id="1IF-d9-Akl"/>
                     </connections>
                 </viewController>
