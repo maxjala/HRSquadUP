@@ -28,7 +28,7 @@ class SkillCategory {
     static func fetchAllCategories() -> [SkillCategory] {
         return [
             SkillCategory(title: "Management", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 240/255.0, green: 133/255.0, blue: 91/255.0, alpha: 0.8)),
-            SkillCategory(title: "Accountancy", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 105/255.0, green: 80/255.0, blue: 227/255.0, alpha: 0.8)),
+            SkillCategory(title: "Accounting", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 105/255.0, green: 80/255.0, blue: 227/255.0, alpha: 0.8)),
             SkillCategory(title: "Design", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 245/255.0, green: 62/255.0, blue: 40/255.0, alpha: 0.8)),
             SkillCategory(title: "IT", featuredImage: UIImage(named: "desgin")!, color: UIColor(red: 103/255.0, green: 217/255.0, blue: 87/255.0, alpha: 0.8)),
             
