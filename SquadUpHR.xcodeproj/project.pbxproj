@@ -37,6 +37,7 @@
 		1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */; };
 		1AE3DC931ED2A3290084B4EF /* ChatPreviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */; };
 		1AE3DC941ED2A3290084B4EF /* ChatPreviewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */; };
+		1AE3DC961ED307CD0084B4EF /* Mentorship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE3DC951ED307CD0084B4EF /* Mentorship.swift */; };
 		7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18033B1ECD818D008A7F50 /* ChatViewController.swift */; };
 		7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1803411ECD83AF008A7F50 /* Login.storyboard */; };
 		7A1803441ECD8725008A7F50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1803431ECD8725008A7F50 /* LoginViewController.swift */; };
@@ -81,6 +82,7 @@
 		1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteTableViewCell.xib; sourceTree = "<group>"; };
 		1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatPreviewViewCell.swift; sourceTree = "<group>"; };
 		1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatPreviewViewCell.xib; sourceTree = "<group>"; };
+		1AE3DC951ED307CD0084B4EF /* Mentorship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mentorship.swift; sourceTree = "<group>"; };
 		7A18033B1ECD818D008A7F50 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		7A1803411ECD83AF008A7F50 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A1803431ECD8725008A7F50 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				7ADDC47E1ECB1BA000796170 /* Project.swift */,
 				7ADDC4801ECC244500796170 /* Employee.swift */,
 				7A1B4DF71ECD99B300678E19 /* Chat.swift */,
+				1AE3DC951ED307CD0084B4EF /* Mentorship.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				1AB9FDF11ECC91D70060AE80 /* ProjectRoleViewCell.swift in Sources */,
 				7ADDC47F1ECB1BA000796170 /* Project.swift in Sources */,
 				1AB9FDED1ECC6EDB0060AE80 /* SkillCollectionViewCell.swift in Sources */,
+				1AE3DC961ED307CD0084B4EF /* Mentorship.swift in Sources */,
 				7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */,
 				1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */,
 				1A8D02701ECD3EF400FE6912 /* ProjectViewCell.swift in Sources */,
