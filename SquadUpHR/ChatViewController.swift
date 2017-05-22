@@ -105,9 +105,11 @@ class ChatViewController: JSQMessagesViewController {
     func sendText(_ messageDict: [String: Any]) {
         
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        guard let projectID = project?.projectId else {return}
+        
         if let jsonData = try? JSONSerialization.data(withJSONObject: messageDict, options: []) {
             
-            let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=1")
+            let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"
@@ -132,7 +134,6 @@ class ChatViewController: JSQMessagesViewController {
 extension ChatViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text)
-        //messages.append(message!)
         let sentDict = ["sender_id" : message?.senderId, "message_id" : "\(Date.timeIntervalSinceReferenceDate)", "message" : message?.text]
         
         sendText(sentDict)
@@ -178,13 +179,15 @@ extension ChatViewController {
 
 }
 
-/*
-extension NotifiactionViewController {
+
+extension ChatViewController {
     func setUpActionCableConnection() {
         client.connect()
         
-        //let room_identifier = ["project_id" : project?.projectId]
-        //let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
+        //guard let validID = projectID as? Int else {return}
+        
+        let room_identifier = ["project_id" : project?.projectId]
+        let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
         
         client.onConnected = {
             print("Connected!")
@@ -209,6 +212,7 @@ extension NotifiactionViewController {
                     self.messages.append(JSQMessage(senderId: "\(senderID)", displayName: person.firstName, text: message))
                 }
             }
+            
             let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
             self.collectionView.reloadData()
             self.collectionView.scrollToItem(at: lastIndex, at: .bottom, animated: true)
@@ -231,7 +235,7 @@ extension NotifiactionViewController {
     }
     
 }
- */
+
 
 
 
