@@ -43,6 +43,7 @@ class ChatViewController: JSQMessagesViewController {
     var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -182,13 +183,14 @@ extension ChatViewController {
 
 extension ChatViewController {
     func setUpActionCableConnection() {
-        client.connect()
         
-        //guard let validID = projectID as? Int else {return}
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        
+        client.connect()
         
         let room_identifier = ["project_id" : project?.projectId]
         let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
-        
+
         client.onConnected = {
             print("Connected!")
         }

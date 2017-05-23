@@ -295,21 +295,35 @@ extension NotifiactionViewController : InviteViewCellDelegate {
     
     func sendAcceptToAPI(_ mentorship: Mentorship) {
         respondToRequest(mentorship, response: "accepted")
-        fetchMentorships()
-        
-        DispatchQueue.main.async {
-            self.activeArray = self.menteeList
-            self.tableView.reloadData()
+        JSONConverter.getJSONResponse("mentorships/mentee") { (mentees, error) in
+            if let err = error {
+                print(error?.localizedDescription)
+            }
+            
+            if let validMentees = mentees {
+                DispatchQueue.main.async {
+                    self.activeArray = self.createMentorMenteeList(validMentees, type: "mentee_id")
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
     func sendRejectToAPI(_ mentorship: Mentorship) {
         respondToRequest(mentorship, response: "refused")
-        fetchMentorships()
+        //fetchMentorships()
         
-        DispatchQueue.main.async {
-            self.activeArray = self.menteeList
-            self.tableView.reloadData()
+        JSONConverter.getJSONResponse("mentorships/mentee") { (mentees, error) in
+            if let err = error {
+                print(error?.localizedDescription)
+            }
+            
+            if let validMentees = mentees {
+                DispatchQueue.main.async {
+                    self.activeArray = self.createMentorMenteeList(validMentees, type: "mentee_id")
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
