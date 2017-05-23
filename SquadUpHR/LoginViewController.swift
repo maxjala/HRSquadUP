@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -25,6 +25,9 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 5
         loginButton.layer.borderWidth = 1
         loginButton.layer.borderColor = UIColor.clear.cgColor
+        
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -111,6 +114,20 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
         
     
+    }
+    
+    func hideKeyboard(){
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
     
 
