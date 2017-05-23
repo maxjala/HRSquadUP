@@ -188,9 +188,19 @@ class JSONConverter {
                 let userID = each["userId"] as? Int,
                 let status = each["status"] as? String,
                 let projectTitle = each ["projectTitle"] as? String,
-                let projectDesc = each["projectDesc"] as? String{
+                let projectDesc = each["projectDesc"] as? String,
+                let skills = each["skills_array"] as? [[String:Any]] {
                 
-                let project = Project(anID: projectID, aUserID: userID, aStatus: status, aTitle: projectTitle, aDesc: projectDesc)
+                var skillsArray : [String] = []
+                
+                for skill in skills {
+                    if let skillName = skill["skill_name"] as? String {
+                        skillsArray.append(skillName)
+                    }
+                    
+                }
+                
+                let project = Project(anID: projectID, aSkillsArray: skillsArray, aStatus: status, aTitle: projectTitle, aDesc: projectDesc)
                 
                 //projects.append(project)
                 returnedArray.append(project)

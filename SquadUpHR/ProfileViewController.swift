@@ -233,9 +233,18 @@ class ProfileViewController: UIViewController {
                     if let desc = object["description"] as? String,
                         let title = object["title"] as? String,
                         let id = object["id"] as? Int,
-                        let status = object["status"] as? String {
+                        let status = object["status"] as? String,
+                        let skills = object["skills_array"] as? [[String:Any]] {
                         
-                        let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
+                        var skillsArray : [String] = []
+                        
+                        for skill in skills {
+                            guard let skillName = skill["skill_name"] as? String else {return}
+                            skillsArray.append(skillName)
+                            
+                        }
+                        
+                        let newProj = Project(anID: id, aSkillsArray: skillsArray, aStatus: status, aTitle: title, aDesc: desc)
                         
                         projects.append(newProj)
                     }
@@ -308,6 +317,23 @@ extension ProfileViewController : UICollectionViewDataSource {
         let currentProject = currentObject as! Project
         
         cell.projectNameLabel.text = currentProject.projectTitle
+        
+        var constructedString = "Skills Used: "
+        //var counter = 0
+        
+        
+        for each in currentProject.skillsArray {
+            constructedString += each
+        }
+        
+        cell.roleLabel.text = constructedString
+        
+        if currentProject.skillsArray.count == 0 {
+            cell.roleLabel.text = "Project Manager"
+        }
+        
+        
+        //cell.roleLabel.text = constructedString
         //cell.descriptionLabel.text = currentProject.projectDesc
         //cell.statusLabel.text = currentProject.status
         
