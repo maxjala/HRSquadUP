@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -365,7 +365,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Help Hub" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJa-QG-jKU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help Hub" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJa-QG-jKU">
                                 <rect key="frame" x="16" y="28" width="343" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="W4F-Ey-IgX"/>
@@ -374,14 +374,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Cz-cm-MNK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Cz-cm-MNK">
                                 <rect key="frame" x="0.0" y="148" width="375" height="470"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-il-mc3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-il-mc3">
                                 <rect key="frame" x="0.0" y="115" width="375" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUx-Lq-vUi">
                                         <rect key="frame" x="252" y="0.0" width="115" height="19"/>
@@ -404,6 +402,19 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Cz-cm-MNK" firstAttribute="bottom" secondItem="nxo-co-2Ac" secondAttribute="top" id="7GJ-nn-sCN"/>
+                            <constraint firstAttribute="bottom" secondItem="qwC-il-mc3" secondAttribute="bottom" constant="533" id="E9Q-HD-1ev"/>
+                            <constraint firstItem="7Cz-cm-MNK" firstAttribute="top" secondItem="qwC-il-mc3" secondAttribute="bottom" constant="14" id="PCC-r3-loM"/>
+                            <constraint firstItem="EJa-QG-jKU" firstAttribute="centerX" secondItem="qwC-il-mc3" secondAttribute="centerX" id="TJ7-ip-zc3"/>
+                            <constraint firstItem="EJa-QG-jKU" firstAttribute="centerX" secondItem="7Cz-cm-MNK" secondAttribute="centerX" id="Waf-Eo-p2L"/>
+                            <constraint firstItem="qwC-il-mc3" firstAttribute="leading" secondItem="Jzf-Oa-0oz" secondAttribute="leading" id="Yvf-OI-OvW"/>
+                            <constraint firstItem="qwC-il-mc3" firstAttribute="leading" secondItem="7Cz-cm-MNK" secondAttribute="leading" id="aJD-yQ-Ote"/>
+                            <constraint firstItem="EJa-QG-jKU" firstAttribute="trailing" secondItem="Jzf-Oa-0oz" secondAttribute="trailingMargin" id="cUd-5B-2EK"/>
+                            <constraint firstItem="EJa-QG-jKU" firstAttribute="top" secondItem="R8T-cG-xkj" secondAttribute="bottom" constant="8" symbolic="YES" id="fKD-dt-Lsu"/>
+                            <constraint firstItem="EJa-QG-jKU" firstAttribute="leading" secondItem="Jzf-Oa-0oz" secondAttribute="leadingMargin" id="hSn-Kh-sUf"/>
+                            <constraint firstItem="qwC-il-mc3" firstAttribute="top" secondItem="EJa-QG-jKU" secondAttribute="bottom" constant="27" id="zvL-tZ-gBy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rlM-Hq-Nz6"/>
                     <connections>
