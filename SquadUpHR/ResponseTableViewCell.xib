@@ -23,7 +23,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elH-22-NOr">
                         <rect key="frame" x="8" y="8" width="43.5" height="43.5"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="43.5" id="a7y-a1-7Ld"/>
                             <constraint firstAttribute="width" secondItem="elH-22-NOr" secondAttribute="height" multiplier="1:1" id="jfg-es-DDN"/>
+                            <constraint firstAttribute="height" constant="43.5" id="wPJ-ee-GS6"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tQT-pF-A85">

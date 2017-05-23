@@ -10,14 +10,19 @@ import UIKit
 
 class ResponseTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet{
+            profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+            profileImageView.layer.masksToBounds = true
+        }
+    }
     
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var messageLabel: UILabel!
     
-    static let cellIdentifier = "InviteTableViewCell"
-    static let cellNib = UINib(nibName: InviteTableViewCell.cellIdentifier, bundle: Bundle.main)
+    static let cellIdentifier = "ResponseTableViewCell"
+    static let cellNib = UINib(nibName: ResponseTableViewCell.cellIdentifier, bundle: Bundle.main)
 
     override func awakeFromNib() {
         super.awakeFromNib()

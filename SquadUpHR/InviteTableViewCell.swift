@@ -8,9 +8,27 @@
 
 import UIKit
 
+protocol InviteViewCellDelegate {
+    func sendAcceptToAPI(_ mentorship: Mentorship)
+    func sendRejectToAPI(_ mentorship: Mentorship)
+    
+}
+
 class InviteTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    var delegate : InviteViewCellDelegate? = nil
+    var mentorship : Mentorship? {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet{
+            profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+            profileImageView.layer.masksToBounds = true
+        }
+    }
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -20,12 +38,13 @@ class InviteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var acceptButton: UIButton! {
         didSet{
-            
+            acceptButton.addTarget(self, action: #selector(acceptButtonTapped), for: .touchUpInside)
         }
     }
     
     @IBOutlet weak var rejectButton: UIButton! {
         didSet{
+            rejectButton.addTarget(self, action: #selector(rejectButtonTapped), for: .touchUpInside)
             
         }
     }
@@ -47,6 +66,40 @@ class InviteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func updateUI() {
+        if let ment = mentorship {
+            if ment.status == "accepted" {
+                acceptButton.backgroundColor = .gray
+                acceptButton.isEnabled = false
+                rejectButton.isEnabled = true
+                rejectButton.backgroundColor = UIColor(red: 255/255, green: 157/255, blue: 133/255, alpha: 1)
+            } else if ment.status == "refused" {
+                rejectButton.backgroundColor = .gray
+                rejectButton.isEnabled = false
+                acceptButton.isEnabled = true
+                acceptButton.backgroundColor = UIColor(red: 177/255, green: 206/255, blue: 177/255, alpha: 1)
+            }
+        }
+    }
+    
+    func acceptButtonTapped() {
+        if delegate != nil {
+            if let _mentorship = mentorship {
+                delegate?.sendAcceptToAPI(_mentorship)
+            }
+        }
+        
+    }
+    
+    func rejectButtonTapped() {
+        if delegate != nil {
+            if let _mentorship = mentorship {
+                delegate?.sendRejectToAPI(_mentorship)
+            }
+        }
+        
     }
     
 }

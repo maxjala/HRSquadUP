@@ -22,7 +22,7 @@ class Mentorship {
     init(aUserID: Int, aMenteeFirst: String, aMenteeLast: String, aStatus: String, aSubject: String, aMessage: String) {
         menteeFirstName = aMenteeFirst
         menteeLastName = aMenteeLast
-        menteeFullName = aMenteeFirst + aMenteeLast
+        menteeFullName = aMenteeFirst + " " + aMenteeLast
         
         userID = aUserID
 

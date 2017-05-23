@@ -10,18 +10,23 @@ import UIKit
 import ActionCableClient
 
 class NotifiactionViewController: UIViewController {
+    @IBOutlet weak var mentorInvitesButton: UIButton! {
+        didSet{
+            mentorInvitesButton.addTarget(self, action: #selector(mentorInvitesSegmentTapped), for: .touchUpInside)
+        }
+    }
     
-    @IBOutlet weak var projectChatsButton: UIButton!
+    @IBOutlet weak var menteeInvitesButton: UIButton! {
+        didSet{
+            menteeInvitesButton.addTarget(self, action: #selector(menteeInvitesSegmentTapped), for: .touchUpInside)
+        }
+    }
     
-    @IBOutlet weak var projectInvitesButton: UIButton!
-    
-    @IBOutlet weak var mentorInvitesButton: UIButton!
-
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
-            //tableView.register(ChatPreviewViewCell.cellNib, forCellReuseIdentifier: ChatPreviewViewCell.cellIdentifier)
+            tableView.register(ResponseTableViewCell.cellNib, forCellReuseIdentifier: ResponseTableViewCell.cellIdentifier)
             tableView.register(InviteTableViewCell.cellNib, forCellReuseIdentifier: InviteTableViewCell.cellIdentifier)
             
             tableView.rowHeight = UITableViewAutomaticDimension
@@ -45,13 +50,12 @@ class NotifiactionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getAllCompanyUsers()
-        fetchCurrentUser()
+        //getAllCompanyUsers()
+        //fetchCurrentUser()
         fetchMentorships()
         
         DispatchQueue.main.async {
             self.activeArray = self.mentorList
-            self.tableView.reloadData()
         }
         
         //print(chats.count)
@@ -65,76 +69,8 @@ class NotifiactionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func getAllCompanyUsers() {
-        JSONConverter.getJSONResponse("users") { (workers, error) in
-            if let validError = error {
-                print(validError.localizedDescription)
-                return
-            }
-            
-            if let validWorkers = workers {
-                self.employees = JSONConverter.createObjects(validWorkers) as! [Employee]
-            }
-
-        }
-        
-    }
-
-    func fetchCurrentUser() {
-        JSONConverter.fetchCurrentUser { (user, error) in
-            if let validError = error {
-                print(validError.localizedDescription)
-            }
-            
-            //let jsonResponse = currentUser
-            if let validUser = user {
-                self.createUserDetails(validUser)
-
- 
-            }
-            
-            
-        }
-    }
-    
-    func createUserDetails(_ userJSON: [Any]) {
-        self.projects.removeAll()
-        for each in userJSON {
-            if let userInfo = each as? [String: Any] {
-                guard let id = userInfo["id"] as? Int else {return}
-                guard let jobTitle = userInfo["job_title"] as? String else {return}
-                guard let department = userInfo["department"] as? String else {return}
-                guard let firstName = userInfo["first_name"] as? String else {return}
-                guard let lastName = userInfo["last_name"] as? String else {return}
-                guard let email = userInfo["email"] as? String else {return}
-                guard let privateToken = userInfo["private_token"] as? String else {return}
-                
-                //Need to account for Profile Picture when STORAGE is ready
-                
-                currentUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
-                
-            }
-            
-            if let objects = each as? [[String: Any]] {
-                
-                for object in objects {
-                    if let desc = object["description"] as? String,
-                        let title = object["title"] as? String,
-                        let id = object["id"] as? Int,
-                        let status = object["status"] as? String {
-                        
-                        let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
-                        
-                        projects.append(newProj)
-                    } 
-                }
-            }
-            
-        }
-    }
-    
     func fetchMentorships() {
-        JSONConverter.getJSONResponse("mentorships/mentees") { (mentees, error) in
+        JSONConverter.getJSONResponse("mentorships/mentee") { (mentees, error) in
             if let err = error {
                 print(error?.localizedDescription)
             }
@@ -146,7 +82,7 @@ class NotifiactionViewController: UIViewController {
             }
         }
         
-        JSONConverter.getJSONResponse("mentorships/mentors") { (mentors, error) in
+        JSONConverter.getJSONResponse("mentorships/mentor") { (mentors, error) in
             if let err = error {
                 print(error?.localizedDescription)
             }
@@ -167,29 +103,31 @@ class NotifiactionViewController: UIViewController {
             if let firstName = each["first_name"] as? String,
                 let lastName = each["last_name"] as? String,
                 let mentorID = each[type] as? Int,
-                let status = each["request_approval"] as? String {
+                let subject = each["skill_name"] as? String,
+                let status = each["status"] as? String,
+                let profilePic = each["profile_picture"] as? String {
                 
                 if type == "mentor_id" {
-                    if status == "pending" {
-                        constructedMessage = "awaiting response for" + "subject" + "help"
+                    if status == "awaiting_acceptance" {
+                        constructedMessage = "awaiting response for" + subject + "help"
                     } else if status == "accepted" {
-                        constructedMessage = "is now your \("subject") mentor"
+                        constructedMessage = "is now your \(subject) mentor"
                     } else {
                         constructedMessage = "is too busy to help right now..."
                     }
                 }
                 
                 if type == "mentee_id" {
-                    if status == "pending" {
-                        constructedMessage = "is requesting \("subject") help."
+                    if status == "awaiting_acceptance" {
+                        constructedMessage = "is requesting \(subject) help."
                     } else if status == "accepted" {
-                        constructedMessage = "is now your \("subject") mentee"
+                        constructedMessage = "is now your \(subject) mentee"
                     } else {
                         constructedMessage = "you are too busy to help right now..."
                     }
                 }
                 
-                let mentorship = Mentorship(aUserID: mentorID, aMenteeFirst: firstName, aMenteeLast: lastName, aStatus: status, aSubject: "", aMessage: constructedMessage)
+                let mentorship = Mentorship(aUserID: mentorID, aMenteeFirst: firstName, aMenteeLast: lastName, aStatus: status, aSubject: profilePic, aMessage: constructedMessage)
                 
                 menteeMentorList.append(mentorship)
                 
@@ -230,10 +168,11 @@ extension NotifiactionViewController : UITableViewDataSource {
         let mentorMentee = activeArray[indexPath.row]
         
         if isMentor == true {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTableViewCell") as? InviteTableViewCell else {return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResponseTableViewCell") as? ResponseTableViewCell else {return UITableViewCell()}
             
             cell.nameLabel.text = mentorMentee.menteeFullName
-            cell.requestLabel.text = mentorMentee.message
+            cell.messageLabel.text = mentorMentee.message
+            cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: mentorMentee.subject)
             
             return cell
    
@@ -241,10 +180,48 @@ extension NotifiactionViewController : UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTableViewCell") as? InviteTableViewCell else {return UITableViewCell()}
         
+        cell.requestLabel.text = mentorMentee.message
+        cell.nameLabel.text = mentorMentee.menteeFullName
+        cell.delegate = self
+        cell.mentorship = mentorMentee
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: mentorMentee.subject)
+        
         
         return cell
         
     }
+    
+    func respondToRequest(_ mentorship: Mentorship, response: String) {
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        let menteeID = mentorship.userID
+        
+        let responseJSON : [String:Any]
+        responseJSON = ["mentee_id" : menteeID, "status" : response, "mentor_message" : ""]
+        
+        if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
+            
+            let url = URL(string: "http://192.168.1.114:3000/api/v1/mentorships/accept_mentee?private_token=\(validToken)")
+            var urlRequest = URLRequest(url: url!)
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpMethod = "POST"
+            urlRequest.httpBody = jsonData
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                
+                if let validError = error as NSError? {
+                    print(validError.localizedDescription)
+                    return
+                }
+                
+            }
+            
+            dataTask.resume()
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 extension NotifiactionViewController : UITableViewDelegate {
@@ -254,7 +231,7 @@ extension NotifiactionViewController : UITableViewDelegate {
         //vc.skill = skills[indexPath.row]
         //vc.viewType = .specificSkill
         
-        navigationController?.pushViewController(vc, animated: true)
+        //navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -311,5 +288,30 @@ extension NotifiactionViewController {
             print("Rejected")
         }
     }
+    
+}
+
+extension NotifiactionViewController : InviteViewCellDelegate {
+    
+    func sendAcceptToAPI(_ mentorship: Mentorship) {
+        respondToRequest(mentorship, response: "accepted")
+        fetchMentorships()
+        
+        DispatchQueue.main.async {
+            self.activeArray = self.menteeList
+            self.tableView.reloadData()
+        }
+    }
+    
+    func sendRejectToAPI(_ mentorship: Mentorship) {
+        respondToRequest(mentorship, response: "refused")
+        fetchMentorships()
+        
+        DispatchQueue.main.async {
+            self.activeArray = self.menteeList
+            self.tableView.reloadData()
+        }
+    }
+    
     
 }

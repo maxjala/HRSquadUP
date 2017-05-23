@@ -20,14 +20,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bgb-aT-sYN">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bgb-aT-sYN">
                         <rect key="frame" x="8" y="8" width="43.5" height="43.5"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="43.5" id="35P-Vo-Rki"/>
                             <constraint firstAttribute="width" secondItem="Bgb-aT-sYN" secondAttribute="height" multiplier="1:1" id="Iun-Fa-S1K"/>
+                            <constraint firstAttribute="width" constant="43.5" id="kJW-i2-SF2"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="DHx-aS-Pic">
-                        <rect key="frame" x="59.5" y="14" width="175" height="32.5"/>
+                        <rect key="frame" x="59.5" y="16" width="175" height="29"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Marcel Feil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9MC-cu-0BO">
                                 <rect key="frame" x="0.0" y="0.0" width="175" height="18"/>
@@ -36,11 +38,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="is now your Design mentee!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jo-yS-jOH">
-                                <rect key="frame" x="0.0" y="18" width="175" height="14.5"/>
+                                <rect key="frame" x="0.0" y="18" width="175" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="1ci-f9-f29"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="9"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
