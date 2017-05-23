@@ -204,9 +204,41 @@ class JSONConverter {
                 let jobTitle = each ["job_title"] as? String,
                 let email = each["email"] as? String,
                 let privateToken = each ["private_token"] as? String,
-                let department = each["department"] as? String {
+                let department = each["department"] as? String,
+                let pictureURL = each["profile_picture"] as? String {
                 
-                let employee = Employee(anID: employeeID, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
+                let employee = Employee(anID: employeeID, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken, aPictureURL: pictureURL)
+                //projects.append(project)
+                returnedArray.append(employee)
+                //return projects
+            }
+            
+            
+        }
+        
+        return returnedArray
+        
+    }
+    
+    static func createProjectMembers(_ jsonResponse: [[String : Any]]) -> [Employee] {
+        
+        var returnedArray : [Employee] = []
+        
+        for each in jsonResponse {
+            
+
+            //Create Employees
+            if let employeeID = each["id"] as? Int,
+                let firstName = each["first_name"] as? String,
+                let lastName = each["last_name"] as? String,
+                let jobTitle = each ["job_title"] as? String,
+                let email = each["email"] as? String,
+                let privateToken = each ["private_token"] as? String,
+                let department = each["department"] as? String,
+                let pictureURL = each["profile_picture"] as? [String:Any],
+                let url = pictureURL["url"] as? String {
+                
+                let employee = Employee(anID: employeeID, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken, aPictureURL: url)
                 //projects.append(project)
                 returnedArray.append(employee)
                 //return projects

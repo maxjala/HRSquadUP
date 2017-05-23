@@ -119,10 +119,11 @@ class BrowseTutorVC: UIViewController {
                 guard let email = userInfo["email"] as? String else {return}
                 guard let privateToken = userInfo["private_token"] as? String else {return}
                 guard let skillsArray = userInfo["skills_array"] as? [[String:Any]] else {return}
+                guard let pictureURL = userInfo["profile_picture"] as? String else {return}
                 
                 for aSkill in skillsArray {
                     if aSkill["skill_name"] as? String == skill?.skillName {
-                        let aUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
+                        let aUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken, aPictureURL: pictureURL)
                         
                         employees.append(aUser)
                     }
@@ -159,6 +160,7 @@ extension BrowseTutorVC : UITableViewDataSource {
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
         cell.departmentLabel.text = employee.department
+        cell.imageView?.loadImageUsingCacheWithUrlString(urlString: employee.pictureURL)
         
         return cell
     }

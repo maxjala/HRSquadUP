@@ -19,9 +19,10 @@ class Employee{
     var employeeID : Int = 0
     var fullName: String = ""
     var privateToken : String = ""
+    var pictureURL : String = ""
     
     
-    init(anID: Int, aJobTitle: String, aDepartment: String, aFirstName: String, aLastName: String, anEmail: String, aPrivateToken: String) {
+    init(anID: Int, aJobTitle: String, aDepartment: String, aFirstName: String, aLastName: String, anEmail: String, aPrivateToken: String, aPictureURL: String) {
     
         employeeID = anID
         jobTitle = aJobTitle
@@ -30,6 +31,7 @@ class Employee{
         lastName = aLastName
         email = anEmail
         privateToken = aPrivateToken
+        pictureURL = aPictureURL
         
         fullName = firstName + " " + lastName
         
