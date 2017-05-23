@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-6h-vFO">
@@ -84,6 +84,7 @@
                 <outlet property="departmentLabel" destination="X6t-xK-8q1" id="Rwv-hs-qdh"/>
                 <outlet property="jobTitleLabel" destination="2pZ-6h-vFO" id="v3N-4W-5Un"/>
                 <outlet property="nameLabel" destination="e5h-nr-SJW" id="DaH-Dr-U5p"/>
+                <outlet property="profileImageView" destination="1Dz-LF-kxp" id="fhH-SV-Mgs"/>
                 <outlet property="sendEmailButton" destination="RgA-Ue-u2j" id="beK-h9-6Fj"/>
             </connections>
             <point key="canvasLocation" x="34" y="62"/>
