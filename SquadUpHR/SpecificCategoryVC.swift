@@ -38,6 +38,7 @@ class SpecificCategoryVC: UIViewController {
     var category : SkillCategory?
     var skills: [Skill] = []
     var displayType : DisplayType = .companySkills
+    var enableContinue = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,17 +51,20 @@ class SpecificCategoryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBarHidden()
 
     }
     
     func configureDisplayType (_ type : DisplayType) {
         switch type {
         case .companySkills :
+            enableContinue = true
             
             configureCompany()
         case .userSkills:
             
             configureUser()
+            enableContinue = false
             break
             
         }
@@ -131,10 +135,14 @@ extension SpecificCategoryVC : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "BrowseTutorVC") as? BrowseTutorVC else {return}
         
-        vc.skill = skills[indexPath.row]
-        vc.viewType = .specificSkill
+        if enableContinue == true {
+            vc.skill = skills[indexPath.row]
+            vc.viewType = .specificSkill
+            
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
         
-       navigationController?.pushViewController(vc, animated: true)
     }
 }
 

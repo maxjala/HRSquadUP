@@ -62,6 +62,7 @@ class BrowseTutorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBarHidden()
     }
 
     

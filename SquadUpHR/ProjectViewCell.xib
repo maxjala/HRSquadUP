@@ -54,27 +54,35 @@
                                 <rect key="frame" x="0.0" y="54.5" width="320" height="19"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvJ-KQ-Efe">
-                                        <rect key="frame" x="8" y="0.0" width="49" height="17"/>
+                                        <rect key="frame" x="8" y="1" width="49" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="49" id="uZE-qb-jKu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="OPEN">
+                                        <state key="normal" title="Open">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="san-v6-TH7">
-                                        <rect key="frame" x="252" y="0.0" width="60" height="17"/>
+                                        <rect key="frame" x="252" y="1" width="60" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                         <color key="textColor" red="0.61508588590000002" green="0.8086258046" blue="0.69575325889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhC-v7-W2q">
-                                        <rect key="frame" x="210" y="0.0" width="40" height="17"/>
+                                        <rect key="frame" x="210" y="1" width="40" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-nm-HSc">
+                                        <rect key="frame" x="99" y="1" width="46" height="16"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Chat">
+                                            <color key="titleColor" red="1" green="0.61501736110000005" blue="0.52013888890000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.8341449058219178" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -118,6 +126,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="IXx-q3-dsG" id="kXD-aJ-pax"/>
                 <outlet property="detailView" destination="EbT-OM-M1b" id="JAE-ie-mI4"/>
+                <outlet property="openChatButton" destination="Cz1-nm-HSc" id="GTZ-oE-3xh"/>
                 <outlet property="openProjectButton" destination="qvJ-KQ-Efe" id="tAX-Uz-Qev"/>
                 <outlet property="openView" destination="ANp-z2-Ou3" id="YFA-Jc-NLv"/>
                 <outlet property="projectNameLabel" destination="1Oi-qb-yd0" id="vPn-yS-G8J"/>

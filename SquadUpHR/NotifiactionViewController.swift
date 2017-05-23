@@ -34,7 +34,7 @@ class NotifiactionViewController: UIViewController {
         }
     }
 
-    var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
+    var client = ActionCableClient(url: URL(string: "ws://192.168.1.53:3000/cable")!)
     
     var employees : [Employee] = []
     var projects : [Project] = []
@@ -63,6 +63,7 @@ class NotifiactionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationBarHidden()
     }
     
     func fetchMentorships() {
@@ -74,8 +75,6 @@ class NotifiactionViewController: UIViewController {
             if let validMentees = mentees {
                 DispatchQueue.main.async {
                     self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
-                    self.activeArray = self.mentorList
-                    self.tableView.reloadData()
                 }
             }
         }
@@ -88,6 +87,8 @@ class NotifiactionViewController: UIViewController {
             if let validMentors = mentors {
                 DispatchQueue.main.async {
                     self.mentorList = self.createMentorMenteeList(validMentors, type: "mentor_id")
+                    self.activeArray = self.mentorList
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -107,7 +108,7 @@ class NotifiactionViewController: UIViewController {
                 
                 if type == "mentor_id" {
                     if status == "awaiting_acceptance" {
-                        constructedMessage = "awaiting response for" + subject + "help..."
+                        constructedMessage = "awaiting response for " + subject + " help..."
                     } else if status == "accepted" {
                         constructedMessage = "is now your \(subject) mentor!"
                     } else {
@@ -198,7 +199,7 @@ extension NotifiactionViewController : UITableViewDataSource {
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
             
-            let url = URL(string: "http://192.168.1.114:3000/api/v1/mentorships/accept_mentee?private_token=\(validToken)")
+            let url = URL(string: "http://192.168.1.53:3000/api/v1/mentorships/accept_mentee?private_token=\(validToken)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"

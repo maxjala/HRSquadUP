@@ -33,7 +33,18 @@ class ProjectViewCell: UITableViewCell {
     
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    @IBOutlet weak var openProjectButton: UIButton!
+    @IBOutlet weak var openProjectButton: UIButton! {
+        didSet{
+            openProjectButton.addTarget(self, action: #selector(openProjectButonTapped), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var openChatButton: UIButton! {
+        didSet{
+            openChatButton.addTarget(self, action: #selector(openChatButonTapped), for: .touchUpInside)
+        }
+    }
+    
     
     @IBOutlet weak var statusLabel: UILabel!
     
@@ -58,6 +69,14 @@ class ProjectViewCell: UITableViewCell {
         if delegate != nil {
             if let _project = project {
                 delegate?.openProject(_project)
+            }
+        }
+    }
+    
+    func openChatButonTapped() {
+        if delegate != nil {
+            if let _project = project {
+                delegate?.openProjectChat(_project)
             }
         }
     }

@@ -35,6 +35,7 @@ class BrowseProjectsVC: UIViewController {
     var isExpanded = false
 
     var projects : [Project] = []
+    var currentUser : Employee?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,7 +46,17 @@ class BrowseProjectsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationBarHidden()
+
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
+    
     
     func configureProjectsView() {
         JSONConverter.fetchCurrentUser { (user, error) in
@@ -56,6 +67,8 @@ class BrowseProjectsVC: UIViewController {
             //let jsonResponse = currentUser
             if let validUser = user {
                 self.generateUserProjects(validUser)
+                self.createUserDetails(validUser)
+                
 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -102,6 +115,25 @@ class BrowseProjectsVC: UIViewController {
             
         }
     }
+    
+    func createUserDetails(_ userJSON: [Any]) {
+        for each in userJSON {
+            if let userInfo = each as? [String: Any] {
+                guard let id = userInfo["id"] as? Int else {return}
+                guard let jobTitle = userInfo["job_title"] as? String else {return}
+                guard let department = userInfo["department"] as? String else {return}
+                guard let firstName = userInfo["first_name"] as? String else {return}
+                guard let lastName = userInfo["last_name"] as? String else {return}
+                guard let email = userInfo["email"] as? String else {return}
+                guard let privateToken = userInfo["private_token"] as? String else {return}
+                guard let pictureURL = userInfo["profile_picture"] as? String else {return}
+
+                currentUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken, aPictureURL: pictureURL)
+                
+            }
+        }
+    }
+
 
 }
 
@@ -131,11 +163,30 @@ extension BrowseProjectsVC : UITableViewDataSource {
     func segueToProjectVC(_ project: Project) {
         let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
         projVC?.project = project 
-        //projVC?.currentUser = currentUser
+        projVC?.currentUser = currentUser
         navigationController?.pushViewController(projVC!, animated: true)
     }
     
     func segueToProjectChatVC(_ project: Project) {
+        JSONConverter.getJSONResponse("projects/\(project.projectId)") { (projectMembers, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            
+            let teamMates = JSONConverter.createProjectMembers(projectMembers!)
+            
+            DispatchQueue.main.async {
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController else {return}
+                
+                vc.project = project
+                vc.projectMembers = teamMates
+                vc.currentUser = self.currentUser
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
+        }
+
         
     }
     

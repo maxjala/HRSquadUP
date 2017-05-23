@@ -40,7 +40,7 @@ class ChatViewController: JSQMessagesViewController {
     var timer = Timer()
     var seconds = 0
     
-    var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
+    var client = ActionCableClient(url: URL(string: "ws://192.168.1.53:3000/cable")!)
     
     
     
@@ -110,7 +110,7 @@ class ChatViewController: JSQMessagesViewController {
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: messageDict, options: []) {
             
-            let url = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
+            let url = URL(string: "http://192.168.1.53:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"

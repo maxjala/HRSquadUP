@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //let username = "t.olson@nextacademy.com"
             //let password = "password"
         //192.168.1.114:3000/api/v1/sessions
-        let url = URL(string: "http://192.168.1.114:3000/api/v1/sessions")// need to check
+        let url = URL(string: "http://192.168.1.53:3000/api/v1/sessions")// need to check
         //let url = URL(string: "http://192.168.1.155:3000/api/v1/sessions")// need to check
         var urlRequest = URLRequest(url: url!)
         

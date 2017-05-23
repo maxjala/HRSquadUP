@@ -104,8 +104,10 @@ class ProfileViewController: UIViewController {
         setCollectionViewProperties()
         buttonShape()
         
-        self.navigationController?.navigationBar.isHidden = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+        navigationBarHidden()
+        
+        //self.navigationController?.navigationBar.isHidden = true
+        //navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
     func buttonShape(){
@@ -125,7 +127,7 @@ class ProfileViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        //navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func configuringProfileType (_ type : ProfileType) {

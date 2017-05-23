@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else{
                 let loginController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "IntroNavController")
                 window?.rootViewController = loginController
+                
             }
             self.window?.makeKeyAndVisible()
+        
         return true
     }
 
