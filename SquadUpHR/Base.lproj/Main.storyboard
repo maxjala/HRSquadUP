@@ -172,29 +172,40 @@
                                 <rect key="frame" x="0.0" y="141" width="376" height="21"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJ9-jv-u1z">
-                                        <rect key="frame" x="307" y="0.0" width="61" height="22"/>
+                                        <rect key="frame" x="235" y="0.0" width="61" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.093888019362381628" green="0.2872324111957652" blue="0.42798659402101791" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Projects">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ2-UJ-gm5">
-                                        <rect key="frame" x="199" y="0.0" width="50" height="21"/>
+                                        <rect key="frame" x="166" y="0.0" width="50" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.087234824598968655" green="0.2564226079609917" blue="0.38223129026780878" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Skills">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QA4-ZQ-uRJ">
+                                        <rect key="frame" x="314" y="0.0" width="61" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.09068218331365413" green="0.27742476987552189" blue="0.41337285671137325" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Log out">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.61508588590000002" green="0.8086258046" blue="0.69575325889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.50196078431372548" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEV-Tq-hXS">
                                 <rect key="frame" x="168" y="104" width="191" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                 <state key="normal" title="profile@nextacademy.com">
-                                    <color key="titleColor" red="0.61508588590000002" green="0.8086258046" blue="0.69575325889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.17123785614967346" green="0.5013243556022644" blue="0.73817592859268188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                         </subviews>
@@ -227,6 +238,7 @@
                         <outlet property="collectionView" destination="htw-hW-mTt" id="uLI-6r-1Nr"/>
                         <outlet property="emailButton" destination="AEV-Tq-hXS" id="vVA-dB-qBW"/>
                         <outlet property="jobTitleLabel" destination="85q-qD-UiA" id="jQo-20-e9H"/>
+                        <outlet property="logoutButton" destination="QA4-ZQ-uRJ" id="mJ2-93-5FI"/>
                         <outlet property="nameLabel" destination="v61-Hj-SAA" id="r44-MJ-Kcg"/>
                         <outlet property="profileImageView" destination="Ghp-iv-ihK" id="Eb7-Tn-orK"/>
                         <outlet property="projectsButton" destination="fJ9-jv-u1z" id="L8b-61-b1d"/>
@@ -652,7 +664,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="dXC-jW-ucM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="SWo-qO-56V"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Owe-nS-AyI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Owe-nS-AyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -671,7 +683,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Vab-R6-LYn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Projects" image="project" id="scL-bH-bXv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QqJ-Nb-wgo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QqJ-Nb-wgo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -690,7 +702,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kti-pR-Rsz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Connect" image="connect1" id="x0b-yJ-cx8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="czR-gp-rJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="czR-gp-rJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -709,7 +721,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="54x-0C-IxN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="book" id="zQw-Ug-eBM"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSK-KH-QLs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RSK-KH-QLs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -728,7 +740,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="3Rw-oW-FaT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="rrB-iL-jJe"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pLc-0C-Ehd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pLc-0C-Ehd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
