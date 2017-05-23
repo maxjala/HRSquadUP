@@ -44,6 +44,9 @@
 		7A1803421ECD83AF008A7F50 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1803411ECD83AF008A7F50 /* Login.storyboard */; };
 		7A1803441ECD8725008A7F50 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1803431ECD8725008A7F50 /* LoginViewController.swift */; };
 		7A1B4DF81ECD99B300678E19 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B4DF71ECD99B300678E19 /* Chat.swift */; };
+		7AD91E861ED3E05C007127AE /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD91E851ED3E05C007127AE /* BeginViewController.swift */; };
+		7AD91E891ED3E5FE007127AE /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */; };
+		7AD91E8B1ED3E63D007127AE /* Yellowtail-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */; };
 		7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */; };
 		7ADDC47D1ECB1B9700796170 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47C1ECB1B9700796170 /* Experience.swift */; };
 		7ADDC47F1ECB1BA000796170 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47E1ECB1BA000796170 /* Project.swift */; };
@@ -91,6 +94,9 @@
 		7A1803411ECD83AF008A7F50 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		7A1803431ECD8725008A7F50 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7A1B4DF71ECD99B300678E19 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		7AD91E851ED3E05C007127AE /* BeginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
+		7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yellowtail-Regular.ttf"; sourceTree = "<group>"; };
 		7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7ADDC47C1ECB1B9700796170 /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		7ADDC47E1ECB1BA000796170 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 		1AB2790D1ECAACDD00C6F02B /* SquadUpHR */ = {
 			isa = PBXGroup;
 			children = (
+				7AD91E871ED3E5E0007127AE /* Fonts */,
 				1AB2790E1ECAACDD00C6F02B /* AppDelegate.swift */,
 				7AAB937F1ECAB6BB007FFE1A /* Models */,
 				7AAB937E1ECAB6B4007FFE1A /* Views */,
@@ -141,6 +148,7 @@
 				7AAB937D1ECAB6A8007FFE1A /* Controllers */,
 				1AB279121ECAACDD00C6F02B /* Main.storyboard */,
 				7A1803411ECD83AF008A7F50 /* Login.storyboard */,
+				7AD91E851ED3E05C007127AE /* BeginViewController.swift */,
 				7A1803431ECD8725008A7F50 /* LoginViewController.swift */,
 				1AB279151ECAACDD00C6F02B /* Assets.xcassets */,
 				1AB279171ECAACDD00C6F02B /* LaunchScreen.storyboard */,
@@ -209,6 +217,15 @@
 				1A042F371ECC27C600BC4435 /* JSONConverter.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7AD91E871ED3E5E0007127AE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */,
+				7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		8BD3F74664C36006572F0848 /* Frameworks */ = {
@@ -291,12 +308,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AD91E891ED3E5FE007127AE /* OpenSans-Light.ttf in Resources */,
 				1AE3DC941ED2A3290084B4EF /* ChatPreviewViewCell.xib in Resources */,
 				1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */,
 				1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */,
 				1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */,
 				1A658C1A1ED3DABE00ECF8CC /* ResponseTableViewCell.xib in Resources */,
 				1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */,
+				7AD91E8B1ED3E63D007127AE /* Yellowtail-Regular.ttf in Resources */,
 				1A3597101ED005C40059C8E8 /* GoogleService-Info.plist in Resources */,
 				1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */,
 				1A8D02711ECD3EF400FE6912 /* ProjectViewCell.xib in Resources */,
@@ -385,6 +404,7 @@
 				1AE3DC961ED307CD0084B4EF /* Mentorship.swift in Sources */,
 				7A18033C1ECD818D008A7F50 /* ChatViewController.swift in Sources */,
 				1AB550AD1ECDB5D500CCE732 /* Skill.swift in Sources */,
+				7AD91E861ED3E05C007127AE /* BeginViewController.swift in Sources */,
 				1A8D02701ECD3EF400FE6912 /* ProjectViewCell.swift in Sources */,
 				1A81F71A1ECAF6C30009C4C5 /* SkillCategory.swift in Sources */,
 				1AA657B71ECB40FE00A46378 /* SkillTableViewCell.swift in Sources */,
