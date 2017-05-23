@@ -120,10 +120,23 @@ extension BrowseProjectsVC : UITableViewDataSource {
         
         cell.projectNameLabel.text = project.projectTitle
         cell.descriptionLabel.text = project.projectDesc
+        cell.delegate = self
+        cell.project = project
     
         
         
         return cell
+    }
+    
+    func segueToProjectVC(_ project: Project) {
+        let projVC = storyboard?.instantiateViewController(withIdentifier: "ProjectViewController") as? ProjectViewController
+        projVC?.project = project 
+        //projVC?.currentUser = currentUser
+        navigationController?.pushViewController(projVC!, animated: true)
+    }
+    
+    func segueToProjectChatVC(_ project: Project) {
+        
     }
     
 
@@ -133,7 +146,7 @@ extension BrowseProjectsVC : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded && self.selectedIndex == indexPath {
-            return 182
+            return 102
         }
         return 30
     }
@@ -150,4 +163,13 @@ extension BrowseProjectsVC : UITableViewDelegate {
         tableView.scrollToRow(at: selectedIndex!, at: .bottom, animated: true)
     }
     
+}
+
+extension BrowseProjectsVC: ProjectRoleViewCellDelegate {
+    func openProject(_ project: Project) {
+        segueToProjectVC(project)
+    }
+    func openProjectChat(_ project: Project) {
+        segueToProjectChatVC(project)
+    }
 }

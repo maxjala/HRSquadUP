@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol ProjectRoleViewCellDelegate {
+    func openProject(_ project: Project)
+    func openProjectChat(_ project: Project)
+}
+
 class ProjectViewCell: UITableViewCell {
+    
+    var project : Project?
+    var delegate : ProjectRoleViewCellDelegate? = nil
     
     @IBOutlet weak var openView: UIView!
     
@@ -46,22 +54,12 @@ class ProjectViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func animate(duration:Double, c: @escaping () -> Void) {
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModePaced, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: duration, animations: {
-                
-                self.detailView.isHidden = !self.detailView.isHidden
-                if self.detailView.alpha == 1 {
-                    self.detailView.alpha = 0.5
-                } else {
-                    self.detailView.alpha = 1
-                }
-                
-            })
-        }, completion: {  (finished: Bool) in
-            print("animation complete")
-            c()
-        })
+    func openProjectButonTapped() {
+        if delegate != nil {
+            if let _project = project {
+                delegate?.openProject(_project)
+            }
+        }
     }
 }
 
