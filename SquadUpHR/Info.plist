@@ -45,6 +45,8 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Semibold.ttf</string>
 		<string>Yellowtail-Regular.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 	</array>
