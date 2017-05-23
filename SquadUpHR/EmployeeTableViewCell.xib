@@ -19,13 +19,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+<<<<<<< HEAD
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-Ue-u2j">
                         <rect key="frame" x="245" y="19" width="67" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="67" id="yV2-Fs-bS9"/>
+=======
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-6h-vFO">
+                        <rect key="frame" x="66" y="29" width="84" height="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-Ue-u2j">
+                        <rect key="frame" x="243" y="19" width="74" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="74" id="672-iN-IVj"/>
+>>>>>>> chatpart
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="Send Email">
+                        <state key="normal" image="mail">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -36,6 +48,7 @@
                             <constraint firstAttribute="height" constant="45" id="miN-zo-HJO"/>
                         </constraints>
                     </imageView>
+<<<<<<< HEAD
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4FC-EA-Kud">
                         <rect key="frame" x="61" y="15" width="176" height="42"/>
                         <subviews>
@@ -73,6 +86,43 @@
                     <constraint firstItem="4FC-EA-Kud" firstAttribute="leading" secondItem="1Dz-LF-kxp" secondAttribute="trailing" constant="8" id="i51-3d-ygn"/>
                     <constraint firstItem="4FC-EA-Kud" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="s9Q-aD-dd2"/>
                     <constraint firstItem="RgA-Ue-u2j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="xjC-aS-HF6"/>
+=======
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Jala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-nr-SJW">
+                        <rect key="frame" x="66" y="8" width="72" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-xK-8q1">
+                        <rect key="frame" x="66" y="44" width="63" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Help" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfL-1L-DkV">
+                        <rect key="frame" x="243" y="49" width="74" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jfL-1L-DkV" firstAttribute="top" secondItem="RgA-Ue-u2j" secondAttribute="bottom" id="0ma-18-OD5"/>
+                    <constraint firstItem="e5h-nr-SJW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="21G-wb-CjE"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="leading" secondItem="jfL-1L-DkV" secondAttribute="leading" id="7YO-Re-WDu"/>
+                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Bxj-7w-qIj"/>
+                    <constraint firstItem="e5h-nr-SJW" firstAttribute="leading" secondItem="X6t-xK-8q1" secondAttribute="leading" id="O65-L8-yNY"/>
+                    <constraint firstItem="2pZ-6h-vFO" firstAttribute="top" secondItem="e5h-nr-SJW" secondAttribute="bottom" id="Wen-9b-yvs"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Zgj-tq-2jG"/>
+                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dMT-fb-QNP"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="g6o-08-wCX"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="trailing" secondItem="jfL-1L-DkV" secondAttribute="trailing" id="ges-le-d75"/>
+                    <constraint firstItem="X6t-xK-8q1" firstAttribute="top" secondItem="2pZ-6h-vFO" secondAttribute="bottom" id="hVh-Q8-Fnr"/>
+                    <constraint firstAttribute="bottom" secondItem="1Dz-LF-kxp" secondAttribute="bottom" constant="11" id="lps-bl-HOq"/>
+                    <constraint firstItem="e5h-nr-SJW" firstAttribute="leading" secondItem="2pZ-6h-vFO" secondAttribute="leading" id="qC0-we-CNk"/>
+                    <constraint firstItem="2pZ-6h-vFO" firstAttribute="leading" secondItem="1Dz-LF-kxp" secondAttribute="trailing" constant="8" id="sh2-ou-2ID"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="RgA-Ue-u2j" secondAttribute="trailing" constant="-5" id="vaZ-35-4zl"/>
+>>>>>>> chatpart
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -86,6 +136,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="mail" width="32" height="32"/>
         <image name="managers" width="2859" height="2859"/>
     </resources>
 </document>
