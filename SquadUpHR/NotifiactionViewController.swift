@@ -54,10 +54,6 @@ class NotifiactionViewController: UIViewController {
         //fetchCurrentUser()
         fetchMentorships()
         
-        DispatchQueue.main.async {
-            self.activeArray = self.mentorList
-        }
-        
         //print(chats.count)
         
         
@@ -78,6 +74,8 @@ class NotifiactionViewController: UIViewController {
             if let validMentees = mentees {
                 DispatchQueue.main.async {
                     self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
+                    self.activeArray = self.mentorList
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -109,9 +107,9 @@ class NotifiactionViewController: UIViewController {
                 
                 if type == "mentor_id" {
                     if status == "awaiting_acceptance" {
-                        constructedMessage = "awaiting response for" + subject + "help"
+                        constructedMessage = "awaiting response for" + subject + "help..."
                     } else if status == "accepted" {
-                        constructedMessage = "is now your \(subject) mentor"
+                        constructedMessage = "is now your \(subject) mentor!"
                     } else {
                         constructedMessage = "is too busy to help right now..."
                     }
@@ -121,7 +119,7 @@ class NotifiactionViewController: UIViewController {
                     if status == "awaiting_acceptance" {
                         constructedMessage = "is requesting \(subject) help."
                     } else if status == "accepted" {
-                        constructedMessage = "is now your \(subject) mentee"
+                        constructedMessage = "is now your \(subject) mentee!"
                     } else {
                         constructedMessage = "you are too busy to help right now..."
                     }

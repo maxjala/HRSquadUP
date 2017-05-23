@@ -33,6 +33,8 @@ class BrowseTutorVC: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.register(EmployeeTableViewCell.cellNib, forCellReuseIdentifier: EmployeeTableViewCell.cellIdentifier)
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 70
         }
     }
     
@@ -160,7 +162,7 @@ extension BrowseTutorVC : UITableViewDataSource {
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
         cell.departmentLabel.text = employee.department
-        cell.imageView?.loadImageUsingCacheWithUrlString(urlString: employee.pictureURL)
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: employee.pictureURL)
         
         return cell
     }

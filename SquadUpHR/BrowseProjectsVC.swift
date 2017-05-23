@@ -78,16 +78,25 @@ class BrowseProjectsVC: UIViewController {
                     if let desc = object["description"] as? String,
                         let title = object["title"] as? String,
                         let id = object["id"] as? Int,
-                        let status = object["status"] as? String {
+                        let status = object["status"] as? String,
+                        let skills = object["skills_array"] as? [[String:Any]] {
                         
-                        let newProj = Project(anID: id, aUserID: 0, aStatus: status, aTitle: title, aDesc: desc)
+                        var skillsArray : [String] = []
+                        
+                        for skill in skills {
+                            guard let skillName = skill["skill_name"] as? String else {return}
+                            skillsArray.append(skillName)
+                            
+                        }
+                        
+                        let newProj = Project(anID: id, aSkillsArray: skillsArray, aStatus: status, aTitle: title, aDesc: desc)
                         
                         projects.append(newProj)
                     }
                     
                 }
             }
-            
+        
             
             
             

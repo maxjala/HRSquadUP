@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,19 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-6h-vFO">
-                        <rect key="frame" x="66" y="29" width="84" height="15"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgA-Ue-u2j">
-                        <rect key="frame" x="245" y="19" width="67" height="30"/>
+                        <rect key="frame" x="245" y="19" width="67" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="vVn-FK-OBT"/>
+                            <constraint firstAttribute="width" constant="67" id="yV2-Fs-bS9"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="Send Email">
@@ -37,45 +30,56 @@
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managers" translatesAutoresizingMaskIntoConstraints="NO" id="1Dz-LF-kxp">
-                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <rect key="frame" x="8" y="11.5" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="1Dz-LF-kxp" secondAttribute="height" multiplier="1:1" id="Lcq-hQ-Yv1"/>
-                            <constraint firstAttribute="width" constant="50" id="bOO-L6-jQh"/>
-                            <constraint firstAttribute="height" constant="50" id="cIa-H6-HOQ"/>
+                            <constraint firstAttribute="width" constant="45" id="gHD-ap-liC"/>
+                            <constraint firstAttribute="height" constant="45" id="miN-zo-HJO"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Jala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-nr-SJW">
-                        <rect key="frame" x="66" y="8" width="72" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-xK-8q1">
-                        <rect key="frame" x="66" y="44" width="63" height="14"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4FC-EA-Kud">
+                        <rect key="frame" x="61" y="15" width="176" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Jala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5h-nr-SJW">
+                                <rect key="frame" x="0.0" y="0.0" width="176" height="14"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-6h-vFO">
+                                <rect key="frame" x="0.0" y="14" width="176" height="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6t-xK-8q1">
+                                <rect key="frame" x="0.0" y="28" width="176" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="X6t-xK-8q1" firstAttribute="top" secondItem="e5h-nr-SJW" secondAttribute="bottom" constant="14" id="e71-Q2-6v9"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="e5h-nr-SJW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="21G-wb-CjE"/>
-                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Bxj-7w-qIj"/>
-                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="Fut-92-ZMe"/>
-                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2pZ-6h-vFO" secondAttribute="trailing" constant="95" id="Nmh-Ub-BEY"/>
-                    <constraint firstItem="e5h-nr-SJW" firstAttribute="leading" secondItem="X6t-xK-8q1" secondAttribute="leading" id="O65-L8-yNY"/>
-                    <constraint firstItem="2pZ-6h-vFO" firstAttribute="top" secondItem="e5h-nr-SJW" secondAttribute="bottom" id="Wen-9b-yvs"/>
-                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dMT-fb-QNP"/>
-                    <constraint firstItem="X6t-xK-8q1" firstAttribute="top" secondItem="2pZ-6h-vFO" secondAttribute="bottom" id="hVh-Q8-Fnr"/>
-                    <constraint firstAttribute="bottom" secondItem="1Dz-LF-kxp" secondAttribute="bottom" constant="11" id="lps-bl-HOq"/>
-                    <constraint firstItem="e5h-nr-SJW" firstAttribute="leading" secondItem="2pZ-6h-vFO" secondAttribute="leading" id="qC0-we-CNk"/>
-                    <constraint firstAttribute="trailing" secondItem="RgA-Ue-u2j" secondAttribute="trailing" constant="8" id="rCs-Dq-b9p"/>
-                    <constraint firstItem="2pZ-6h-vFO" firstAttribute="leading" secondItem="1Dz-LF-kxp" secondAttribute="trailing" constant="8" id="sh2-ou-2ID"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="leading" secondItem="4FC-EA-Kud" secondAttribute="trailing" constant="8" id="Mst-Zo-PcT"/>
+                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="U6n-gb-bJ7"/>
+                    <constraint firstItem="4FC-EA-Kud" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="WD0-hf-d1E"/>
+                    <constraint firstItem="1Dz-LF-kxp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ehl-B5-FAv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RgA-Ue-u2j" secondAttribute="bottom" constant="12.5" id="gcr-vl-P0m"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="glg-Um-rVe"/>
+                    <constraint firstItem="4FC-EA-Kud" firstAttribute="leading" secondItem="1Dz-LF-kxp" secondAttribute="trailing" constant="8" id="i51-3d-ygn"/>
+                    <constraint firstItem="4FC-EA-Kud" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="s9Q-aD-dd2"/>
+                    <constraint firstItem="RgA-Ue-u2j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="xjC-aS-HF6"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="departmentLabel" destination="X6t-xK-8q1" id="Rwv-hs-qdh"/>
                 <outlet property="jobTitleLabel" destination="2pZ-6h-vFO" id="v3N-4W-5Un"/>
                 <outlet property="nameLabel" destination="e5h-nr-SJW" id="DaH-Dr-U5p"/>
+                <outlet property="profileImageView" destination="1Dz-LF-kxp" id="n4J-08-Fzz"/>
                 <outlet property="sendEmailButton" destination="RgA-Ue-u2j" id="beK-h9-6Fj"/>
             </connections>
             <point key="canvasLocation" x="34" y="62"/>

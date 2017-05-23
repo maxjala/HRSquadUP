@@ -14,10 +14,12 @@ class Project {
     var status: String = ""
     var projectTitle: String = ""
     var projectDesc: String = ""
+    var skillsArray: [String] = []
     
-    init(anID: Int, aUserID: Int, aStatus: String, aTitle: String, aDesc: String) {
+    
+    init(anID: Int, aSkillsArray: [String], aStatus: String, aTitle: String, aDesc: String) {
         projectId = anID
-        userId = aUserID
+        skillsArray = aSkillsArray
         status = aStatus
         projectTitle = aTitle
         projectDesc = aDesc

@@ -21,6 +21,14 @@ class EmployeeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var departmentLabel: UILabel!
     
+    @IBOutlet weak var profileImageView: UIImageView! {
+        didSet{
+            profileImageView.layer.cornerRadius = profileImageView.frame.width/2
+            profileImageView.layer.masksToBounds = true
+        }
+    }
+    
+    
     static let cellIdentifier = "EmployeeTableViewCell"
     static let cellNib = UINib(nibName: EmployeeTableViewCell.cellIdentifier, bundle: Bundle.main)
     
