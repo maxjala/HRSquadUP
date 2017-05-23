@@ -23,6 +23,9 @@ class NotifiactionViewController: UIViewController {
             tableView.dataSource = self
             //tableView.register(ChatPreviewViewCell.cellNib, forCellReuseIdentifier: ChatPreviewViewCell.cellIdentifier)
             tableView.register(InviteTableViewCell.cellNib, forCellReuseIdentifier: InviteTableViewCell.cellIdentifier)
+            
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 60
         }
     }
 
@@ -36,6 +39,8 @@ class NotifiactionViewController: UIViewController {
     var mentorList : [Mentorship] = []
     var menteeList : [Mentorship] = []
     var activeArray : [Mentorship] = []
+    
+    var isMentor = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -135,8 +140,9 @@ class NotifiactionViewController: UIViewController {
             }
             
             if let validMentees = mentees {
-                self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
-
+                DispatchQueue.main.async {
+                    self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
+                }
             }
         }
         
@@ -146,13 +152,16 @@ class NotifiactionViewController: UIViewController {
             }
             
             if let validMentors = mentors {
-                self.mentorList = self.createMentorMenteeList(validMentors, type: "mentor_id")
+                DispatchQueue.main.async {
+                    self.mentorList = self.createMentorMenteeList(validMentors, type: "mentor_id")
+                }
             }
         }
     }
     
     func createMentorMenteeList(_ mentors: [[String:Any]], type: String) -> [Mentorship] {
         var menteeMentorList : [Mentorship] = []
+        var constructedMessage = ""
         
         for each in mentors {
             if let firstName = each["first_name"] as? String,
@@ -160,7 +169,27 @@ class NotifiactionViewController: UIViewController {
                 let mentorID = each[type] as? Int,
                 let status = each["request_approval"] as? String {
                 
-                let mentorship = Mentorship(aUserID: mentorID, aMenteeFirst: firstName, aMenteeLast: lastName, aStatus: status, aSubject: "")
+                if type == "mentor_id" {
+                    if status == "pending" {
+                        constructedMessage = "awaiting response for" + "subject" + "help"
+                    } else if status == "accepted" {
+                        constructedMessage = "is now your \("subject") mentor"
+                    } else {
+                        constructedMessage = "is too busy to help right now..."
+                    }
+                }
+                
+                if type == "mentee_id" {
+                    if status == "pending" {
+                        constructedMessage = "is requesting \("subject") help."
+                    } else if status == "accepted" {
+                        constructedMessage = "is now your \("subject") mentee"
+                    } else {
+                        constructedMessage = "you are too busy to help right now..."
+                    }
+                }
+                
+                let mentorship = Mentorship(aUserID: mentorID, aMenteeFirst: firstName, aMenteeLast: lastName, aStatus: status, aSubject: "", aMessage: constructedMessage)
                 
                 menteeMentorList.append(mentorship)
                 
@@ -173,15 +202,13 @@ class NotifiactionViewController: UIViewController {
 
 
     func mentorInvitesSegmentTapped() {
-        //activeArray = userCategories
-        //collectionView.reloadData()
         activeArray = mentorList
+        isMentor = true
         tableView.reloadData()
     }
     
     func menteeInvitesSegmentTapped() {
-        //activeArray = projects
-        //collectionView.reloadData()
+        isMentor = false
         activeArray = menteeList
         tableView.reloadData()
     }
@@ -195,18 +222,24 @@ class NotifiactionViewController: UIViewController {
 
 extension NotifiactionViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chats.count
+        return activeArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPreviewViewCell") as? ChatPreviewViewCell else {return UITableViewCell()}
-        //cell.skillLabel.text = skills[indexPath.row]
-        //cell.skillLabel.textColor = category?.color
-        //cell.skillLabel.alpha = 0.8
-        let lastMessage = chats[indexPath.row].userName + ": " + chats[indexPath.row].body
         
-        cell.lastMessageLabel.text = lastMessage
-        //cell.projectNameLabel.text =
+        let mentorMentee = activeArray[indexPath.row]
+        
+        if isMentor == true {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTableViewCell") as? InviteTableViewCell else {return UITableViewCell()}
+            
+            cell.nameLabel.text = mentorMentee.menteeFullName
+            cell.requestLabel.text = mentorMentee.message
+            
+            return cell
+   
+        }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTableViewCell") as? InviteTableViewCell else {return UITableViewCell()}
         
         
         return cell

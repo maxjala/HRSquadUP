@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1A042F381ECC27C600BC4435 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A042F371ECC27C600BC4435 /* JSONConverter.swift */; };
 		1A3597101ED005C40059C8E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A35970F1ED005C40059C8E8 /* GoogleService-Info.plist */; };
+		1A658C191ED3DABE00ECF8CC /* ResponseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A658C171ED3DABE00ECF8CC /* ResponseTableViewCell.swift */; };
+		1A658C1A1ED3DABE00ECF8CC /* ResponseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A658C181ED3DABE00ECF8CC /* ResponseTableViewCell.xib */; };
 		1A81F71A1ECAF6C30009C4C5 /* SkillCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81F7161ECAF6C30009C4C5 /* SkillCategory.swift */; };
 		1A81F71B1ECAF6C30009C4C5 /* SkillCategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81F7171ECAF6C30009C4C5 /* SkillCategoryViewCell.swift */; };
 		1A81F71F1ECAF72B0009C4C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81F71E1ECAF72B0009C4C5 /* ViewController.swift */; };
@@ -55,6 +57,8 @@
 		1784A2674E4C5D7A5F5F74D9 /* Pods-SquadUpHR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SquadUpHR.release.xcconfig"; path = "Pods/Target Support Files/Pods-SquadUpHR/Pods-SquadUpHR.release.xcconfig"; sourceTree = "<group>"; };
 		1A042F371ECC27C600BC4435 /* JSONConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		1A35970F1ED005C40059C8E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1A658C171ED3DABE00ECF8CC /* ResponseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseTableViewCell.swift; sourceTree = "<group>"; };
+		1A658C181ED3DABE00ECF8CC /* ResponseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResponseTableViewCell.xib; sourceTree = "<group>"; };
 		1A81F7161ECAF6C30009C4C5 /* SkillCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCategory.swift; sourceTree = "<group>"; };
 		1A81F7171ECAF6C30009C4C5 /* SkillCategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCategoryViewCell.swift; sourceTree = "<group>"; };
 		1A81F71E1ECAF72B0009C4C5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				7ADDC4821ECC293300796170 /* TeamCollectionViewCell.swift */,
 				1AE3DC8D1ED29CB30084B4EF /* InviteTableViewCell.swift */,
 				1AE3DC8E1ED29CB30084B4EF /* InviteTableViewCell.xib */,
+				1A658C171ED3DABE00ECF8CC /* ResponseTableViewCell.swift */,
+				1A658C181ED3DABE00ECF8CC /* ResponseTableViewCell.xib */,
 				1AE3DC911ED2A3290084B4EF /* ChatPreviewViewCell.swift */,
 				1AE3DC921ED2A3290084B4EF /* ChatPreviewViewCell.xib */,
 			);
@@ -289,6 +295,7 @@
 				1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */,
 				1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */,
 				1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */,
+				1A658C1A1ED3DABE00ECF8CC /* ResponseTableViewCell.xib in Resources */,
 				1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */,
 				1A3597101ED005C40059C8E8 /* GoogleService-Info.plist in Resources */,
 				1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */,
@@ -361,6 +368,7 @@
 				1AB2790F1ECAACDD00C6F02B /* AppDelegate.swift in Sources */,
 				7ADDC47D1ECB1B9700796170 /* Experience.swift in Sources */,
 				7ADDC4831ECC293300796170 /* TeamCollectionViewCell.swift in Sources */,
+				1A658C191ED3DABE00ECF8CC /* ResponseTableViewCell.swift in Sources */,
 				1AE3DC8C1ED29C0C0084B4EF /* NotifiactionViewController.swift in Sources */,
 				1AE3DC931ED2A3290084B4EF /* ChatPreviewViewCell.swift in Sources */,
 				1A8D02671ECD3AF100FE6912 /* BrowseProjectsVC.swift in Sources */,

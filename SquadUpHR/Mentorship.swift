@@ -17,8 +17,9 @@ class Mentorship {
     var menteeFullName: String = ""
     var status: String = ""
     var subject: String = ""
+    var message: String = ""
     
-    init(aUserID: Int, aMenteeFirst: String, aMenteeLast: String, aStatus: String, aSubject: String) {
+    init(aUserID: Int, aMenteeFirst: String, aMenteeLast: String, aStatus: String, aSubject: String, aMessage: String) {
         menteeFirstName = aMenteeFirst
         menteeLastName = aMenteeLast
         menteeFullName = aMenteeFirst + aMenteeLast
@@ -27,6 +28,7 @@ class Mentorship {
 
         subject = aSubject
         status = aStatus
+        message = aMessage
         
     }
     

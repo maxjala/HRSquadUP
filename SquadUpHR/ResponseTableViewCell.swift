@@ -1,42 +1,23 @@
 //
-//  InviteTableViewCell.swift
+//  ResponseTableViewCell.swift
 //  SquadUpHR
 //
-//  Created by Max Jala on 22/05/2017.
+//  Created by Max Jala on 23/05/2017.
 //  Copyright © 2017 Max Jala. All rights reserved.
 //
 
 import UIKit
 
-class InviteTableViewCell: UITableViewCell {
+class ResponseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var requestLabel: UILabel!
-    
-    @IBOutlet weak var responseLabel: UILabel!
-    
-    @IBOutlet weak var acceptButton: UIButton! {
-        didSet{
-            
-        }
-    }
-    
-    @IBOutlet weak var rejectButton: UIButton! {
-        didSet{
-            
-        }
-    }
+    @IBOutlet weak var messageLabel: UILabel!
     
     static let cellIdentifier = "InviteTableViewCell"
     static let cellNib = UINib(nibName: InviteTableViewCell.cellIdentifier, bundle: Bundle.main)
-    
-    
-    
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
