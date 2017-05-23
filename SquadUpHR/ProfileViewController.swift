@@ -52,6 +52,11 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var logoutButton: UIButton!{
+        didSet{
+            logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        }
+    }
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet{
             collectionView.dataSource = self
@@ -121,6 +126,9 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func logout(){
+    
+    }
     
     func configureMyProfile() {
         JSONConverter.fetchCurrentUser { (user, error) in
