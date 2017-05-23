@@ -165,6 +165,7 @@ class ProfileViewController: UIViewController {
                     self.collectionView.reloadData()
                     self.nameLabel.text = self.currentUser?.fullName
                     self.jobTitleLabel.text = self.currentUser?.jobTitle
+                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: (self.currentUser?.pictureURL)!)
                     self.emailButton.setTitle(self.currentUser?.email, for: .normal)
                 }
             }
@@ -189,6 +190,7 @@ class ProfileViewController: UIViewController {
                     self.collectionView.reloadData()
                     self.nameLabel.text = self.currentUser?.fullName
                     self.jobTitleLabel.text = self.currentUser?.jobTitle
+                    self.profileImageView.loadImageUsingCacheWithUrlString(urlString: (self.currentUser?.pictureURL)!)
                     self.emailButton.setTitle(self.currentUser?.email, for: .normal)
                 }
             }
@@ -209,10 +211,11 @@ class ProfileViewController: UIViewController {
                 guard let lastName = userInfo["last_name"] as? String else {return}
                 guard let email = userInfo["email"] as? String else {return}
                 guard let privateToken = userInfo["private_token"] as? String else {return}
+                guard let pictureURL = userInfo["profile_picture"] as? String else {return}
                 
                 //Need to account for Profile Picture when STORAGE is ready
                 
-                currentUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken)
+                currentUser = Employee(anID: id, aJobTitle: jobTitle, aDepartment: department, aFirstName: firstName, aLastName: lastName, anEmail: email, aPrivateToken: privateToken, aPictureURL: pictureURL)
                 
             }
             

@@ -56,11 +56,11 @@ class ProjectViewController: UIViewController {
                 print(err.localizedDescription)
             }
             
-            self.teamMates = JSONConverter.createObjects(projectMembers!) as! [Employee]
+            self.teamMates = JSONConverter.createProjectMembers(projectMembers!)
             
             DispatchQueue.main.async {
                 self.projectNameLabel.text = proj.projectTitle
-                self.projectNameLabel.text = proj.projectDesc
+                self.descriptionLabel.text = proj.projectDesc
                 self.collectionView.reloadData()
             }
         }
@@ -127,7 +127,7 @@ extension ProjectViewController: UICollectionViewDataSource{
         //cell.backgroundColor = colorArray[Int(arc4random_uniform(UInt32(colorArray.count)))]
         cell.backgroundColor = colorArray[indexPath.row]
         cell.nameLabel.text = employee.fullName
-        //cell.roleLabel.text =
+        cell.profileImageView.loadImageUsingCacheWithUrlString(urlString: employee.pictureURL)
         
         return cell
         
