@@ -48,6 +48,8 @@
 		7AD91E861ED3E05C007127AE /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD91E851ED3E05C007127AE /* BeginViewController.swift */; };
 		7AD91E891ED3E5FE007127AE /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */; };
 		7AD91E8B1ED3E63D007127AE /* Yellowtail-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */; };
+		7AD91E8D1ED41144007127AE /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E8C1ED41144007127AE /* OpenSans-Semibold.ttf */; };
+		7AD91E8F1ED4114D007127AE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AD91E8E1ED4114D007127AE /* OpenSans-Bold.ttf */; };
 		7ADDC46B1ECB0C0000796170 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */; };
 		7ADDC47D1ECB1B9700796170 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47C1ECB1B9700796170 /* Experience.swift */; };
 		7ADDC47F1ECB1BA000796170 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDC47E1ECB1BA000796170 /* Project.swift */; };
@@ -99,6 +101,8 @@
 		7AD91E851ED3E05C007127AE /* BeginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yellowtail-Regular.ttf"; sourceTree = "<group>"; };
+		7AD91E8C1ED41144007127AE /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		7AD91E8E1ED4114D007127AE /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		7ADDC46A1ECB0C0000796170 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7ADDC47C1ECB1B9700796170 /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		7ADDC47E1ECB1BA000796170 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				7AD91E881ED3E5FE007127AE /* OpenSans-Light.ttf */,
+				7AD91E8C1ED41144007127AE /* OpenSans-Semibold.ttf */,
+				7AD91E8E1ED4114D007127AE /* OpenSans-Bold.ttf */,
 				7AD91E8A1ED3E63D007127AE /* Yellowtail-Regular.ttf */,
 			);
 			name = Fonts;
@@ -313,6 +319,7 @@
 			files = (
 				7AD91E891ED3E5FE007127AE /* OpenSans-Light.ttf in Resources */,
 				1AE3DC941ED2A3290084B4EF /* ChatPreviewViewCell.xib in Resources */,
+				7AD91E8F1ED4114D007127AE /* OpenSans-Bold.ttf in Resources */,
 				1AE3DC901ED29CB30084B4EF /* InviteTableViewCell.xib in Resources */,
 				1AB279191ECAACDD00C6F02B /* LaunchScreen.storyboard in Resources */,
 				1AB9FDEE1ECC6EDB0060AE80 /* SkillCollectionViewCell.xib in Resources */,
@@ -320,6 +327,7 @@
 				1AB9FDF21ECC91D70060AE80 /* ProjectRoleViewCell.xib in Resources */,
 				7AD91E8B1ED3E63D007127AE /* Yellowtail-Regular.ttf in Resources */,
 				1A3597101ED005C40059C8E8 /* GoogleService-Info.plist in Resources */,
+				7AD91E8D1ED41144007127AE /* OpenSans-Semibold.ttf in Resources */,
 				1AB9FDEA1ECC52230060AE80 /* EmployeeTableViewCell.xib in Resources */,
 				1A8D02711ECD3EF400FE6912 /* ProjectViewCell.xib in Resources */,
 				1AB279161ECAACDD00C6F02B /* Assets.xcassets in Resources */,

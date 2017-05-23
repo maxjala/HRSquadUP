@@ -102,9 +102,24 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setCollectionViewProperties()
+        buttonShape()
         
         self.navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
+    }
+    
+    func buttonShape(){
+        skillsButton.layer.cornerRadius = 5
+        skillsButton.layer.borderWidth = 1
+        skillsButton.layer.borderColor = UIColor.clear.cgColor
+        
+        projectsButton.layer.cornerRadius = 5
+        projectsButton.layer.borderWidth = 1
+        projectsButton.layer.borderColor = UIColor.clear.cgColor
+        
+        logoutButton.layer.cornerRadius = 5
+        logoutButton.layer.borderWidth = 1
+        logoutButton.layer.borderColor = UIColor.clear.cgColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,7 +142,11 @@ class ProfileViewController: UIViewController {
     }
     
     func logout(){
-    
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "AUTH_TOKEN")
+        defaults.synchronize()
+        let vc = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateViewController(withIdentifier: "IntroNavController")
+        present(vc, animated: true, completion: nil)
     }
     
     func configureMyProfile() {
