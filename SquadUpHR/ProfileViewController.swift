@@ -87,6 +87,7 @@ class ProfileViewController: UIViewController {
     
     var currentUser : Employee?
     var skillArray : [Skill] = []
+    var colourWheel = SkillCategory.fetchAllCategories()
     
     let cellScaling: CGFloat = 0.6
     
@@ -96,6 +97,7 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
 
         configuringProfileType(profileType)
+        colourWheel.append(contentsOf: genericCategoies)
     }
     
     override func viewDidLoad() {
@@ -341,7 +343,7 @@ extension ProfileViewController : UICollectionViewDataSource {
         //cell.statusLabel.text = currentProject.status
         
         //this will be a problem soon
-        cell.backgroundColor = genericCategoies[indexPath.row].color
+        cell.backgroundColor = colourWheel[indexPath.row].color
         cell.alpha = 0.6
         return cell
     }

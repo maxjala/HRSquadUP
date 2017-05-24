@@ -91,9 +91,18 @@ class ProjectViewController: UIViewController {
         let color7 = UIColor(red: 45.0/255.0, green: 128.0/255.0, blue: 188.0/255.0, alpha: 1)
         let color8 = UIColor(red: 238.0/255.0, green: 244.0/255.0, blue: 244.0/255.0, alpha: 1)
         let color9 = UIColor(red: 53.0/255.0, green: 151.0/255.0, blue: 211.0/255.0, alpha: 1)
+        let color10 = UIColor(red: 44.0/255.0, green: 150.0/255.0, blue: 163.0/255.0, alpha: 1)
+        let color11 = UIColor(red: 179.0/255.0, green: 225.0/255.0, blue: 232.0/255.0, alpha: 1)
+        let color12 = UIColor(red: 241.0/255.0, green: 90.0/255.0, blue: 41.0/255.0, alpha: 1)
+        let color13 = UIColor(red: 235.0/255.0, green: 128.0/255.0, blue: 35.0/255.0, alpha: 1)
+        let color14 = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1)
+        let color15 = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 59.0/255.0, alpha: 1)
+        let color16 = UIColor(red: 45.0/255.0, green: 128.0/255.0, blue: 188.0/255.0, alpha: 1)
+        let color17 = UIColor(red: 238.0/255.0, green: 244.0/255.0, blue: 244.0/255.0, alpha: 1)
+        let color18 = UIColor(red: 53.0/255.0, green: 151.0/255.0, blue: 211.0/255.0, alpha: 1)
         
         
-        colorArray = [color1,color2,color3,color4,color5,color6,color7,color8,color9]
+        colorArray = [color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15,color16,color17,color18]
     }
     
     @IBAction func chatButtonTapped(_ sender: Any) {

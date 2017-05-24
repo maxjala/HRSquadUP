@@ -96,7 +96,16 @@ class BrowseTutorVC: UIViewController {
         }
         
     }
+  
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
     func getEmployeesWithRelevantSkill(){
         JSONConverter.fetchAllUsers { (users, error) in
             if let validError = error {

@@ -128,16 +128,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="YBO-MQ-8wD">
-                                <rect key="frame" x="137" y="23.5" width="222" height="80.5"/>
+                                <rect key="frame" x="207" y="23.5" width="152" height="80.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v61-Hj-SAA">
-                                        <rect key="frame" x="70" y="0.0" width="152" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v61-Hj-SAA">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="YI6-LK-5wA"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Analyst" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85q-qD-UiA">
-                                        <rect key="frame" x="125.5" y="60" width="96.5" height="20.5"/>
+                                        <rect key="frame" x="55.5" y="60" width="96.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -145,6 +148,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="v61-Hj-SAA" secondAttribute="trailing" id="6Ma-zZ-Zmm"/>
+                                    <constraint firstItem="v61-Hj-SAA" firstAttribute="top" secondItem="YBO-MQ-8wD" secondAttribute="top" id="hww-fW-Uym"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYL-R6-bF0">
@@ -155,7 +159,7 @@
                                 <state key="normal" title="Add Skill"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managers" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-iv-ihK">
-                                <rect key="frame" x="56" y="28" width="70" height="70"/>
+                                <rect key="frame" x="126" y="28" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="6RD-eu-5Xm"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="B1o-5W-hxd"/>
@@ -226,7 +230,7 @@
                             <constraint firstItem="htw-hW-mTt" firstAttribute="leading" secondItem="PJc-ed-FlZ" secondAttribute="leading" id="FIf-Wz-9Ie"/>
                             <constraint firstItem="htw-hW-mTt" firstAttribute="centerX" secondItem="qYL-R6-bF0" secondAttribute="centerX" id="Hl0-oV-MOb"/>
                             <constraint firstItem="qYL-R6-bF0" firstAttribute="top" secondItem="0rc-Ze-B3q" secondAttribute="bottom" constant="7" id="K3Y-sv-23r"/>
-                            <constraint firstItem="Ghp-iv-ihK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mtb-B8-0WA" secondAttribute="leadingMargin" constant="30" id="MjI-Ig-Rjg"/>
+                            <constraint firstItem="Ghp-iv-ihK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mtb-B8-0WA" secondAttribute="leadingMargin" constant="60" id="MjI-Ig-Rjg"/>
                             <constraint firstItem="htw-hW-mTt" firstAttribute="centerX" secondItem="PJc-ed-FlZ" secondAttribute="centerX" id="VLO-oe-SEE"/>
                             <constraint firstItem="PJc-ed-FlZ" firstAttribute="top" secondItem="AEV-Tq-hXS" secondAttribute="bottom" constant="10" id="VxR-e3-jzy"/>
                             <constraint firstItem="htw-hW-mTt" firstAttribute="leading" secondItem="Mtb-B8-0WA" secondAttribute="leading" id="Xlg-GN-K7i"/>
@@ -236,7 +240,6 @@
                             <constraint firstItem="YBO-MQ-8wD" firstAttribute="leading" secondItem="Ghp-iv-ihK" secondAttribute="trailing" constant="11" id="gwh-v3-Cgp"/>
                             <constraint firstItem="AEV-Tq-hXS" firstAttribute="leading" secondItem="Mtb-B8-0WA" secondAttribute="leadingMargin" constant="152" id="qgO-RP-tGQ"/>
                             <constraint firstItem="YBO-MQ-8wD" firstAttribute="trailing" secondItem="Mtb-B8-0WA" secondAttribute="trailingMargin" id="rjC-yZ-hJ7"/>
-                            <constraint firstItem="Ghp-iv-ihK" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Mtb-B8-0WA" secondAttribute="leadingMargin" constant="40" id="wAd-C8-vAX"/>
                             <constraint firstItem="PJc-ed-FlZ" firstAttribute="top" secondItem="Ghp-iv-ihK" secondAttribute="bottom" constant="43" id="wCO-e2-MTk"/>
                             <constraint firstItem="htw-hW-mTt" firstAttribute="top" secondItem="PJc-ed-FlZ" secondAttribute="bottom" constant="8" symbolic="YES" id="zZN-2d-Bov"/>
                         </constraints>
@@ -670,7 +673,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dXC-jW-ucM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="SWo-qO-56V"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Owe-nS-AyI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Owe-nS-AyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -689,7 +692,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vab-R6-LYn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Projects" image="project" id="scL-bH-bXv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" misplaced="YES" id="QqJ-Nb-wgo">
+                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" id="QqJ-Nb-wgo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -708,7 +711,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kti-pR-Rsz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Connect" image="connect1" id="x0b-yJ-cx8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="czR-gp-rJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="czR-gp-rJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -727,7 +730,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="54x-0C-IxN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="book" id="zQw-Ug-eBM"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RSK-KH-QLs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSK-KH-QLs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -746,7 +749,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Rw-oW-FaT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="Help" id="rrB-iL-jJe"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pLc-0C-Ehd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pLc-0C-Ehd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

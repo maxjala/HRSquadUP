@@ -75,6 +75,7 @@ class NotifiactionViewController: UIViewController {
             if let validMentees = mentees {
                 DispatchQueue.main.async {
                     self.menteeList = self.createMentorMenteeList(validMentees, type: "mentee_id")
+                    
                 }
             }
         }
@@ -86,6 +87,7 @@ class NotifiactionViewController: UIViewController {
             
             if let validMentors = mentors {
                 DispatchQueue.main.async {
+                    
                     self.mentorList = self.createMentorMenteeList(validMentors, type: "mentor_id")
                     self.activeArray = self.mentorList
                     self.tableView.reloadData()
