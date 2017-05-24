@@ -9,10 +9,12 @@
 import Foundation
 
 class Skill {
+    var id: Int = 0
     var skillName: String = ""
     var skillCategory: String = ""
     
-    init(aSkill: String, aSkillCategory: String){
+    init(anID: Int, aSkill: String, aSkillCategory: String){
+        id = anID
         skillName = aSkill
         skillCategory = aSkillCategory
     }

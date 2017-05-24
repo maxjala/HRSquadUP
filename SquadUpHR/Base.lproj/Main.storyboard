@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ocQ-oG-SPc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -653,10 +653,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dXC-jW-ucM" kind="relationship" relationship="viewControllers" id="0Zc-yl-NgI"/>
-                        <segue destination="Vab-R6-LYn" kind="relationship" relationship="viewControllers" id="35c-7k-RUz"/>
                         <segue destination="kti-pR-Rsz" kind="relationship" relationship="viewControllers" id="Hy5-pA-jg6"/>
+                        <segue destination="Vab-R6-LYn" kind="relationship" relationship="viewControllers" id="35c-7k-RUz"/>
                         <segue destination="54x-0C-IxN" kind="relationship" relationship="viewControllers" id="6Dk-ZX-KvH"/>
+                        <segue destination="dXC-jW-ucM" kind="relationship" relationship="viewControllers" id="0Zc-yl-NgI"/>
                         <segue destination="3Rw-oW-FaT" kind="relationship" relationship="viewControllers" id="f0l-ji-rVL"/>
                     </connections>
                 </tabBarController>

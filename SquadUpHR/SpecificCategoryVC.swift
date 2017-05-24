@@ -41,6 +41,7 @@ class SpecificCategoryVC: UIViewController {
     var skills: [Skill] = []
     var displayType : DisplayType = .companySkills
     var enableContinue = false
+    var selectedSkill : Skill?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -103,9 +104,10 @@ class SpecificCategoryVC: UIViewController {
         skills = []
         for each in json {
             if let skill = each["skill_name"] as? String,
-                let cat = each["category"] as? String {
+                let cat = each["category"] as? String,
+            let id = each["id"] as? Int{
                 if cat == category?.title {
-                    let newSkill = Skill(aSkill: skill, aSkillCategory: cat)
+                    let newSkill = Skill(anID: id, aSkill: skill, aSkillCategory: cat)
                     skills.append(newSkill)
                 }
             }
@@ -127,11 +129,20 @@ extension SpecificCategoryVC : UITableViewDataSource {
         //cell.skillLabel.alpha = 0.8
         
         cell.skillLabel.text = skills[indexPath.row].skillName
+        cell.delegate = self
+        cell.employee = selectedUser
+        cell.skill = skills[indexPath.row]
+        selectedSkill = skills[indexPath.row]
+        cell.requestMentorButton.isEnabled = true
+        cell.requestMentorButton.isHidden = false
         
         if enableContinue == true {
-            cell.delegate = self
-            cell.employee = selectedUser
-            cell.skill = skills[indexPath.row]
+            cell.requestMentorButton.isEnabled = false
+            cell.requestMentorButton.isHidden = true
+            
+        } else if selectedUser == nil {
+            cell.requestMentorButton.isEnabled = false
+            cell.requestMentorButton.isHidden = true
         }
         
         return cell
@@ -188,11 +199,11 @@ extension SpecificCategoryVC : MFMailComposeViewControllerDelegate {
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
         let responseJSON : [String:Any]
-        responseJSON = ["mentor_id" : mentorID, "mentee_message" : "Please help mentor me :)"]
+        responseJSON = ["mentor_id" : mentorID, "mentee_message" : "Please help mentor me :)", "skill_id": selectedSkill?.id]
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
             
-            let url = URL(string: "http://192.168.1.114:3000/api/v1/mentorships/create_mentor?private_token=\(validToken)")
+            let url = URL(string: "http://192.168.1.33:3000/api/v1/mentorships/create_mentor?private_token=\(validToken)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"

@@ -15,7 +15,7 @@ class JSONConverter {
         //call the json to fetch all Projects
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
+        let completedURL = URL(string: "http://192.168.1.33:3000/api/v1/\(url)?private_token=\(validToken)")
         //let completedURL = URL(string: "http://192.168.1.155:3000/api/v1/\(url)?private_token=\(validToken)")
         //var createdArray : [Any] = []
         
@@ -56,7 +56,7 @@ class JSONConverter {
         //call the json to fetch all Projects
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/current_user?private_token=\(validToken)")
+        let completedURL = URL(string: "http://192.168.1.33:3000/api/v1/current_user?private_token=\(validToken)")
         //let completedURL = URL(string: "http://192.168.1.155:3000/api/v1/current_user?private_token=\(validToken)")
         
         //var createdArray : [Any] = []
@@ -99,7 +99,7 @@ class JSONConverter {
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
         //let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/users?private_token=\(validToken)")
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/users?private_token=\(validToken)")
+        let completedURL = URL(string: "http://192.168.1.33:3000/api/v1/users?private_token=\(validToken)")
         
         //var createdArray : [Any] = []
         
@@ -140,7 +140,7 @@ class JSONConverter {
         //call the json to fetch all Projects
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/user/\(selectedID)?private_token=\(validToken)")
+        let completedURL = URL(string: "http://192.168.1.33:3000/api/v1/user/\(selectedID)?private_token=\(validToken)")
         //let completedURL = URL(string: "http://192.168.1.53:3000/api/v1/user/\(selectedID)?private_token=\(validToken)")
         //var createdArray : [Any] = []
         
@@ -268,7 +268,7 @@ class JSONConverter {
         //let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/\(url)?private_token=\(validToken)")
         //let completedURL = URL(string: "http://192.168.1.155:3000/api/v1/\(url)?private_token=\(validToken)")
         //var createdArray : [Any] = []
-        let completedURL = URL(string: "http://192.168.1.114:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
+        let completedURL = URL(string: "http://192.168.1.33:3000/api/v1/project_chats?private_token=\(validToken)&project_id=\(projectID)")
         
         var urlRequest = URLRequest(url: completedURL!)
         urlRequest.httpMethod = "GET"

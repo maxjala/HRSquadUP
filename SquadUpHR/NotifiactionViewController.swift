@@ -34,7 +34,7 @@ class NotifiactionViewController: UIViewController {
         }
     }
 
-    var client = ActionCableClient(url: URL(string: "ws://192.168.1.53:3000/cable")!)
+    var client = ActionCableClient(url: URL(string: "ws://192.168.1.33:3000/cable")!)
     
     var employees : [Employee] = []
     var projects : [Project] = []
@@ -199,7 +199,7 @@ extension NotifiactionViewController : UITableViewDataSource {
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
             
-            let url = URL(string: "http://192.168.1.114:3000/api/v1/mentorships/accept_mentee?private_token=\(validToken)")
+            let url = URL(string: "http://192.168.1.33:3000/api/v1/mentorships/accept_mentee?private_token=\(validToken)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"

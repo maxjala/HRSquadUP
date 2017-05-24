@@ -225,9 +225,10 @@ class ProfileViewController: UIViewController {
                 
                 for object in objects {
                     if let aSkill = object["skill_name"] as? String,
-                        let aCategory = object["category"] as? String {
+                        let aCategory = object["category"] as? String,
+                    let id = object["id"] as? Int {
                         
-                        let newSkill = Skill(aSkill: aSkill, aSkillCategory: aCategory)
+                        let newSkill = Skill(anID: id, aSkill: aSkill, aSkillCategory: aCategory)
                         skillArray.append(newSkill)
                         
                     }

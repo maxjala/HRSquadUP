@@ -270,11 +270,11 @@ extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
         guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
         
         let responseJSON : [String:Any]
-        responseJSON = ["mentor_id" : mentorID, "mentee_message" : "Please help mentor me :)"]
+        responseJSON = ["mentor_id" : mentorID, "mentee_message" : "Please help mentor me :)", "skill_id": skill?.id]
         
         if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
             
-            let url = URL(string: "http://192.168.1.53:3000/api/v1/mentorships/create_mentor?private_token=\(validToken)")
+            let url = URL(string: "http://192.168.1.33:3000/api/v1/mentorships/create_mentor?private_token=\(validToken)")
             var urlRequest = URLRequest(url: url!)
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"
