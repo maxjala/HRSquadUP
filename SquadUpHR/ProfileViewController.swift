@@ -364,6 +364,7 @@ extension ProfileViewController : UIScrollViewDelegate, UICollectionViewDelegate
             let vc = storyboard?.instantiateViewController(withIdentifier: "SpecificCategoryVC") as? SpecificCategoryVC
             vc?.category = skillCat[indexPath.row]
             vc?.displayType = .userSkills
+            vc?.selectedUser = selectedProfile
             
             navigationController?.pushViewController(vc!, animated: true)
 

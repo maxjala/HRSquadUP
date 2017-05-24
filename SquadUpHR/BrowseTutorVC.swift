@@ -72,8 +72,10 @@ class BrowseTutorVC: UIViewController {
         switch view {
         case .allUsers:
             getAllCompanyUsers()
+            connectLabel.text = "Connect"
         case .specificSkill:
             getEmployeesWithRelevantSkill()
+            connectLabel.text = skill?.skillName
             canRequestMentor = true
             break
         }
@@ -102,9 +104,9 @@ class BrowseTutorVC: UIViewController {
             }
             
             if let validUsers = users {
-                self.createFilteredEmployeeList(validUsers)
-                self.filtered = self.employees
                 DispatchQueue.main.async {
+                    self.createFilteredEmployeeList(validUsers)
+                    self.filtered = self.employees
                     self.tableView.reloadData()
                     
                 }
@@ -116,16 +118,16 @@ class BrowseTutorVC: UIViewController {
         employees.removeAll()
         
         for each in userJSON {
-            if let userInfo = each as? [String: Any] {
-                guard let id = userInfo["id"] as? Int else {return}
-                guard let jobTitle = userInfo["job_title"] as? String else {return}
-                guard let department = userInfo["department"] as? String else {return}
-                guard let firstName = userInfo["first_name"] as? String else {return}
-                guard let lastName = userInfo["last_name"] as? String else {return}
-                guard let email = userInfo["email"] as? String else {return}
-                guard let privateToken = userInfo["private_token"] as? String else {return}
-                guard let skillsArray = userInfo["skills_array"] as? [[String:Any]] else {return}
-                guard let pictureURL = userInfo["profile_picture"] as? String else {return}
+            if let userInfo = each as? [String: Any],
+                let id = userInfo["id"] as? Int,
+                let jobTitle = userInfo["job_title"] as? String,
+                let department = userInfo["department"] as? String,
+                let firstName = userInfo["first_name"] as? String,
+                let lastName = userInfo["last_name"] as? String,
+                let email = userInfo["email"] as? String,
+                let privateToken = userInfo["private_token"] as? String,
+                let skillsArray = userInfo["skills_array"] as? [[String:Any]],
+                let pictureURL = userInfo["profile_picture"] as? String {
                 
                 for aSkill in skillsArray {
                     if aSkill["skill_name"] as? String == skill?.skillName {

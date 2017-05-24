@@ -40,7 +40,7 @@ class ChatViewController: JSQMessagesViewController {
     var timer = Timer()
     var seconds = 0
     
-    var client = ActionCableClient(url: URL(string: "ws://192.168.1.53:3000/cable")!)
+    var client = ActionCableClient(url: URL(string: "ws://192.168.1.114:3000/cable")!)
     
     
     

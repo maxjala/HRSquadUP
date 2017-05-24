@@ -517,20 +517,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flp-uJ-S3j">
-                                                    <rect key="frame" x="23" y="11" width="344" height="21"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                     <color key="textColor" red="0.80563927664974622" green="0.54346941154681583" blue="0.55519983986463817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ku-Su-SJf">
+                                                    <rect key="frame" x="306" y="5" width="35" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="hTn-Cs-8NL"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="mail"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="leading" secondItem="waN-my-wpD" secondAttribute="leadingMargin" constant="15" id="3CX-wZ-7Sg"/>
-                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="trailing" secondItem="waN-my-wpD" secondAttribute="trailingMargin" id="Cbi-TE-vFg"/>
-                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="centerY" secondItem="waN-my-wpD" secondAttribute="centerY" id="Zyw-fu-d0b"/>
-                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="top" secondItem="waN-my-wpD" secondAttribute="topMargin" constant="3" id="eNw-fh-ha9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1Ku-Su-SJf" secondAttribute="trailing" constant="26" id="1cJ-vu-VKB"/>
+                                                <constraint firstItem="1Ku-Su-SJf" firstAttribute="centerY" secondItem="waN-my-wpD" secondAttribute="centerY" id="3tt-fc-lsR"/>
+                                                <constraint firstItem="1Ku-Su-SJf" firstAttribute="leading" secondItem="flp-uJ-S3j" secondAttribute="trailing" constant="24" id="Exr-yp-AkZ"/>
+                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="centerY" secondItem="1Ku-Su-SJf" secondAttribute="centerY" id="sAM-EP-vJU"/>
+                                                <constraint firstItem="flp-uJ-S3j" firstAttribute="leading" secondItem="waN-my-wpD" secondAttribute="leadingMargin" constant="9" id="y5P-g5-StI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="requestMentorButton" destination="1Ku-Su-SJf" id="T2I-aV-jwq"/>
                                             <outlet property="skillLabel" destination="flp-uJ-S3j" id="clP-Zy-R6A"/>
                                         </connections>
                                     </tableViewCell>
@@ -577,7 +586,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fih-kS-5nF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="fih-kS-5nF">
                                 <rect key="frame" x="16" y="36" width="343" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Gff-DM-iro"/>
@@ -756,6 +765,7 @@
         <image name="book" width="32" height="32"/>
         <image name="comment" width="58" height="58"/>
         <image name="connect1" width="32" height="32"/>
+        <image name="mail" width="32" height="32"/>
         <image name="managers" width="2859" height="2859"/>
         <image name="project" width="32" height="32"/>
         <image name="user" width="32" height="32"/>
