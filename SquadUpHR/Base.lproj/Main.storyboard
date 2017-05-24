@@ -36,7 +36,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="WjO-Yo-eWf" customClass="SkillCategoryViewCell" customModule="SquadUpHR" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-17" width="233" height="406"/>
+                                        <rect key="frame" x="0.0" y="-16.5" width="233" height="406"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="233" height="406"/>
@@ -513,7 +513,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2oC-kC-QXL" id="waN-my-wpD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flp-uJ-S3j">
@@ -661,7 +661,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dXC-jW-ucM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="user" id="SWo-qO-56V"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Owe-nS-AyI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Owe-nS-AyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -699,7 +699,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kti-pR-Rsz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Connect" image="connect1" id="x0b-yJ-cx8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="czR-gp-rJO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="czR-gp-rJO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -718,7 +718,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="54x-0C-IxN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learn" image="book" id="zQw-Ug-eBM"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSK-KH-QLs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RSK-KH-QLs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -737,7 +737,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Rw-oW-FaT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="Help" id="rrB-iL-jJe"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pLc-0C-Ehd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pLc-0C-Ehd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -234,61 +234,6 @@ extension NotifiactionViewController : UITableViewDelegate {
     }
 }
 
-extension NotifiactionViewController {
-    func setUpActionCableConnection(_ projectID : Int) {
-        client.connect()
-        
-        let room_identifier = ["project_id" : projectID]
-        let roomChannel = client.create("ApiProjectChatsChannel", identifier: room_identifier, autoSubscribe: true, bufferActions: true)
-        
-        client.onConnected = {
-            print("Connected!")
-        }
-        
-        client.onDisconnected = {(error: Error?) in
-            print("Disconnected!")
-        }
-        
-    
-        roomChannel.onReceive = { (JSON : Any?, error : Error?) in
-            print("Received", JSON, error)
-            //self.fetchChat()
-            guard let formattedJSON = JSON as? [String:Any],
-                let messageJSON = formattedJSON["chat_message_object"] as? [String:Any],
-                let message = messageJSON["message"] as? String,
-                let senderID = messageJSON["user_id"] as? Int
-                else {return}
-            
-            var messages : [[String:Any]] = []
-            
-            for person in self.employees {
-                if person.employeeID == senderID {
-                    messages.append(["senderName": person.firstName, "message": message])
-                    //messages.append(JSQMessage(senderId: "\(senderID)", displayName: person.firstName, text: message))
-                }
-            }
-            //let lastIndex = IndexPath(item: self.messages.count - 1, section: 0)
-            //self.tableview.reloadData()
-            //self.tableview.scrollToItem(at: lastIndex, at: .bottom, animated: true)
-        }
-        
-        // A channel has successfully been subscribed to.
-        roomChannel.onSubscribed = {
-            print("Yay!")
-        }
-        
-        // A channel was unsubscribed, either manually or from a client disconnect.
-        roomChannel.onUnsubscribed = {
-            print("Unsubscribed")
-        }
-        
-        // The attempt at subscribing to a channel was rejected by the server.
-        roomChannel.onRejected = {
-            print("Rejected")
-        }
-    }
-    
-}
 
 extension NotifiactionViewController : InviteViewCellDelegate {
     

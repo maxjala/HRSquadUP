@@ -53,6 +53,8 @@ class BrowseTutorVC: UIViewController {
     var viewType: ViewType = .allUsers
     var searchActive: Bool = false
     var filtered: [Employee] = []
+    var canRequestMentor = false
+    var selectedMentor : Employee?
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +74,7 @@ class BrowseTutorVC: UIViewController {
             getAllCompanyUsers()
         case .specificSkill:
             getEmployeesWithRelevantSkill()
+            canRequestMentor = true
             break
         }
     }
@@ -158,8 +161,14 @@ extension BrowseTutorVC : UITableViewDataSource {
         
         let employee = filtered[indexPath.row]
         
+        if canRequestMentor == true {
+            cell.sendEmailButton.isHidden = false
+            cell.sendEmailButton.isEnabled = true
+        }
+        
         cell.delegate = self
         cell.employee = employee
+        cell.skill = skill
         cell.nameLabel.text = employee.fullName
         cell.jobTitleLabel.text = employee.jobTitle
         cell.departmentLabel.text = employee.department
@@ -178,8 +187,7 @@ extension BrowseTutorVC : UITableViewDelegate {
         
         navigationController?.pushViewController(controller, animated: true)
         
-        
-        
+    
     }
 }
 
@@ -227,12 +235,14 @@ extension BrowseTutorVC: UISearchBarDelegate{
 }
 
 extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
-    func sendEmail(_ employee: Employee) {
+    func sendEmail(_ employee: Employee, skill: Skill) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([employee.email])
-            mail.setMessageBody("<p>Hey Friend! I am requesting mentorship through SquadUp!</p>", isHTML: true)
+            mail.setSubject("\(skill.skillName) mentorship request")
+            mail.setMessageBody("Hey Friend! I am requesting mentorship through SquadUp!", isHTML: false)
+            selectedMentor = employee
             
             present(mail, animated: true)
         } else {
@@ -242,15 +252,49 @@ extension BrowseTutorVC : MFMailComposeViewControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
+        switch result {
+        case .sent:
+            sendMentorRequest((selectedMentor?.employeeID)!)
+        default:
+            sendMentorRequest((selectedMentor?.employeeID)!)
+        }
+        
         
         controller.dismiss(animated: true, completion: nil)
     
     }
     
+    func sendMentorRequest(_ mentorID: Int) {
+        guard let validToken = UserDefaults.standard.string(forKey: "AUTH_TOKEN") else {return}
+        
+        let responseJSON : [String:Any]
+        responseJSON = ["mentor_id" : mentorID, "mentee_message" : "Please help mentor me :)"]
+        
+        if let jsonData = try? JSONSerialization.data(withJSONObject: responseJSON, options: []) {
+            
+            let url = URL(string: "http://192.168.1.53:3000/api/v1/mentorships/create_mentor?private_token=\(validToken)")
+            var urlRequest = URLRequest(url: url!)
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpMethod = "POST"
+            urlRequest.httpBody = jsonData
+            let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                
+                if let validError = error as NSError? {
+                    print(validError.localizedDescription)
+                    return
+                }
+                
+            }
+            
+            dataTask.resume()
+        }
+    }
 
+    
 }
+
 extension BrowseTutorVC: SendEmailDelegate {
-    func sendEmailTapped(_ employee: Employee) {
-        sendEmail(employee)
+    func sendEmailTapped(_ employee: Employee, skill: Skill) {
+        sendEmail(employee, skill: skill)
     }
 }
